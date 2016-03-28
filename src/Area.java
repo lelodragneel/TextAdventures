@@ -1,50 +1,55 @@
 import java.util.ArrayList;
+
 public class Area {
-	boolean specialItem;
-	boss miniBoss;
-	String puzzle;
+	
+	private boolean specialItem;
+	private Boss miniBoss;
+	private String puzzle;
 	//arraylist for rooms of each area
-	ArrayList<String> rooms = new ArrayList<String>(10);
-	public Area(boolean s,boss m, String p, ArrayList r)
+	private ArrayList<String> rooms = new ArrayList<String>(10);
+	
+	public Area(boolean specialItem, Boss miniBoss, String puzzle, ArrayList<String> rooms)
 	{
-		specialItem = s;
-		miniBoss = m;
-		puzzle = p;
-		rooms= r;
-		s = true;
+		this.specialItem = specialItem;
+		this.miniBoss = miniBoss;
+		this.puzzle = puzzle;
+		this.rooms= rooms;
+		this.specialItem = true;
 	}
+	
 	//get methods
-	public boolean getS()
+	public boolean getSpecialItem()
 	{
 		return specialItem;
 	}
-	public boss getB()
+	public Boss getMiniBoss()
 	{
 		return miniBoss;
 	}
-	public String getP()
+	public String getPuzzle()
 	{
 		return puzzle;
 	}
-	public ArrayList getR()
+	public ArrayList<String> getRooms()
 	{
 		return rooms;
 	}
+	
 	//set methods
-	public void setS(boolean s)
+	public void setSpecialItem(boolean specialItem)
 	{
-		s = specialItem;
+		this.specialItem = specialItem;
 	}
-	public void setM(boss m)
+	public void setMiniBoss(Boss miniBoss)
 	{
-		m = miniBoss;
+		this.miniBoss = miniBoss;
 	}
-	public void setP(String p)
+	public void setPuzzle(String puzzle)
 	{
-		p = puzzle;
+		this.puzzle = puzzle;
 	}
-	public void setR(ArrayList r)
+	public void setRooms(ArrayList<String> rooms)
 	{
-		r = rooms;
+		this.rooms = rooms;
 	}
 }
