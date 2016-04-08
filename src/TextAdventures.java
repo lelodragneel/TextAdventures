@@ -4,10 +4,10 @@ public class TextAdventures {
 
 	public static void main(String[] args) {
 
-		// safely start the game frame
+		// safely start the welcome frame
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				new GamePanel();
+				new WelcomeScreen();
 			}
 		});
 

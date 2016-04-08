@@ -23,7 +23,9 @@ import java.awt.Font;
 @SuppressWarnings("serial")
 public class GamePanel extends JFrame {
 	
-	// initialize variables
+	/*
+	 * initialize variables
+	 */
 	private JTextField textField_cmdInput;
 	private JTextArea textArea_displayEvents;
 	private JProgressBar progBar_playerHealth;
@@ -39,14 +41,13 @@ public class GamePanel extends JFrame {
 		/*
 		 * build main frame
 		 */
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	
+		setDefaultCloseOperation(EXIT_ON_CLOSE);	
 		setTitle("TextAdventures - CSCI Group Project");
 		setBounds(0, 0, 950, 400);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(null);
 		setResizable(false);
-		
-		
+				
 		/*
 		 * create the player panel
 		 */
