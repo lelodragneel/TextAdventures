@@ -1,4 +1,6 @@
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -22,7 +24,7 @@ import java.awt.Font;
  */
 
 @SuppressWarnings("serial")
-public class GamePanel extends JFrame {
+public class GamePanel extends JFrame implements ActionListener {
 	
 	/*
 	 * initialize variables
@@ -35,9 +37,15 @@ public class GamePanel extends JFrame {
 	private JLabel lbl_playerName;
 	private JLabel lbl_enemyName;
 	private JLabel lbl_locationName;
+	private Map map;
 	
 	// constructor
 	public GamePanel() {
+		
+		/*
+		 * create new world map
+		 */
+		map = new Map();
 		
 		/*
 		 * build main frame
@@ -239,6 +247,7 @@ public class GamePanel extends JFrame {
 		btn_showMap.setFont(new Font("DejaVu Sans", Font.PLAIN, 11));
 		btn_showMap.setBounds(684, 11, 40, 40);
 		btn_showMap.setMargin(new Insets(1, 1, 1, 1));
+		btn_showMap.addActionListener(this);
 		btn_showMap.setFocusable(false);
 		getContentPane().add(btn_showMap);
 
@@ -254,4 +263,23 @@ public class GamePanel extends JFrame {
 	public void appendMessage(String s) {
 		textArea_displayEvents.append("> " + s + "\n");
 	}
+
+	/*
+	 * action listener
+	 */
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		
+		// if map button was clicked, toggle map visibility
+		if (e.getSource().equals(btn_showMap)){
+			map.setVisible(!map.isVisible());
+		}
+		
+	}
+	
+	
+	
+	
+	
+	
 }

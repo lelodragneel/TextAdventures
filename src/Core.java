@@ -9,7 +9,8 @@ public class Core {
 	/*
 	 * initialize variables
 	 */
-	private ArrayList<Area> areas = new ArrayList<Area>();
+	private GamePanel game;
+	private ArrayList<Area> areas;
 	
 	public Core() {
 		
@@ -18,7 +19,7 @@ public class Core {
 		 */
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				new GamePanel();
+				game = new GamePanel();
 			}
 		});
 		
@@ -38,5 +39,24 @@ public class Core {
 		// create area #5
 		areas.add(new Area("Volcano", new Boss(420, 35, "LavaSkeleton")));
 		
+		// start game engine
+		gameEngine();
 	}
+	
+	/*
+	 * the method which keeps the game running while maintaining functionalities
+	 * also does any calculations necessary 
+	 */
+	public void gameEngine() {
+		
+		
+		
+		
+	}
+	
+	
+	
+	
+	
+	
 }
