@@ -69,13 +69,27 @@ public class WelcomeScreen extends JFrame implements ActionListener {
 	 */
 	public void startGame() {
 
-		// safely start the game frame
+		// safely start the game
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				new GamePanel();
+				new Core();
 				dispose();
 			}
 		});
+	}
+	
+	/*
+	 * <<<<<main static method>>>>>
+	 */
+	public static void main(String[] args) {
+
+		// safely start the welcome frame
+		SwingUtilities.invokeLater(new Runnable() {
+			public void run() {
+				new WelcomeScreen();
+			}
+		});
+
 	}
 
 }

@@ -1,5 +1,6 @@
-
-public class Boss {
+package Creatures;
+// this class was made to replace 'rooms' since minions makes more sense.
+public class Minion {
 
 	/*
 	 * initialize variables
@@ -7,8 +8,9 @@ public class Boss {
 	private double health;
 	private double attack;
 	private String name;
+	private boolean specialItem;
 
-	public Boss(double health, double attack, String name) {
+	public Minion(double health, double attack, String name) {
 		this.health = health;
 		this.attack = attack;
 		this.name = name;
@@ -39,4 +41,15 @@ public class Boss {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	// return the specialItem
+	public boolean isSpecialItem() {
+		return specialItem;
+	}
+
+	// set the specialItem
+	public void setSpecialItem(boolean specialItem) {
+		this.specialItem = specialItem;
+	}
+	
 }

@@ -1,6 +1,7 @@
 import java.util.Scanner;
 //Woods mini=game for choose your own adventure.
 public class Woods {
+	
 	public static int pathFinder(String p) {
 		//Path solutions and possible paths.
 		String[] paths = {"lrlllrl", "rlrlrllrr", "llr", "lllr", "llll", "lrrl", "lrrrl", "lrrrr", "lrlr", "lrllr", "lrllll", "lrlllrrl", "lrlllrrr", "rrrr", "rrl", "rrrl", "rll", "rlrr", "rlrll", "rlrlrr", "rlrlrlr", "rlrlrlll", "rlrlrllrl"};
@@ -13,6 +14,7 @@ public class Woods {
 		}
 		return -1;
 	}
+	
 	//Method to go back to the previous fork in the road.
 	public static String goBack(String p) {
 		String backOne = "";
@@ -27,14 +29,17 @@ public class Woods {
 		}
 		return backOne;
 	}
+	
 	//Main method for the mini-game!
 	public static void main(String[] args) {
+		
 		Scanner sc = new Scanner(System.in);
 		String path = "";
 		boolean lost = true;
 		String temp = "";
 		boolean spellbook = false;
 		boolean start = true;
+		
 		while(lost) {
 		//Text to show up if you're at the entrance.
 		if(start == true) {

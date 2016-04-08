@@ -1,29 +1,33 @@
 import java.util.ArrayList;
 
+import Creatures.Boss;
+import Creatures.Minion;
+
 public class Area {
 
 	/*
 	 * initialize variables
 	 */
-	private boolean specialItem;
 	private Boss miniBoss;
 	private String puzzle;
-	// arraylist for rooms of each area
-	private ArrayList<String> rooms = new ArrayList<String>(10);
+	private String areaName;
+	private ArrayList<Minion> minions;
 
-	public Area(boolean specialItem, Boss miniBoss, String puzzle, ArrayList<String> rooms) {
-		this.specialItem = specialItem;
+	public Area(String areaName, Boss miniBoss) {
+		
+		this.areaName = areaName;
 		this.miniBoss = miniBoss;
-		this.puzzle = puzzle;
-		this.rooms = rooms;
-		this.specialItem = true;
+		minions = new ArrayList<Minion>();
+		
+		// create 4 minions for this area with the same health and attack values
+		for (int i = 0; i < 5; i++)
+			minions.add(new Minion(40, 5, "minion #" + (i + 1)));
+		
+		// TODO create incrementally stronger minions 
+		// TODO create a puzzle for areas
 	}
 
 	// get methods
-	public boolean getSpecialItem() {
-		return specialItem;
-	}
-
 	public Boss getMiniBoss() {
 		return miniBoss;
 	}
@@ -32,24 +36,12 @@ public class Area {
 		return puzzle;
 	}
 
-	public ArrayList<String> getRooms() {
-		return rooms;
-	}
-
 	// set methods
-	public void setSpecialItem(boolean specialItem) {
-		this.specialItem = specialItem;
-	}
-
 	public void setMiniBoss(Boss miniBoss) {
 		this.miniBoss = miniBoss;
 	}
 
 	public void setPuzzle(String puzzle) {
 		this.puzzle = puzzle;
-	}
-
-	public void setRooms(ArrayList<String> rooms) {
-		this.rooms = rooms;
 	}
 }
