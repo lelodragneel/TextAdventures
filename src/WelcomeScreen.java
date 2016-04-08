@@ -16,7 +16,7 @@ public class WelcomeScreen extends JFrame implements ActionListener {
 	private JButton btnStart;
 
 	public WelcomeScreen() {
-
+		
 		/*
 		 * build the welcome frame with all components
 		 */
@@ -59,10 +59,8 @@ public class WelcomeScreen extends JFrame implements ActionListener {
 	 */
 	public void actionPerformed(ActionEvent evt) {
 
-		if (evt.getSource().equals(btnStart)){
+		if (evt.getSource().equals(btnStart))
 			startGame();
-			System.out.println("works");
-		}
 
 	}
 
