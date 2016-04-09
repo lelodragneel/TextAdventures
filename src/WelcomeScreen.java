@@ -16,6 +16,7 @@ public class WelcomeScreen extends JFrame implements ActionListener {
 	private JButton btnStart;
 
 	public WelcomeScreen() {
+		setAlwaysOnTop(true);
 		
 		/*
 		 * build the welcome frame with all components

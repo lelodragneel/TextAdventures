@@ -1,22 +1,21 @@
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JProgressBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.JProgressBar;
-import javax.swing.JLabel;
-import java.awt.GridLayout;
-import javax.swing.border.TitledBorder;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
-import java.awt.Color;
-import java.awt.Font;
+import javax.swing.border.TitledBorder;
 
 /*
  * CSCI group project
@@ -29,7 +28,8 @@ public class GamePanel extends JFrame implements ActionListener {
 	/*
 	 * initialize variables
 	 */
-	private JTextField textField_cmdInput;
+	private String enteredText;
+	private JTextField txtPleaseTypeAll;
 	private JTextArea textArea_displayEvents;
 	private JProgressBar progBar_playerHealth;
 	private JProgressBar progBar_enemyHealth;
@@ -41,6 +41,7 @@ public class GamePanel extends JFrame implements ActionListener {
 	
 	// constructor
 	public GamePanel() {
+		setAlwaysOnTop(true);
 		
 		/*
 		 * create new world map
@@ -233,11 +234,14 @@ public class GamePanel extends JFrame implements ActionListener {
 		getContentPane().add(scroll);
 		
 		// create the text field which accepts user input
-		textField_cmdInput = new JTextField();
-		textField_cmdInput.setFont(new Font("Monospaced", Font.PLAIN, 12));
-		textField_cmdInput.setBounds(220, 331, 504, 29);
-		textField_cmdInput.setColumns(10);
-		getContentPane().add(textField_cmdInput);
+		txtPleaseTypeAll = new JTextField();
+		txtPleaseTypeAll.setEditable(false);
+		txtPleaseTypeAll.setText("Please type all commands in the console. This text field is obsolete.");
+		txtPleaseTypeAll.setFont(new Font("Monospaced", Font.PLAIN, 12));
+		txtPleaseTypeAll.setBounds(220, 331, 504, 29);
+		txtPleaseTypeAll.setColumns(10);
+		txtPleaseTypeAll.addActionListener(this);
+		getContentPane().add(txtPleaseTypeAll);
 		
 		/*
 		 * create miscellaneous components displayed at the top above the textArea
@@ -254,14 +258,6 @@ public class GamePanel extends JFrame implements ActionListener {
 		// finally, set frame visible
 		setVisible(true);
 		
-		//testing
-		appendMessage("this is test");
-		appendMessage("this is another test! :)");
-	}
-	
-	// method that appends text to the text area
-	public void appendMessage(String s) {
-		textArea_displayEvents.append("> " + s + "\n");
 	}
 
 	/*
@@ -276,10 +272,25 @@ public class GamePanel extends JFrame implements ActionListener {
 		}
 		
 	}
-	
-	
-	
-	
-	
+
+	// return the textArea_displayEvents
+	public JTextArea getTextArea_displayEvents() {
+		return textArea_displayEvents;
+	}
+
+	// return the enteredText
+	public String getEnteredText() {
+		return enteredText;
+	}
+
+	// set the enteredText
+	public void setEnteredText(String enteredText) {
+		this.enteredText = enteredText;
+	}
+
+	// return the textField_cmdInput's input as string
+	public String getInput() {
+		return txtPleaseTypeAll.getText();
+	}
 	
 }

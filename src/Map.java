@@ -5,6 +5,7 @@ import java.awt.GridBagLayout;
 public class Map extends JFrame {
 	
 	public Map() {
+		setAlwaysOnTop(true);
 		
 		setResizable(false);
 		setLocationRelativeTo(null);

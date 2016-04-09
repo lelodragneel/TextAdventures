@@ -8,12 +8,14 @@ public class Boss {
 	private double health;
 	private double attack;
 	private String name;
+	private boolean alive;
 	private boolean specialItem;
 
 	public Boss(double health, double attack, String name) {
 		this.health = health;
 		this.attack = attack;
 		this.name = name;
+		setAlive(true);
 	}
 
 	// get methods
@@ -50,5 +52,15 @@ public class Boss {
 	// set the specialItem
 	public void setSpecialItem(boolean specialItem) {
 		this.specialItem = specialItem;
+	}
+
+	// return the alive
+	public boolean isAlive() {
+		return alive;
+	}
+
+	// set the alive
+	public void setAlive(boolean alive) {
+		this.alive = alive;
 	}
 }

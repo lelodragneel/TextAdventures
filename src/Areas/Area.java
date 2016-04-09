@@ -1,3 +1,4 @@
+package Areas;
 import java.util.ArrayList;
 
 import Creatures.Boss;
@@ -8,15 +9,15 @@ public class Area {
 	/*
 	 * initialize variables
 	 */
-	private Boss miniBoss;
+	private Boss boss;
 	private String puzzle;
 	private String areaName;
 	private ArrayList<Minion> minions;
 
-	public Area(String areaName, Boss miniBoss) {
+	public Area(String areaName, Boss boss) {
 		
 		this.areaName = areaName;
-		this.miniBoss = miniBoss;
+		this.boss = boss;
 		minions = new ArrayList<Minion>();
 		
 		// create 4 minions for this area with the same health and attack values
@@ -28,8 +29,8 @@ public class Area {
 	}
 
 	// get methods
-	public Boss getMiniBoss() {
-		return miniBoss;
+	public Boss getBoss() {
+		return boss;
 	}
 
 	public String getPuzzle() {
@@ -37,8 +38,8 @@ public class Area {
 	}
 
 	// set methods
-	public void setMiniBoss(Boss miniBoss) {
-		this.miniBoss = miniBoss;
+	public void setBoss(Boss boss) {
+		this.boss = boss;
 	}
 
 	public void setPuzzle(String puzzle) {
