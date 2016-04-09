@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import Creatures.Boss;
 import Creatures.Minion;
 
-public class Area {
+public abstract class Area {
 
 	/*
 	 * initialize variables
@@ -12,17 +12,17 @@ public class Area {
 	private Boss boss;
 	private String puzzle;
 	private String areaName;
-	private ArrayList<Minion> minions;
+	private ArrayList<Minion> rooms;
 
 	public Area(String areaName, Boss boss) {
 		
 		this.areaName = areaName;
 		this.boss = boss;
-		minions = new ArrayList<Minion>();
+		rooms = new ArrayList<Minion>();
 		
-		// create 4 minions for this area with the same health and attack values
+		// create a 3 X 3 matrix to represent the locations of the area
 		for (int i = 0; i < 5; i++)
-			minions.add(new Minion(40, 5, "minion #" + (i + 1)));
+			rooms.add(new Minion(40, 5, "minion #" + (i + 1)));
 		
 		// TODO create incrementally stronger minions 
 		// TODO create a puzzle for areas

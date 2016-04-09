@@ -1,3 +1,4 @@
+package Areas;
 import java.util.Scanner;
 //Woods mini=game for choose your own adventure.
 public class Woods {

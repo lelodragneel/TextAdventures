@@ -14,13 +14,16 @@ public class WelcomeScreen extends JFrame implements ActionListener {
 	 * initialize variables
 	 */
 	private JButton btnStart;
+	private JButton btnWarriorClass;
+	private JButton btnWizardClass;
+	private JButton btnThiefClass;
 
 	public WelcomeScreen() {
-		setAlwaysOnTop(true);
 		
 		/*
 		 * build the welcome frame with all components
 		 */
+		setAlwaysOnTop(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		setResizable(false);
@@ -49,6 +52,21 @@ public class WelcomeScreen extends JFrame implements ActionListener {
 		label_welcome.setHorizontalAlignment(SwingConstants.CENTER);
 		label_welcome.setBounds(159, 11, 190, 32);
 		getContentPane().add(label_welcome);
+		
+		// create the warrior button
+		btnWarriorClass = new JButton("Warrior");
+		btnWarriorClass.setBounds(209, 129, 89, 23);
+		getContentPane().add(btnWarriorClass);
+		
+		// create the thief button
+		btnThiefClass = new JButton("Thief");
+		btnThiefClass.setBounds(110, 129, 89, 23);
+		getContentPane().add(btnThiefClass);
+		
+		// create the wizard button
+		btnWizardClass = new JButton("Wizard");
+		btnWizardClass.setBounds(308, 129, 89, 23);
+		getContentPane().add(btnWizardClass);
 
 		// set frame visible
 		setVisible(true);
@@ -92,5 +110,4 @@ public class WelcomeScreen extends JFrame implements ActionListener {
 		});
 
 	}
-
 }
