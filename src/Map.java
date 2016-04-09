@@ -1,25 +1,26 @@
 import javax.swing.JFrame;
+
+import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Insets;
 
 @SuppressWarnings("serial")
 public class Map extends JFrame {
 	
 	public Map() {
-		setAlwaysOnTop(true);
 		
+		setTitle("World Map");
+		setAlwaysOnTop(true);	
 		setResizable(false);
 		setLocationRelativeTo(null);
-		setTitle("World Map");
 		setBounds(0, 0, 1000, 400);
-		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{0};
-		gridBagLayout.rowHeights = new int[]{0};
-		gridBagLayout.columnWeights = new double[]{Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{Double.MIN_VALUE};
-		getContentPane().setLayout(gridBagLayout);
+		getContentPane().setLayout(new GridBagLayout());
 		
-		
-		
+		GridBagConstraints gbc = new GridBagConstraints();
+		gbc.insets = new Insets(3, 3, 3, 3);
+		gbc.fill = GridBagConstraints.BOTH;
+		gbc.weightx = gbc.weighty = 1.0;
+	
 		
 		
 		
