@@ -2,9 +2,9 @@ package Areas;
 
 import java.util.Scanner;
 
-import General.Boss;
+import Enemies.Boss;
+import Enemies.Minion;
 import General.Item;
-import General.Minion;
 import General.Room;
 
 public class Woods extends Area{

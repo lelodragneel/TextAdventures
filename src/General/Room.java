@@ -1,5 +1,8 @@
 package General;
 
+import Enemies.Boss;
+import Enemies.Minion;
+
 public class Room {
 	
 	/*

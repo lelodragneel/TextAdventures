@@ -1,8 +1,8 @@
 package Areas;
 
 import General.Room;
-import General.Minion;
-import General.Boss;
+import Enemies.Boss;
+import Enemies.Minion;
 import General.Item;
 
 public class Cave extends Area {
