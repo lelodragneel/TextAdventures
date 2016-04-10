@@ -21,7 +21,7 @@ public class Item {
 		return damageIncrease;
 	}
 
-	public void setDamageIncrease(double damageIncrease) {
+	public void setDamageIncrease(int damageIncrease) {
 		this.damageIncrease = damageIncrease;
 	}
 
@@ -29,7 +29,7 @@ public class Item {
 		return healthIncrease;
 	}
 
-	public void setHealthIncrease(double healthIncrease) {
+	public void setHealthIncrease(int healthIncrease) {
 		this.healthIncrease = healthIncrease;
 	}
 	
