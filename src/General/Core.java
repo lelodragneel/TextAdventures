@@ -60,30 +60,7 @@ public class Core {
 	 */
 	public void gameEngine() {
 
-		// // while the first area isn't clean, keep looping
-		// while (areas.get(0).getBoss().isAlive()) {
-		// // TODO area #1 gameplay
-		// }
-		//
-		// // while the second area isn't clean, keep looping
-		// while (areas.get(1).getBoss().isAlive()) {
-		// // TODO area #2 gameplay
-		// }
-		//
-		// // while the third area isn't clean, keep looping
-		// while (areas.get(2).getBoss().isAlive()) {
-		// // TODO area #3 gameplay
-		// }
-		//
-		// // while the first area isn't clean, keep looping
-		// while (areas.get(3).getBoss().isAlive()) {
-		// // TODO area #4 gameplay
-		// }
-		//
-		// // while the first area isn't clean, keep looping
-		// while (areas.get(4).getBoss().isAlive()) {
-		// // TODO area #5 gameplay
-		// }
+		// TODO create game engine
 
 	}
 

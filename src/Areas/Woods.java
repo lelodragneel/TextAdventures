@@ -18,15 +18,15 @@ public class Woods extends Area{
 		// TODO change boss/minion values from 0 to something realistic
 		// create a 3X3 matrix as the map for this area
 		// reminder: room[row][col]
-		room[0][0] = new Room(null, null, null);
-		room[0][1] = new Room(null, new Minion(0, 0, "Angry Sapling"), null);
-		room[0][2] = new Room(null, null, null);
-		room[1][0] = new Room(null, null, null);
-		room[1][1] = new Room(new Boss(0, 0, "Angry Tree Spirit"), null, null);
-		room[1][2] = new Room(null, null, null);
-		room[2][0] = new Room(null, null, null);
-		room[2][1] = new Room(null, null, null);
-		room[2][2] = new Room(null, null, null);
+		room[0][0] = new Room(null, null, null, false);
+		room[0][1] = new Room(null, new Minion(0, 0, "Angry Sapling"), new Item(), false);
+		room[0][2] = new Room(null, null, null, true);
+		room[1][0] = new Room(null, new Minion(), new Item(), false);
+		room[1][1] = new Room(new Boss(0, 0, "Angry Tree Spirit"), null, null, false);
+		room[1][2] = new Room(null, null, null, true);
+		room[2][0] = new Room(null, null, null, true);
+		room[2][1] = new Room(null, null, new Item(), false);
+		room[2][2] = new Room(null, new Minion(), new Item(), false);
 		
 	}
 	
