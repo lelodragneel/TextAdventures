@@ -12,6 +12,7 @@ public class Room {
 	private Minion minion;
 	private Item item;
 	private boolean potion;
+	private boolean discovered;
 	
 	/*
 	 * constructor
@@ -41,6 +42,14 @@ public class Room {
 
 	public void setItem(Item item) {
 		this.item = item;
+	}
+
+	public boolean isDiscovered() {
+		return discovered;
+	}
+
+	public void setDiscovered(boolean discovered) {
+		this.discovered = discovered;
 	}
 	
 }
