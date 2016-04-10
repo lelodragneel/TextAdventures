@@ -1,5 +1,7 @@
+package General;
 
-public class character {
+
+public class Character {
 	private String type;
 	private String name;
 	private String weapon;
@@ -8,7 +10,7 @@ public class character {
 	private boolean potion;
 	private int keyCount;
 	private int item;
-	public character(String t, String n, String w, int h, int a, boolean p, int k, int i){
+	public Character(String t, String n, String w, int h, int a, boolean p, int k, int i){
 		type = t;
 		name = n;
 		weapon = w;
@@ -87,4 +89,5 @@ public class character {
 	{
 		i = item;
 	}
+	
 }

@@ -1,3 +1,5 @@
+package General;
+
 import javax.swing.JFrame;
 
 import java.awt.GridBagConstraints;

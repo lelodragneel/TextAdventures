@@ -1,3 +1,5 @@
+package General;
+
 
 
 public class Room {
@@ -15,7 +17,7 @@ public class Room {
 	 * 		boss = the room has the final boss which drops the key
 	 * 		minion = the room has a minion you can fight for potential loot
 	 */
-	public Room(Boss boss, Item item) {
+	public Room(Boss boss, Minion minion, Item item) {
 		
 		this.setBoss(boss);
 		this.setItem(item);
