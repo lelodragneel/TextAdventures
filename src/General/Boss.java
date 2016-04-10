@@ -5,13 +5,12 @@ public class Boss {
 	/*
 	 * initialize variables
 	 */
-	private double health;
-	private double attack;
+	private int health;
+	private int attack;
 	private String name;
 	private boolean alive;
-	private boolean specialItem;
 
-	public Boss(double health, double attack, String name) {
+	public Boss(int health, int attack, String name) {
 		this.health = health;
 		this.attack = attack;
 		this.name = name;
@@ -19,11 +18,11 @@ public class Boss {
 	}
 
 	// get methods
-	public double getHealth() {
+	public int getHealth() {
 		return health;
 	}
 
-	public double getAttack() {
+	public int getAttack() {
 		return attack;
 	}
 
@@ -32,26 +31,16 @@ public class Boss {
 	}
 
 	// set methods
-	public void setHealth(double health) {
+	public void setHealth(int health) {
 		this.health = health;
 	}
 
-	public void setAttack(double attack) {
+	public void setAttack(int attack) {
 		this.attack = attack;
 	}
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	// return the specialItem
-	public boolean isSpecialItem() {
-		return specialItem;
-	}
-
-	// set the specialItem
-	public void setSpecialItem(boolean specialItem) {
-		this.specialItem = specialItem;
 	}
 
 	// return the alive
