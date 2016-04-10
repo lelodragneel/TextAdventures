@@ -1,7 +1,5 @@
 package Areas;
 
-import java.util.Scanner;
-
 import Enemies.Boss;
 import Enemies.Minion;
 import General.Item;
@@ -31,15 +29,7 @@ public class Woods extends Area{
 	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 //	
 //	//Main method for the mini-game!

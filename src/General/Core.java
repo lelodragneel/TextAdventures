@@ -23,15 +23,8 @@ public class Core {
 		 * instantiate necessary variables
 		 */
 		this.player = player;
-		
-		/*
-		 * create the game frame
-		 */
-		SwingUtilities.invokeLater(new Runnable() {
-			public void run() {
-				game = new GamePanel();
-			}
-		});
+		game = new GamePanel();
+
 
 		/*
 		 * create 3 different areas. Each contains 9 rooms
@@ -59,13 +52,17 @@ public class Core {
 	 */
 	public void gameEngine() {
 
-		
+		game.appendMessage("Welcome to TextAdventure!");
+		game.appendMessage(
+				"The game contains 3 areas: Woods, Cave, and City. Each area has 9 Rooms. One of those rooms "
+				+ "contains a Boss which you can attempt to kill. If you succeed in killing each area's boss, "
+				+ "you will have the chance to face the game's final boss located in a volcano. Once defeated, "
+				+ "you win the game.");
+		game.appendMessage("Furthermore, each room of each area contains different things. "
+				+ "You may perhaps encounter a minion in one room, or maybe find a potion in another. "
+				+ "Rooms can also be empty. ");
+		game.appendMessage("");
 
-	}
-
-	// method that appends text to the text area
-	public void appendMessage(String s) {
-		game.getTextArea_displayEvents().append("> " + s + "\n");
 	}
 
 }

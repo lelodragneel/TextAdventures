@@ -275,6 +275,11 @@ public class GamePanel extends JFrame implements ActionListener {
 		
 	}
 
+	// method that appends text to the text area
+	public void appendMessage(String s) {
+		textArea_displayEvents.append("> " + s + "\n");
+	}
+	
 	// return the textArea_displayEvents
 	public JTextArea getTextArea_displayEvents() {
 		return textArea_displayEvents;
