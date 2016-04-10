@@ -1,7 +1,5 @@
 package General;
 
-
-
 public class Boss {
 
 	/*

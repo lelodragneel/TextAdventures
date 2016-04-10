@@ -11,7 +11,7 @@ public abstract class Area {
 	protected Room[][] room;
 
 	public Area() {
-
+		
 	}
 
 }
