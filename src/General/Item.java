@@ -18,7 +18,7 @@ public class Item {
 		
 	}
 
-	public double getDamageIncrease() {
+	public int getDamageIncrease() {
 		return damageIncrease;
 	}
 
@@ -26,7 +26,7 @@ public class Item {
 		this.damageIncrease = damageIncrease;
 	}
 
-	public double getHealthIncrease() {
+	public int getHealthIncrease() {
 		return healthIncrease;
 	}
 
