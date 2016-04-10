@@ -4,9 +4,11 @@ import General.Room;
 
 public abstract class Area {
 
-	//Instance variables
-	private String areaName;
-	private Room[][] rooms;
+	/*
+	 * initialize variables
+	 */
+	protected String areaName;
+	protected Room[][] room;
 
 	public Area() {
 		

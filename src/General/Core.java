@@ -1,10 +1,7 @@
 package General;
 
-import java.util.ArrayList;
-
 import javax.swing.SwingUtilities;
 
-import Areas.Area;
 import Areas.Cave;
 import Areas.City;
 import Areas.Woods;
@@ -18,9 +15,15 @@ public class Core {
 	private Woods woods;
 	private City city;
 	private Cave cave;
+	private Character player;
 
-	public Core() {
+	public Core(General.Character player) {
 
+		/*
+		 * instantiate necessary variables
+		 */
+		this.player = player;
+		
 		/*
 		 * create the game frame
 		 */
@@ -38,13 +41,13 @@ public class Core {
 		 // TODO create starting town
 		
 		 // create area #1 (wood)
-		 woods = new Woods();
+		 woods = new Woods(player);
 		
 		 // create area #2 (city)
-		 city = new City();
+		 // TODO create second area
 		
 		 // create area #3 (cave)
-		 cave = new Cave();
+		 // TODO create third area
 		
 
 		// start game engine

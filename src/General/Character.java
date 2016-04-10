@@ -1,93 +1,60 @@
 package General;
 
-
 public class Character {
-	private String type;
 	private String name;
-	private String weapon;
 	private int health;
 	private int attack;
-	private boolean potion;
-	private int keyCount;
-	private int item;
-	public Character(String t, String n, String w, int h, int a, boolean p, int k, int i){
-		type = t;
-		name = n;
-		weapon = w;
-		health = h;
-		attack = a;
-		potion = p;
-		keyCount = k;
-		item = i;
-		keyCount = 0; 
-		item = 0;
-		potion = false; 
+	private int potions;
+	private String type;
+
+	public Character(String type, String name, int health, int attack, int potions) {
+		this.type = type;
+		this.name = name;
+		this.health = health;
+		this.attack = attack;
+		this.potions = potions;
 	}
-	//get methods
-	public String getT()
-	{
-		return type;
-	}
-	public String getN()
-	{
+
+	// get methods
+	public String getName() {
 		return name;
 	}
-	public String getW()
-	{
-		return weapon;
-	}
-	public int getH()
-	{
+
+	public int getHealth() {
 		return health;
 	}
-	public int getA()
-	{
+
+	public int getAttack() {
 		return attack;
 	}
-	public boolean getP()
-	{
-		return potion;
+
+	public int getPotions() {
+		return potions;
 	}
-	public int getK()
-	{
-		return keyCount;
+
+	// set methods
+	public void setName(String name) {
+		this.name = name;
 	}
-	public int getI()
-	{
-		return item;
+
+	public void setHealth(int health) {
+		this.health = health;
 	}
-	//set methods
-	public void setT(String t)
-	{
-		t = type;
+
+	public void setAttack(int attack) {
+		this.attack = attack;
 	}
-	public void setN(String n)
-	{
-		n = name;
+
+	public void setPotions(int potions) {
+		this.potions = potions;
 	}
-	public void setW(String w)
-	{
-		w = weapon; 
+
+	public String getType() {
+		return type;
 	}
-	public void setH(int h)
-	{
-		h = health;
+
+	public void setType(String type) {
+		this.type = type;
 	}
-	public void setA(int a)
-	{
-		a = attack;
-	}
-	public void setP(boolean p)
-	{
-		p = potion;
-	}
-	public void setK(int k)
-	{
-		k = keyCount;
-	}
-	public void setI(int i)
-	{
-		i = item;
-	}
-	
+
 }
