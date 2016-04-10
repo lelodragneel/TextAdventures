@@ -88,19 +88,18 @@ public class WelcomeScreen extends JFrame implements ActionListener {
 	 * action listener
 	 */
 	public void actionPerformed(ActionEvent evt) {
-
-			
+		
 		if(evt.getSource().equals(btnWarriorClass)) {
-			player = new Character("Warrior", nameInput.getText(), "none", 15, 15, false, 0, 0);
-			startGame();
+			player = new Character("Warrior", nameInput.getText(), 15, 15, 1);
+			startGame(player);
 		}
 		else if(evt.getSource().equals(btnThiefClass)) {
-			player = new Character("Thief" , nameInput.getText(), "none", 10, 20, false, 0,0);
-			startGame();
+			player = new Character("Thief" , nameInput.getText(), 10, 20, 1);
+			startGame(player);
 		}
 		else if(evt.getSource().equals(btnWizardClass)) {
-			player = new Character("Wizard",nameInput.getText(), "none", 20, 10, false, 0, 0);
-			startGame();
+			player = new Character("Wizard",nameInput.getText(), 20, 10, 1);
+			startGame(player);
 		}
 	}
 	
@@ -108,12 +107,12 @@ public class WelcomeScreen extends JFrame implements ActionListener {
 	/*
 	 * start the game from, and close this window
 	 */
-	public void startGame() {
+	public void startGame(Character player) {
 
 		// safely start the game
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				new Core();
+				new Core(player);
 				dispose();
 			}
 		});

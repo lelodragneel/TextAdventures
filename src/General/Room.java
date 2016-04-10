@@ -8,6 +8,7 @@ public class Room {
 	 * initialize variables
 	 */
 	private Boss boss;
+	private Minion minion;
 	private Item item;
 	
 	/*
@@ -21,6 +22,7 @@ public class Room {
 		
 		this.setBoss(boss);
 		this.setItem(item);
+		this.minion = minion;
 		
 	}
 
