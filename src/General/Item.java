@@ -10,11 +10,12 @@ public class Item {
 	private int healthIncrease;
 	private String itemName;
 	
-	public Item(int damageIncrease, int healthIncrease, String name) {
+	public Item(int damageIncrease, int healthIncrease, String itemName) {
 		
-		this.setDamageIncrease(damageIncrease);
-		this.setHealthIncrease(healthIncrease);
-		itemName = name;
+		this.damageIncrease = damageIncrease;
+		this.healthIncrease = healthIncrease;
+		this.itemName = itemName;
+		
 	}
 
 	public double getDamageIncrease() {
