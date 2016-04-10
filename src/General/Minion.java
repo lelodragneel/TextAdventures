@@ -43,16 +43,6 @@ public class Minion {
 		this.name = name;
 	}
 
-	// return the specialItem
-	public boolean isSpecialItem() {
-		return specialItem;
-	}
-
-	// set the specialItem
-	public void setSpecialItem(boolean specialItem) {
-		this.specialItem = specialItem;
-	}
-
 	// return the alive
 	public boolean isAlive() {
 		return alive;

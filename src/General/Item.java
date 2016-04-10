@@ -6,14 +6,15 @@ public class Item {
 	/*
 	 * initialize variables
 	 */
-	private double damageIncrease;
-	private double healthIncrease;
+	private int damageIncrease;
+	private int healthIncrease;
+	private String itemName;
 	
-	public Item(double damageIncrease, double healthIncrease) {
+	public Item(int damageIncrease, int healthIncrease, String name) {
 		
 		this.setDamageIncrease(damageIncrease);
 		this.setHealthIncrease(healthIncrease);
-		
+		itemName = name;
 	}
 
 	public double getDamageIncrease() {
