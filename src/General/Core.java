@@ -49,7 +49,6 @@ public class Core {
 		 // create area #3 (cave)
 		 // TODO create third area
 		
-
 		// start game engine
 		gameEngine();
 	}
@@ -60,7 +59,7 @@ public class Core {
 	 */
 	public void gameEngine() {
 
-		// TODO create game engine
+		
 
 	}
 
