@@ -1,6 +1,5 @@
 package Areas;
 
-import General.Core;
 import General.Room;
 
 public abstract class Area {

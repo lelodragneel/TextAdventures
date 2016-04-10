@@ -5,6 +5,8 @@ import javax.swing.SwingUtilities;
 import Areas.Cave;
 import Areas.City;
 import Areas.Woods;
+import Enemies.Boss;
+import Enemies.Minion;
 
 public class Core {
 
@@ -52,6 +54,7 @@ public class Core {
 	 */
 	public void gameEngine() {
 
+		// introduce game objective
 		game.appendMessage("Welcome to TextAdventure!");
 		game.appendMessage(
 				"The game contains 3 areas: Woods, Cave, and City. Each area has 9 Rooms. One of those rooms "
@@ -61,8 +64,22 @@ public class Core {
 		game.appendMessage("Furthermore, each room of each area contains different things. "
 				+ "You may perhaps encounter a minion in one room, or maybe find a potion in another. "
 				+ "Rooms can also be empty. ");
+		
+		// player chooses area
 		game.appendMessage("");
-
+		
+		
+		
 	}
-
+	
+	// method that handles the fighting between player and boss
+	public void fightEnemy(Boss boss) {
+		// TODO fight calculations
+	}
+	
+	// method that handles the fighting between player and minions
+	public void fightEnemy(Minion minion) {
+		// TODO fight calculations
+	}
+	
 }
