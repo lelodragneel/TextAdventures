@@ -3,7 +3,9 @@ import java.util.ArrayList;
 import javax.swing.SwingUtilities;
 
 import Areas.Area;
-import Creatures.Boss;
+import Areas.Cave;
+import Areas.City;
+import Areas.Woods;
 
 public class Core {
 
@@ -11,6 +13,9 @@ public class Core {
 	 * initialize variables
 	 */
 	private GamePanel game;
+	private Woods woods;
+	private City city;
+	private Cave cave;
 
 	public Core() {
 
@@ -24,18 +29,21 @@ public class Core {
 		});
 
 		/*
-		 * instantiate variables, and create 5 different areas. Each contains 4
-		 * minions and one boss
+		 * create 3 different areas. Each contains 9 rooms
 		 */
 
-		// create area #1
-		// areas.add(new Area("Woods", new Boss(100, 10, "AngryTree")));
-		// // create area #2
-		// areas.add(new Area("City", new Boss(150, 14, "Renekton")));
-		// // create area #3
-		// areas.add(new Area("Cave", new Boss(210, 18, "Kog")));
-		// // create area #4
-		// areas.add(new Area("Volcano", new Boss(300, 25, "Ragno")));
+		 // create starting point (the village)
+		 // TODO create starting town
+		
+		 // create area #1 (wood)
+		 woods = new Woods();
+		
+		 // create area #2 (city)
+		 city = new City();
+		
+		 // create area #3 (cave)
+		 cave = new Cave();
+		
 
 		// start game engine
 		gameEngine();
