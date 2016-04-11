@@ -113,7 +113,7 @@ public class City2 {
 		System.out.println("As you enter the room a massive troll appears waiting for you to arrive.");
 		System.out.println("\" At last you have come! Now come here so I can make soup out of you! Just as I did with that weak little village!\"");
 		core.fightEnemy(rooms[1][1].getBoss());
-		System.out.println("After killing the troll you feel somehow stronger. You leave the cave in search of the other horrible monsters.");
+		System.out.println("After killing the boss you feel stronger somehow. You leave the city in search of the other horrible monsters.");
 	}
 	public static boolean fencePuzzle(){
 		Scanner keyboard= new Scanner(System.in);
