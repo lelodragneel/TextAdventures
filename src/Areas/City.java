@@ -75,7 +75,7 @@ public class City {
 		System.out.println("You sit down on a bit of rubble to recover. Wait... what's that straight ahead?"
 				+ "To your right, a loud voice rings out: Come this way traveller. FACE ME IF YOU DARE!"
 				+ "\nWill you investigate what lies ahead, or accept the challenge?"
-				+ "\nType f to move forward and r to move to your right.");
+				+ "\nType f to move forward and r to move to your right. To go back to the crossroads, type b.");
 		direction=keyboard.nextLine();
 		while(!directionFound){
 			if(direction.equals("f")){
@@ -86,14 +86,21 @@ public class City {
 				directionFound=true;
 				room9();
 			}
+			else if(direction.equals("b")){
+				directionFound=true;
+				room1();
+			}
 			else{
-				System.out.println("Command not recognized. Type f for forward, or r for right.");
+				System.out.println("Command not recognized. Type f for forward, r for right, or b to turn back.");
 				direction=keyboard.nextLine();
 			}
 		}
 	}
 	public void room3()
 	{
+		Scanner keyboard= new Scanner(System.in);
+		String direction;
+		Boolean directionFound=false;
 		System.out.println("The street ahead of you is littered with debris. Gingerly, you reach into one of the piles and pull out a SHIELD.");
 		if(rooms[0][2].getMinion().isAlive())
 		{
@@ -101,20 +108,52 @@ public class City {
 			core.fightEnemy(rooms[0][2].getMinion(),core.getPlayer());
 		}
 		
-		System.out.println("The path veers off to the right.");
-		room4();
+		System.out.println("The path veers off to the right. The only other way to go is backward. "
+				+ "\nWhat will you do? Type r to go right or b to go back.");
+		direction=keyboard.nextLine();
+		while(!directionFound){
+			if(direction.equals("r")){
+				directionFound=true;
+				room4();
+			}
+			else if(direction.equals("b")){
+				directionFound=true;
+				room1();
+			}
+			else{
+				System.out.println("Command not recognized. Type r to go right, or b to turn back.");
+				direction=keyboard.nextLine();
+			}
+		}
 	}
 	public void room4()
 	{
+		Scanner keyboard=new Scanner(System.in);
+		String direction;
+		Boolean directionFound=false;
 		System.out.println("Concrete buildings block your path in every direction but one."
 				+ "The voice speaks again. \"Come adventurer, don't be scared.\""
-				+ "\nSteeling yourself, you move to the right.");
-		room9();
-		
+				+ "\nSteeling yourself, you make a decision. Will you move to the right and face the boss? Or will you go backward?"
+				+ "Make a choice. Type r to go right, or b to go back to the previous room.");
+		direction=keyboard.nextLine();
+		while(!directionFound){
+			if(direction.equals("r")){
+				directionFound=true;
+				room9();
+			}
+			else if(direction.equals("b")){
+				directionFound=true;
+				room3();
+			}
+			else{
+				System.out.println("Command not recognized. Type r to go right, or b to turn back.");
+				direction=keyboard.nextLine();
+			}
+		}
 	}
 	public void room5()
 	{
-		Scanner keyboard= new keyboard(System.in);
+		Scanner keyboard= new Scanner(System.in);
 		String direction;
 		Boolean directionFound=false;
 		System.out.println("This path is darker and narrower…\nAs you approach the cluster of ramshackle houses, the smell of woodsmoke and something cooking grows stronger. ");
@@ -126,8 +165,8 @@ public class City {
 			core.fightEnemy(rooms[1][0].getMinion(),core.getPlayer());
 		}
 		System.out.println("The road extends in two directions. From the left, a voice taunts: \"Come here! Allow me to introduce myself!\""
-				+ "\nyou may also proceed forward, if you choose."
-				+ "\nMake your choice. Type l to go to the left and f to move forward.");
+				+ "\nyou may also proceed forward, if you choose. You can also turn back to the crossroads."
+				+ "\nMake your choice. Type l to go to the left, f to move forward, and b to go back to the previous room.");
 		direction=keyboard.nextLine();
 		while(!directionFound){
 			if(direction.equals("f")){
@@ -138,18 +177,40 @@ public class City {
 				directionFound=true;
 				room9();
 			}
+			else if(direction.equals("b")){
+				directionFound=true;
+				room1();
+			}
 			else{
-				System.out.println("Command not recognized. Type f for forward, or l for left.");
+				System.out.println("Command not recognized. Type f for forward, l for left, or b to go back.");
 				direction=keyboard.nextLine();
 			}
 		}
 	}
 	public void room6()
 	{
+		Scanner keyboard= new Scanner(System.in);
+		String direction;
+		Boolean directionFound=false;
 		System.out.println("You hear a creak, and see a door to the left starting to open.");
-		System.out.println("An elderly-looking woman calls out to you. \"You look tired dear, come in for a moment and rest.\" ");
-		System.out.println("Despite what your mother told you about stranger danger, you accept.");
-		room7();
+		System.out.println("An elderly-looking woman calls out to you. \"You look tired dear, come in for a moment and rest.\""
+				+ "\n Will you trust her? Type y for yes or n for no.");
+		direction=keyboard.nextLine();
+		while(!directionFound){
+			if(direction.equals("y")){
+				directionFound=true;
+				System.out.println("Despite what your mother told you about stranger danger, you accept.");
+				room7();
+			}
+			else if(direction.equals("n")){
+				directionFound=true;
+				room5();
+			}
+			else{
+				System.out.println("Command not recognized. Type y for yes or n for no.");
+				direction=keyboard.nextLine();
+			}
+		}
 	}
 	public void room7()
 	{
