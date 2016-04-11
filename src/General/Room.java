@@ -42,5 +42,20 @@ public class Room {
 	public void setItem(Item item) {
 		this.item = item;
 	}
-	
+	public Minion getMinion()
+	{
+		return minion;
+	}
+	public void setMinion(Minion min)
+	{
+		minion = min;
+	}
+	public boolean getPotion()
+	{
+		return potion;
+	}
+	public void setPotion(boolean p)
+	{
+		potion = p;
+	}
 }
