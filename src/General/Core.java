@@ -13,6 +13,12 @@ public class Core {
 	/*
 	 * initialize variables
 	 */
+	public static final String ANSI_RESET = "\u001B[0m";
+	public static final String ANSI_RED = "\u001B[31m";
+	public static final String ANSI_GREEN = "\u001B[32m";
+	public static final String ANSI_BLUE = "\u001B[34m";
+	public static final String ANSI_PURPLE = "\u001B[35m";
+	public static final String ANSI_CYAN = "\u001B[36m";
 	private Scanner keyboard;
 	private Woods woods;
 	private City city;
@@ -53,12 +59,14 @@ public class Core {
 		// initialize & instantiate variables
 		keyboard = new Scanner(System.in);
 		
+		displayInfo();
+		
 		// introduce game objective
-		System.out.println("Welcome [insert name] to the world of Alera. You are an adventure who has returned to their home village.");
+		System.out.println("Welcome " + player.getName() + " to the world of Alera. You are an adventure who has returned to their home village.");
 		System.out.println("This morning you went to the woods to gather fire wood for your home. \nHowever, when you returned to the village you found the houses on fire.");
 		System.out.println("Going through the village you see all the villagers have been killed and their homes destroyed. \nArriving to the center of town you see the mayor bleeding on the ground.");
 		System.out.println("Rushing to him you see he is still alive.Helping him sit up he begins to speak.");
-		System.out.println("*Cough* *Cough* [insert name] it was horrible these four monsters attacked the village.\nThey kept asking where you were! No one told them so they destroyed the village!\nYou must flee this place! Get as far away as possible!");
+		System.out.println("*Cough* *Cough* " + player.getName() + " it was horrible these four monsters attacked the village.\nThey kept asking where you were! No one told them so they destroyed the village!\nYou must flee this place! Get as far away as possible!");
 		System.out.println("With this last message the mayor stops breathing.\nInstead of leaving as the mayor said you follow the trail of destruction heading away from the village.");
 		
 		System.out.println(
@@ -85,8 +93,10 @@ public class Core {
 			city.room1();
 
 		} else if (chosen == 3) {
+			
+			// check if player can enter the woods
 			if(!cave.getRoom(1, 1).getBoss().isAlive() && !city.getRoom(1, 1).getBoss().isAlive()) {
-				System.out.println("Alright, both other bosses are defeated. You may enter the woods!");
+				System.out.println("Alright, both other bosses are defeated. You may enter the woods! \nThe woods is a confusing maze of different paths you can take. Best of luck finding the final boss.");
 				// start the city adventures
 				woods.startWoods();
 				
@@ -97,11 +107,28 @@ public class Core {
 					
 	}
 	
+	// print player stats/information/progress 
+	public void displayInfo() {
+		
+		System.out.println("------------------------------------------------");
+		System.out.println("|                  All the Info!               |");
+		System.out.println("------------------------------------------------");
+		System.out.println(ANSI_CYAN + "Player Stats:");
+		System.out.println("Health:");
+		System.out.println("Attack:");
+		System.out.println(ANSI_CYAN + "Progression:");
+		System.out.println("Current Area:");
+		System.out.println("Rooms Discovered:");
+		System.out.println("Boss Status:");
+		System.out.println("------------------------------------------------");
+		
+	}
+	
 	// method that handles the fighting between player and boss
 	public void fightEnemy(Boss boss) {
 
 		String command;
-      
+
 		System.out.println("Boss battle starting...");
 
 		while (true) {
@@ -113,8 +140,7 @@ public class Core {
 
 				// player deals damage to boss
 				boss.setHealth(boss.getHealth() - player.getAttack());
-				System.out.println("You dealt " + player.getAttack()
-						+ " damage to the boss. The boss's health is now "
+				System.out.println("You dealt " + player.getAttack() + " damage to the boss. The boss's health is now "
 						+ boss.getHealth() + ".");
 
 				// check if boss is dead after dealing damage to him
@@ -126,21 +152,19 @@ public class Core {
 
 				// enemy deals damage to you
 				player.setHealth(player.getHealth() - boss.getAttack());
-				System.out.println("Boss hit you for " + boss.getAttack()
-						+ " damage. Your health is now " + player.getHealth()
-						+ ".");
+				System.out.println("Boss hit you for " + boss.getAttack() + " damage. Your health is now "
+						+ player.getHealth() + ".");
 
 				// check if player is dead
 				if (player.getHealth() <= 0)
-					System.out
-							.println("You died. The game is over. And you thought Dark Souls II was bad, haha");
+					System.out.println("You died. The game is over. And you thought Dark Souls II was bad, haha");
 				return;
 
 			}
 		}
 
 	}
-	
+
 	// method that handles the fighting between player and minions
 	public void fightEnemy(Minion minion) {
 
@@ -157,8 +181,7 @@ public class Core {
 
 				// player deals damage to boss
 				minion.setHealth(minion.getHealth() - player.getAttack());
-				System.out.println("You dealt " + player.getAttack()
-						+ " damage to the boss. The boss's health is now "
+				System.out.println("You dealt " + player.getAttack() + " damage to the boss. The boss's health is now "
 						+ minion.getHealth() + ".");
 
 				// check if boss is dead after dealing damage to him
@@ -170,20 +193,18 @@ public class Core {
 
 				// enemy deals damage to you
 				player.setHealth(player.getHealth() - minion.getAttack());
-				System.out.println("Boss hit you for " + minion.getAttack()
-						+ " damage. Your health is now " + player.getHealth()
-						+ ".");
+				System.out.println("Boss hit you for " + minion.getAttack() + " damage. Your health is now "
+						+ player.getHealth() + ".");
 
 				// check if player is dead
 				if (player.getHealth() <= 0)
-					System.out
-							.println("You died. The game is over. And you thought Dark Souls II was bad, haha");
+					System.out.println("You died. The game is over. And you thought Dark Souls II was bad, haha");
 				return;
 			}
 		}
 
 	}
-	
+
 	// return the player object
 	public Character getPlayer() {
 		return player;
