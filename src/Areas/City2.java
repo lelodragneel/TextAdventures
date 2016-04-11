@@ -12,7 +12,7 @@ import General.Core;
 public class City2 {
 	
 	//instance variables
-	private String areaName = "Cave";
+	private String areaName = "City";
 	private Room[][] rooms;
 	private Core core;
 	
