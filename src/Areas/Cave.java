@@ -31,51 +31,92 @@ public class Cave extends Area {
 		keyboard = new Scanner(System.in);
 	}
 	
-	//The rooms
+	//The rooms ******************************************************
+   //room1 to begin, its an empty room
 	public void room1()
 	{
 		System.out.println("You enter the Cave and find an empty room. The room has two doorways, one " +
 		"directly across from where you entered and one off to the right. Somehwere further into the cave " +
 		"you hear a menacing voice \"YOU DARE ENTER MY LAIR? TURN BACK NOW OR FACE CERTAIN DEATH!\"");
-		String move = keyboard.next();
-		if(move.equals("r"))
-			room5();
-		else if(move.equals("f"))
-			room2();
+      //Loop to wait for correct decision to be made by user
+      boolean awaitingDecision = true;
+      while(awaitingDecision)
+      {
+         System.out.println("Which doorway will you choose? Forward = \"f\", Right = \"r\"");
+		   String move = keyboard.next();
+		   if(move.equals("r"))
+		   	room5();
+	   	else if(move.equals("f"))
+   			room2();
+         else
+            System.out.println("Incorrect input, try again");
+      }
 	}
-
+   //room2 is empty
 	public void room2()
 	{
 		System.out.println("You run into another empty room. There are another 2 doorways to choose from. There is a doorway straight ahead " +
 		" and another off to the right. A loud voice comes from the doorway on the right, \"Come this way traveller. FACE ME IF YOUR DARE!\"");
-		String move = keyboard.next();
+		
+      boolean awaitingDecision = true;
+      while(awaitingDecision)
+      {
+         System.out.println("Which doorway will you choose? Forward = \"f\", Right = \"r\", Back = \"b\"");
+		   String move = keyboard.next();
 		if(move.equals("r"))
 			room9();
 		else if(move.equals("f"))
 			room3();
 		else if(move.equals("b"))
 			room1();
+      else
+         System.out.println("Incorrect input, try again");
+      }
 	}
+   //room 3 with potion
 	public void room3()
 	{
 		System.out.println("You spot a potion in the corner and pick it up.");
 		
 		System.out.println("There is a doorway on the right giving off a foul stench.");
-		String move = keyboard.next();
+		
+      boolean awaitingDecision = true;
+      while(awaitingDecision)
+      {
+         System.out.println("Which doorway will you choose? Forward = \"f\", Right = \"r\", Back = \"b\"");
+		   String move = keyboard.next();
 		if(move.equals("r"))
 			room4();
 		else if(move.equals("b"))
 			room2();
+      else
+         System.out.println("Incorrect input, try again");
+      }
 	}
+   //room4 with minion fight
 	public void room4()
 	{
-		if(rooms[1][2].getMinion().isAlive())
+		//Monster fight
+      if(rooms[1][2].getMinion().isAlive())
 		{
 			System.out.println("You walk into the room and a troll appears out of the darkness. He challenges you and carnage ensues!");
 			core.fightEnemy(rooms[1][2].getMinion());
 		}
-		System.out.println("There is a doorway on the right from which you hear a voice \"Come adventurer, don't be scared.\"");
 		
+      System.out.println("There is a doorway on the right from which you hear a voice \"Come adventurer, don't be scared.\"");
+		
+      boolean awaitingDecision = true;
+      while(awaitingDecision)
+      {
+         System.out.println("Which doorway will you choose? Forward = \"f\", Right = \"r\"");
+		   String move = keyboard.next();
+		if(move.equals("r"))
+			room9();
+		else if(move.equals("b"))
+			room3();
+      else
+         System.out.println("Incorrect input, try again");
+      }
 	}
 	public void room5()
 	{

@@ -24,15 +24,15 @@ public class City extends Area {
 		this.player = player;
 		keyboard = new Scanner(System.in);
 
-		rooms[0][0] = new Room(null, null, null, null);
-		rooms[0][1] = new Room(null, null, null, null);
-		rooms[0][2] = new Room(null, null, null, null);
-		rooms[1][0] = new Room(null, null, null, null);
+		rooms[0][0] = new Room(null, null, null, false);
+		rooms[0][1] = new Room(null, null, null, false);
+		rooms[0][2] = new Room(null, null, null, false);
+		rooms[1][0] = new Room(null, null, null, false);
 		rooms[1][1] = new Room(new Boss(1, 1, "filler"), null, null, false);
-		rooms[1][2] = new Room(null, null, null, null);
-		rooms[2][0] = new Room(null, null, null, null);
-		rooms[2][1] = new Room(null, null, null, null);
-		rooms[2][2] = new Room(null, null, null, null);
+		rooms[1][2] = new Room(null, null, null, false);
+		rooms[2][0] = new Room(null, null, null, false);
+		rooms[2][1] = new Room(null, null, null, false);
+		rooms[2][2] = new Room(null, null, null, false);
 		
 	}
 	
