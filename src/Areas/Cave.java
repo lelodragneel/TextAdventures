@@ -1,15 +1,16 @@
 package Areas;
 
-import General.Room;
 import Enemies.Boss;
 import Enemies.Minion;
 import General.Item;
+import General.Room;
 
-public class Cave {
+public class Cave extends Area {
 	
 	//instance variables
 	private String areaName = "Cave";
 	private Room[][] rooms;
+
 	
 
 	public Cave(General.Character player) {
@@ -49,9 +50,7 @@ public class Cave {
 		"directly across from where you entered and one off to the right. Somehwere further into the cave " +
 		"you hear a menacing voice \"YOU DARE ENTER MY LAIR? TURN BACK NOW OR FACE CERTAIN DEATH!\"");
 	}
-<<<<<<< HEAD
 
-=======
 	public void room2()
 	{
 		System.out.println("You run into another empty room. There are another 2 doorways to choose from. There is a doorway straight ahead " +
@@ -108,6 +107,5 @@ public class Cave {
 	{
 		return room[r][c];
 	}
-	
->>>>>>> origin/master
+
 }

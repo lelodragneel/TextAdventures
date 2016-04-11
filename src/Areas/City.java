@@ -14,23 +14,25 @@ public class City extends Area {
 	 * initialize variables
 	 */
 	private Scanner keyboard;
-	//private Room room;
+	private Room[][] rooms;
+	private General.Character player;
+	
 	
 	// constructor
-	public City(Boss boss, Minion minion, Item item, boolean pot) {
+	public City(General.Character player) {
 		
-		rooms = new Room[3][3];
-		rooms[0][0] = new Room(null, null, null, false);
-		rooms[0][1] = new Room(null, null, null, false);
-		rooms[0][2] = new Room(null, null, null, true);
-		rooms[1][0] = new Room(null, null, null, false);
-		rooms[1][1] = new Room(new Boss(1, 1, "Bossy guy"), null, null, false);
-		rooms[1][2] = new Room(null, new Minion(1, 1, "Troll"), new Item(1, 1, "[Wizard] Robe"), false);
-		rooms[2][0] = new Room(null, null, null, true);
-		rooms[2][1] = new Room(null, new Minion(1, 1, "Troll"), new Item(1, 1, "[Thief] Cape"), false);
-		rooms[2][2] = new Room(null, null, null, true);
-		
+		this.player = player;
 		keyboard = new Scanner(System.in);
+
+		rooms[0][0] = new Room(null, null, null, null);
+		rooms[0][1] = new Room(null, null, null, null);
+		rooms[0][2] = new Room(null, null, null, null);
+		rooms[1][0] = new Room(null, null, null, null);
+		rooms[1][1] = new Room(new Boss(1, 1, "filler"), null, null, false);
+		rooms[1][2] = new Room(null, null, null, null);
+		rooms[2][0] = new Room(null, null, null, null);
+		rooms[2][1] = new Room(null, null, null, null);
+		rooms[2][2] = new Room(null, null, null, null);
 		
 	}
 	
@@ -42,7 +44,7 @@ public class City extends Area {
 		keyboard = new Scanner(System.in);
 		
 		System.out
-				.println("\nLooking FORWARD, the city’s wide main street stretches out before you, bathed in shadow from the looming buildings on either side.");
+				.println("\nLooking FORWARD, the city's wide main street stretches out before you, bathed in shadow from the looming buildings on either side.");
 		System.out
 				.println("To your LEFT, a narrower street winds off through a collection of smaller buildings. Lights can be seen in the distance.");
 		System.out
@@ -75,7 +77,7 @@ public class City extends Area {
 		System.out
 				.println("You proceed straight ahead. The buildings seem taller from this angle, but also a lot more… run down?");
 		System.out
-				.println("Something seems to have driven the city’s inhabitants away…");
+				.println("Something seems to have driven the city's inhabitants away…");
 		System.out
 				.println("As you stare thoughtfully upward, something grabs you from behind…");
 		// User is forced to battle a monster. If they die, they must return to
@@ -109,6 +111,7 @@ public class City extends Area {
 					.println("There doesn't seem to be anything more to explore down this path.\nYou make your way back to the crossroads.");
 			choosePath(0);
 		}
+		
 		if (direction.equals("n")) {
 			System.out.println("You make your way back to the crossroads.");
 			choosePath(0);
@@ -123,7 +126,7 @@ public class City extends Area {
 		System.out
 				.println("This path is darker and narrower…\nAs you approach the cluster of ramshackle houses, the smell of woodsmoke and something cooking grows stronger. ");
 		System.out
-				.println("A few of the houses’ windows are lit, and you feel many eyes upon you.");
+				.println("A few of the houses' windows are lit, and you feel many eyes upon you.");
 		System.out
 				.println("You hear a creak, and see a door starting to open.You have just enough time to retreat, if you choose to.");
 		System.out
@@ -142,7 +145,7 @@ public class City extends Area {
 			// User battles a monster
 			monsterBattle("shadow creature");
 			System.out
-					.println("He can’t have roamed very far… scouting ahead may lead you to his source.");
+					.println("He can't have roamed very far… scouting ahead may lead you to his source.");
 			System.out
 					.println("Type s to scout ahead, or c to return to the CROSSROADS.");
 			direction = keyboard.nextLine();
@@ -203,15 +206,14 @@ public class City extends Area {
 		crossroads();
 	}
 
-	public void room5() 
-	{
+	public void room5() {
 		boolean solved = false;
 		System.out
 				.println("In one mighty and very heroic leap, you hop the fence and land majestically in the sad-looking field. ");
 		System.out
-				.println("You keep walking forward, and… oh. It’s a cliff. There’s nothing here.");
+				.println("You keep walking forward, and… oh. It's a cliff. There's nothing here.");
 		System.out
-				.println("You turn to go back and notice that the fence seems a lot higher somehow. Jumping doesn’t look like it will do the trick…");
+				.println("You turn to go back and notice that the fence seems a lot higher somehow. Jumping doesn't look like it will do the trick…");
 		System.out
 				.println("You look around for something that might help you escape. Admittedly, there isn't much.");
 		while (!solved) {
@@ -267,9 +269,9 @@ public class City extends Area {
 			System.out
 					.println("I see that you have crossed my fence.\nI tell you now without pretense;\nThe potions you have chanced to find\nWill let you leave this field behind.");
 			System.out
-					.println("One will let you pass right through;\nOne is useless (harmless too);\nand one’s a simple sleeping brew.\n");
+					.println("One will let you pass right through;\nOne is useless (harmless too);\nand one's a simple sleeping brew.\n");
 			System.out
-					.println("One of three will do the trick,\nAll you have to do is pick,\nIf you are wrong, then try anew.\nSo take a chance- it’s up to you.");
+					.println("One of three will do the trick,\nAll you have to do is pick,\nIf you are wrong, then try anew.\nSo take a chance- it's up to you.");
 			System.out
 					.println("\nYou choose a potion. Type r for RED, g for GREEN, or p for PURPLE.");
 			choice = keyboard.nextLine();
@@ -323,5 +325,11 @@ public class City extends Area {
 		if (r == 5)
 			room5();
 
+	}
+	
+	//Get room to allow game engine to access minions and potions
+	public Room getRoom(int r, int c)
+	{
+		return room[r][c];
 	}
 }
