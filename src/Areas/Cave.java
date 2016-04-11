@@ -81,7 +81,8 @@ public class Cave extends Area {
    //room 3 with potion
 	public void room3()
 	{
-		if(rooms[0][2].getPotion())
+		//potion
+      if(rooms[0][2].getPotion())
       {
          System.out.println("You spot a potion in the corner and pick it up.");
 		   player.findPotion();
@@ -106,11 +107,11 @@ public class Cave extends Area {
    //room4 with minion fight
 	public void room4()
 	{
-		//Monster fight
+		//fight
       if(rooms[1][2].getMinion().isAlive())
 		{
 			System.out.println("You walk into the room and a troll appears out of the darkness. He challenges you and carnage ensues!");
-			core.fightEnemy(rooms[1][2].getMinion(), player);
+			core.fightEnemy(rooms[1][2].getMinion());
 		}
 		
       System.out.println("There is a doorway on the right from which you hear a voice \"Come adventurer, don't be scared.\"");
@@ -128,6 +129,7 @@ public class Cave extends Area {
          System.out.println("Incorrect input, try again");
       }
 	}
+   //room5 is empty
 	public void room5()
 	{
 		System.out.println("The doorway leads to another empty room with a doorway to the left and straight ahead. From the left a voice taunts " +
@@ -148,9 +150,11 @@ public class Cave extends Area {
          System.out.println("Incorrect input, try again");
       }
 	}
+   //room6 has potion, otherwise empty
 	public void room6()
 	{
-		if(rooms[2][0].getPotion())
+		//potion
+      if(rooms[2][0].getPotion())
       {
          System.out.println("You find a potion wedged into a crack in the wall.");
 		   player.findPotion();
@@ -158,29 +162,74 @@ public class Cave extends Area {
       }
        
 		System.out.println("There is a doorway to the left. Other than left, back is the only option.");
+      boolean awaitingDecision = true;
+      while(awaitingDecision)
+      {
+         System.out.println("Which doorway will you choose? Left = \"l\", Back = \"b\"");
+		   String move = keyboard.next();
+		if(move.equals("l"))
+			room7();
+		else if(move.equals("b"))
+			room5();
+      else
+         System.out.println("Incorrect input, try again");
+      }
 	}
+   //A minion is here holding an item
 	public void room7()
 	{
-		if(rooms[2][1].getMinion().isAlive())
+		//fight
+      if(rooms[2][1].getMinion().isAlive())
 		{
-		System.out.println("A troll wakes up from its slumber as you walk through the doorway. It prepares itself to charge!");
-		core.fightEnemy(rooms[1][2].getMinion(), player);
+		   System.out.println("A troll wakes up from its slumber as you walk through the doorway. It prepares itself to charge!");
+		   core.fightEnemy(rooms[1][2].getMinion());
 		}
-		System.out.println("From the left you hear a voice scream as you defeat the troll \"HOW DARE YOU KILL MY BRETHEREN. COME HERE SO I MAY TAKE REVENGE!\"" +
+		
+      System.out.println("From the left you hear a voice scream as you defeat the troll \"HOW DARE YOU KILL MY BRETHEREN. COME HERE SO I MAY TAKE REVENGE!\"" +
 		"There is also a hole straight ahead that appears to lead to another open area.");
+      boolean awaitingDecision = true;
+      while(awaitingDecision)
+      {
+         System.out.println("Which doorway will you choose? Forward = \"f\", Left = \"l\", Back = \"b\"");
+		   String move = keyboard.next();
+		if(move.equals("l"))
+			room9();
+      else if(move.equals("f"))
+         room8();
+		else if(move.equals("b"))
+			room6();
+      else
+         System.out.println("Incorrect input, try again");
+      }
 	}
 	public void room8()
 	{
-		
-		System.out.println("You see a skeleton of a body sitting in the far corner. It holds a note and beside it lays a potion." +
-		" The note reads \"There is no way out. Here is where I stay for fear that the troll kill will eat me alive...\"");
+		//potion
+      if(rooms[2][2].getPotion())
+      {
+         System.out.println("You see a skeleton of a body sitting in the far corner. It holds a note and beside it lays a potion." +
+		   " The note reads \"There is no way out. Here is where I stay for fear that the troll kill will eat me alive...\"");
+		   player.findPotion();
+         rooms[2][2].setPotion(false);
+      }
+      
 		System.out.println("The only way to go is back.");
+      boolean awaitingDecision = true;
+      while(awaitingDecision)
+      {
+         System.out.println("Which doorway will you choose? Back = \"b\"");
+		   String move = keyboard.next();
+		   if(move.equals("b"))
+			   room7();
+         else
+            System.out.println("Incorrect input, try again");
+      }
 	}
 	public void room9()
 	{
 		System.out.println("As you enter the room a massive troll appears waiting for you to arrive.");
-		System.out.println("\" At last you have come! Now come here so I can make soup out of you! Just as I did with that weak little village!\"");
-		core.fightEnemy(rooms[1][1].getBoss(), player);
+		System.out.println("\"At last you have come! Now come here so I can make soup out of you! Just as I did with that weak little village!\"");
+		core.fightEnemy(rooms[1][1].getBoss());
 		rooms[1][1].getBoss().setAlive(false);
 		System.out.println("After killing the troll you feel somehow stronger. You leave the cave in search of the other horrible monsters.");
 	}

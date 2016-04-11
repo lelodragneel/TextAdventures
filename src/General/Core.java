@@ -98,7 +98,7 @@ public class Core {
 	}
 	
 	// method that handles the fighting between player and boss
-	public void fightEnemy(Boss boss, Character player) {
+	public void fightEnemy(Boss boss) {
 
 		String command;
       
