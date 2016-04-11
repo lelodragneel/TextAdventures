@@ -142,7 +142,7 @@ public class Core {
 	}
 	
 	// method that handles the fighting between player and minions
-	public void fightEnemy(Minion minion, Character player) {
+	public void fightEnemy(Minion minion) {
 
 		String command;
 
