@@ -17,7 +17,7 @@ public class City2 {
 	private Core core;
 	
 
-	public City2(General.Character player, Core core) {
+	public City2(Core core) {
 		this.core = core;
 		rooms = new Room[3][3];
 		rooms[0][0] = new Room(null, null, null, false);
