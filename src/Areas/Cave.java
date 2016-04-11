@@ -4,16 +4,18 @@ import General.Room;
 import Enemies.Boss;
 import Enemies.Minion;
 import General.Item;
+import General.Core;
 
 public class Cave {
 	
 	//instance variables
 	private String areaName = "Cave";
 	private Room[][] rooms;
+	private Core core;
 	
 
-	public Cave(General.Character player) {
-		
+	public Cave(General.Character player, Core core) {
+		this.core = core;
 		rooms = new Room[3][3];
 		rooms[0][0] = new Room(null, null, null, false);
 		rooms[0][1] = new Room(null, null, null, false);
@@ -27,21 +29,6 @@ public class Cave {
 		
 	}
 	
-	/*
-	 * return the number of rooms that the player has discovered
-	 * n = columns. m = rows
-	 */
-	public int getRoomsDiscovered() {
-		int totalDiscovered = 0;
-		for (int m = 0; m < 4; m++) {
-			for (int n = 0; n < 4; n++) {
-				if (rooms[m][n].isDiscovered())
-					totalDiscovered++;
-			}
-		}
-		return totalDiscovered;
-	}
-	
 	//The rooms
 	public void room1()
 	{
@@ -49,9 +36,7 @@ public class Cave {
 		"directly across from where you entered and one off to the right. Somehwere further into the cave " +
 		"you hear a menacing voice \"YOU DARE ENTER MY LAIR? TURN BACK NOW OR FACE CERTAIN DEATH!\"");
 	}
-<<<<<<< HEAD
 
-=======
 	public void room2()
 	{
 		System.out.println("You run into another empty room. There are another 2 doorways to choose from. There is a doorway straight ahead " +
@@ -65,8 +50,11 @@ public class Cave {
 	}
 	public void room4()
 	{
-		System.out.println("You walk into the room and a troll appears out of the darkness. He challenges you and carnage ensues!");
-		
+		if(rooms[1][2].getMinion().isAlive())
+		{
+			System.out.println("You walk into the room and a troll appears out of the darkness. He challenges you and carnage ensues!");
+			core.fightEnemy(rooms[1][2].getMinion());
+		}
 		System.out.println("There is a doorway on the right from which you hear a voice \"Come adventurer, don't be scared.\"");
 		
 	}
@@ -83,13 +71,17 @@ public class Cave {
 	}
 	public void room7()
 	{
+		if(rooms[2][1].getMinion().isAlive())
+		{
 		System.out.println("A troll wakes up from its slumber as you walk through the doorway. It prepares itself to charge!");
-		
+		core.fightEnemy(rooms[1][2].getMinion());
+		}
 		System.out.println("From the left you hear a voice scream as you defeat the troll \"HOW DARE YOU KILL MY BRETHEREN. COME HERE SO I MAY TAKE REVENGE!\"" +
 		"There is also a hole straight ahead that appears to lead to another open area.");
 	}
 	public void room8()
 	{
+		
 		System.out.println("You see a skeleton of a body sitting in the far corner. It holds a note and beside it lays a potion." +
 		" The note reads \"There is no way out. Here is where I stay for fear that the troll kill will eat me alive...\"");
 		System.out.println("The only way to go is back.");
@@ -97,17 +89,15 @@ public class Cave {
 	public void room9()
 	{
 		System.out.println("As you enter the room a massive troll appears waiting for you to arrive.");
-		
 		System.out.println("\" At last you have come! Now come here so I can make soup out of you! Just as I did with that weak little village!\"");
-		
+		core.fightEnemy(rooms[1][1].getBoss());
 		System.out.println("After killing the troll you feel somehow stronger. You leave the cave in search of the other horrible monsters.");
 	}
 	
 	//Get room to allow game engine to access minions and potions
 	public Room getRoom(int r, int c)
 	{
-		return room[r][c];
+		return rooms[r][c];
 	}
 	
->>>>>>> origin/master
 }
