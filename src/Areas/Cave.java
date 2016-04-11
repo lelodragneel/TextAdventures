@@ -7,7 +7,6 @@ import Enemies.Boss;
 import Enemies.Minion;
 import General.Item;
 import General.Core;
-import General.Character;
 
 public class Cave extends Area {
 
@@ -15,11 +14,9 @@ public class Cave extends Area {
 	 * initialize variables
 	 */
 	private Core core;
-	private Character player;
 
 	public Cave(Core core) {
 
-		player = core.getPlayer();
 		this.core = core;
 		rooms = new Room[3][3];
 		rooms[0][0] = new Room(null, new Minion(1, 1, "filler"), new Item(0, 10, "[Ring] +10 Health"), false);
@@ -43,7 +40,7 @@ public class Cave extends Area {
 			{
 				System.out.println("You walk into the room and a troll appears out of the darkness. He challenges you and carnage ensues!");
 				core.fightEnemy(rooms[0][0].getMinion());
-				player.addToInventory(rooms[0][0].getItem());
+				core.getPlayer().addToInventory(rooms[0][0].getItem());
 			}
 		System.out.println("The room has two doorways, one directly across from where you entered and one off to the right. Somehwere further into the cave " +
 		"you hear a menacing voice \"YOU DARE ENTER MY LAIR? TURN BACK NOW OR FACE CERTAIN DEATH!\"");
@@ -89,7 +86,7 @@ public class Cave extends Area {
 		if(rooms[0][2].getPotion())
 		{
 			System.out.println("You spot a potion in the corner and pick it up.");
-			player.findPotion();
+			core.getPlayer().findPotion();
 			rooms[0][2].setPotion(false);
 		}
 
@@ -116,7 +113,7 @@ public class Cave extends Area {
 		{
 			System.out.println("You walk into the room and a troll appears out of the darkness. He challenges you and carnage ensues!");
 			core.fightEnemy(rooms[1][2].getMinion());
-			player.addToInventory(rooms[1][2].getItem());
+			core.getPlayer().addToInventory(rooms[1][2].getItem());
 		}
 
 		System.out.println("There is a doorway on the right from which you hear a voice \"Come adventurer, don't be scared.\"");
@@ -162,7 +159,7 @@ public class Cave extends Area {
 		if(rooms[2][0].getPotion())
 		{
 			System.out.println("You find a potion wedged into a crack in the wall.");
-			player.findPotion();
+			core.getPlayer().findPotion();
 			rooms[2][0].setPotion(false);
 		}
 
@@ -188,7 +185,7 @@ public class Cave extends Area {
 		{
 			System.out.println("A troll wakes up from its slumber as you walk through the doorway. It prepares itself to charge!");
 			core.fightEnemy(rooms[1][2].getMinion());
-			player.addToInventory(rooms[2][1].getItem());
+			core.getPlayer().addToInventory(rooms[2][1].getItem());
 		}
 
 		System.out.println("From the left you hear a voice scream as you defeat the troll \"HOW DARE YOU KILL MY BRETHEREN. COME HERE SO I MAY TAKE REVENGE!\"" +
@@ -215,7 +212,7 @@ public class Cave extends Area {
 		{
 			System.out.println("You see a skeleton of a body sitting in the far corner. It holds a note and beside it lays a potion." +
 					" The note reads \"There is no way out. Here is where I stay for fear that the troll kill will eat me alive...\"");
-			player.findPotion();
+			core.getPlayer().findPotion();
 			rooms[2][2].setPotion(false);
 		}
 

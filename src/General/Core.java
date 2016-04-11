@@ -100,7 +100,7 @@ public class Core {
 
 		} else if (chosen == 2) {
 			// start the city adventure
-			//city.room1();
+			city.room1();
 
 		} else if (chosen == 3) {
 			
@@ -206,9 +206,19 @@ public class Core {
 						+ player.getHealth() + ".");
 
 				// check if player is dead
-				if (player.getHealth() <= 0)
+				if (player.getHealth() <= 0) {
+					if (player.getPotions() > 0) {
+						player.setPotions(player.getPotions() - 1);
+						player.setHealth(100);
+						System.out.println(
+								"You consumed a health potion right before you were going to die. \nYou now have "
+										+ player.getPotions() + " health potions left.");
+
+					}
+				} else 
 					System.out.println("You died. The game is over. And you thought Dark Souls II was bad, haha");
 				return;
+				
 			}
 		}
 
