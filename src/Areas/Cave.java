@@ -7,18 +7,23 @@ import Enemies.Boss;
 import Enemies.Minion;
 import General.Item;
 import General.Core;
+import General.Character;
 
 public class Cave extends Area {
 	
 	//instance variables
+   /*
 	private String areaName = "Cave";
 	private Room[][] rooms;
-	private Core core;
+	private Core core; (Removed)
 	private Scanner keyboard;
+   private General.Character player;
+   */
 
 
-	public Cave(General.Character player, Core core) {
-		this.core = core;
+	public Cave(General.Character p/*, Core core*/) {
+		//this.core = core;
+      super(p);
 		rooms[0][0] = new Room(null, null, null, false);
 		rooms[0][1] = new Room(null, null, null, false);
 		rooms[0][2] = new Room(null, null, null, true);
@@ -83,7 +88,7 @@ public class Cave extends Area {
       boolean awaitingDecision = true;
       while(awaitingDecision)
       {
-         System.out.println("Which doorway will you choose? Forward = \"f\", Right = \"r\", Back = \"b\"");
+         System.out.println("Which doorway will you choose? Right = \"r\", Back = \"b\"");
 		   String move = keyboard.next();
 		if(move.equals("r"))
 			room4();
@@ -100,7 +105,7 @@ public class Cave extends Area {
       if(rooms[1][2].getMinion().isAlive())
 		{
 			System.out.println("You walk into the room and a troll appears out of the darkness. He challenges you and carnage ensues!");
-			core.fightEnemy(rooms[1][2].getMinion());
+			Core.fightEnemy(rooms[1][2].getMinion(), player);
 		}
 		
       System.out.println("There is a doorway on the right from which you hear a voice \"Come adventurer, don't be scared.\"");
@@ -108,7 +113,7 @@ public class Cave extends Area {
       boolean awaitingDecision = true;
       while(awaitingDecision)
       {
-         System.out.println("Which doorway will you choose? Forward = \"f\", Right = \"r\"");
+         System.out.println("Which doorway will you choose? Right = \"r\", Back = \"b\"");
 		   String move = keyboard.next();
 		if(move.equals("r"))
 			room9();
@@ -121,20 +126,40 @@ public class Cave extends Area {
 	public void room5()
 	{
 		System.out.println("The doorway leads to another empty room with a doorway to the left and straight ahead. From the left a voice taunts " +
-		"\"Come here! Allow me to introduce myself!\"");
+		"\"Don't be rude, AHAHA! Come, allow me to introduce myself!\"");
+      
+      boolean awaitingDecision = true;
+      while(awaitingDecision)
+      {
+         System.out.println("Which doorway will you choose? Forward = \"f\", Left = \"l\", Back = \"b\"");
+		   String move = keyboard.next();
+		if(move.equals("l"))
+			room9();
+      else if(move.equals("f"))
+         room6();
+		else if(move.equals("b"))
+			room1();
+      else
+         System.out.println("Incorrect input, try again");
+      }
 	}
 	public void room6()
 	{
-		System.out.println("You find a potion wedges into a crack in the wall.");
-		
-		System.out.println("There is a doorway to the left. Other than that back is the only option.");
+		if(rooms[2][0].getPotion())
+      {
+         System.out.println("You find a potion wedged into a crack in the wall.");
+		   player.findPotion();
+         rooms[2][0].setPotion(false);
+      }
+      
+		System.out.println("There is a doorway to the left. Other than left, back is the only option.");
 	}
 	public void room7()
 	{
 		if(rooms[2][1].getMinion().isAlive())
 		{
 		System.out.println("A troll wakes up from its slumber as you walk through the doorway. It prepares itself to charge!");
-		core.fightEnemy(rooms[1][2].getMinion());
+		Core.fightEnemy(rooms[1][2].getMinion(), player);
 		}
 		System.out.println("From the left you hear a voice scream as you defeat the troll \"HOW DARE YOU KILL MY BRETHEREN. COME HERE SO I MAY TAKE REVENGE!\"" +
 		"There is also a hole straight ahead that appears to lead to another open area.");
@@ -150,7 +175,7 @@ public class Cave extends Area {
 	{
 		System.out.println("As you enter the room a massive troll appears waiting for you to arrive.");
 		System.out.println("\" At last you have come! Now come here so I can make soup out of you! Just as I did with that weak little village!\"");
-		core.fightEnemy(rooms[1][1].getBoss());
+		Core.fightEnemy(rooms[1][1].getBoss(), player);
 		rooms[1][1].getBoss().setAlive(false);
 		System.out.println("After killing the troll you feel somehow stronger. You leave the cave in search of the other horrible monsters.");
 	}

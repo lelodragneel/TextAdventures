@@ -98,10 +98,11 @@ public class Core {
 	}
 	
 	// method that handles the fighting between player and boss
-	public void fightEnemy(Boss boss) {
+	public static void fightEnemy(Boss boss, Character player) {
 
 		String command;
-
+      Scanner keyboard = new Scanner(System.in);
+      
 		System.out.println("Boss battle starting...");
 
 		while (true) {
@@ -142,9 +143,10 @@ public class Core {
 	}
 	
 	// method that handles the fighting between player and minions
-	public void fightEnemy(Minion minion) {
+	public static void fightEnemy(Minion minion, Character player) {
 
 		String command;
+      Scanner keyboard = new Scanner(System.in);
 
 		System.out.println("Minion battle starting...");
 

@@ -57,5 +57,10 @@ public class Character {
 	public void setType(String type) {
 		this.type = type;
 	}
-
+   
+   //method to find potion
+   public void findPotion()
+   {
+      potions++;
+   }
 }
