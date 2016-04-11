@@ -21,13 +21,13 @@ public class City2 {
 		this.core = core;
 		rooms = new Room[3][3];
 		rooms[0][0] = new Room(null, null, null, false);
-		rooms[0][1] = new Room(null, null, null, false);
-		rooms[0][2] = new Room(null, null, null, true);
-		rooms[1][0] = new Room(null, null, null, false);
-		rooms[1][1] = new Room(new Boss(1, 1, "Bossy guy"), null, null, false);
-		rooms[1][2] = new Room(null, new Minion(1, 1, "Troll"), new Item(1, 1, "[Wizard] Robe"), false);
-		rooms[2][0] = new Room(null, null, null, true);
-		rooms[2][1] = new Room(null, new Minion(1, 1, "Troll"), new Item(1, 1, "[Thief] Cape"), false);
+		rooms[0][1] = new Room(null, new Minion(1, 1, "Trash Creature"), null, false);
+		rooms[0][2] = new Room(null, new Minion(1, 1, "Sneaky Trash Creature"), new Item(1, 1, "[Warrior] Shield"), false);
+		rooms[1][0] = new Room(null, new Minion(1, 1, "Trash Creature"), null, false);
+		rooms[1][1] = new Room(new Boss(1, 1, "BOSS"), null, null, false);
+		rooms[1][2] = new Room(null, null, null, false);
+		rooms[2][0] = new Room(null, null, null, false);
+		rooms[2][1] = new Room(null, null, null, true);
 		rooms[2][2] = new Room(null, null, null, true);
 		
 	}
@@ -36,10 +36,7 @@ public class City2 {
 	public void room1()
 	{
 		System.out.println("\nLooking FORWARD, the city’s wide main street stretches out before you, bathed in shadow from the looming buildings on either side."
-				+ "To your LEFT, a narrower street winds off through a collection of smaller buildings. Lights can be seen in the distance.");
-		//System.out.println("You enter the Cave and find an empty room. The room has two doorways, one " +
-		//"directly across from where you entered and one off to the right. Somehwere further into the cave " +
-		//"you hear a menacing voice \"YOU DARE ENTER MY LAIR? TURN BACK NOW OR FACE CERTAIN DEATH!\"");
+				+ "To your RIGHT, a narrower street winds off through a collection of smaller buildings. Lights can be seen in the distance.");
 	}
 
 	public void room2()
@@ -54,15 +51,13 @@ public class City2 {
 		}
 		System.out.println("You sit down on a bit of rubble to recover. Wait... what's that straight ahead?"
 				+ "To your right, a loud voice rings out: Come this way traveller. FACE ME IF YOUR DARE!");
-		//System.out.println("You run into another empty room. There are another 2 doorways to choose from. There is a doorway straight ahead " +
-		//" and another off to the right. A loud voice comes from the doorway on the right, \"Come this way traveller. FACE ME IF YOUR DARE!\"");
 	}
 	public void room3()
 	{
-		System.out.println("Triumphantly, you reach into the pile of debris and pull out a SHIELD.");
+		System.out.println("The street ahead of you is littered with debris. Gingerly, you reach into one of the piles and pull out a SHIELD.");
 		if(rooms[0][2].getMinion().isAlive())
 		{
-			System.out.println("Another creature leaps out from the shadows.");
+			System.out.println("Before you can even investigate what you've found, another creature leaps out from the shadows.");
 			core.fightEnemy(rooms[0][2].getMinion());
 		}
 		
@@ -86,19 +81,17 @@ public class City2 {
 		}
 		System.out.println("Your path extends in two directions.From the left, a voice taunts: \"Come here! Allow me to introduce myself!\""
 				+ "you may also proceed forward, if you choose.");
-		//System.out.println("The doorway leads to another empty room with a doorway to the left and straight ahead. From the left a voice taunts " +
-		//"\"Come here! Allow me to introduce myself!\"");
 	}
 	public void room6()
 	{
 		System.out.println("You hear a creak, and see a door to the left starting to open.");
-		
 		System.out.println("An elderly-looking woman calls out to you. \"You look tired dear, come in for a moment and rest.\" ");
 		System.out.println("Despite what your mother told you about stranger danger, you accept.");
 	}
 	public void room7()
 	{
-		System.out.println("Her house is small, but comfortable. \nOnce you are settled with a bowl of stew and a blanket, she tells you about the \"Creature\" that has terrorizing the city's citizens. ");
+		System.out.println("Her house is small, but comfortable. \nOnce you are settled with a bowl of stew and a blanket, she tells you about the \"Creature\" that has terrorizing the city's citizens."
+				+ "\nShe also hands you a homemade POTION. How thoughtful.");
 		System.out.println("Sounds like the monster you've been looking for. You thank the woman and walk back out into the night.");
 		System.out.println("The old woman has directed you to the path on the left." +
 		"There is, however, also a fence straight ahead that you could probably jump over, if you wanted to.");
@@ -109,7 +102,7 @@ public class City2 {
 		System.out.println("In one mighty and very heroic leap, you hop the fence and land majestically in the sad-looking field. ");
 		System.out.println("You keep walking forward, and… oh. It’s a cliff. There’s nothing here.");
 		System.out.println("You turn to go back and notice that the fence seems a lot higher somehow. Jumping doesn’t look like it will do the trick…");
-		System.out.println("You look around for something that might help you escape. Admittedly, there isn't much.");
+		System.out.println("You look around for something that might help you escape. You find a POTION in the grass, but admittedly, there isn't much.");
 		while(!solved){
 			solved=fencePuzzle();
 		}
