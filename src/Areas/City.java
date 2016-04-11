@@ -3,18 +3,44 @@ package Areas;
 //Here's the basic outline for my game. It's still missing methods for changing character health, boss battles, and item finding.
 import java.util.Scanner;
 
-public class City {
-	public static void main(String[] args) {
-		System.out
-				.println("The trees thin out as your path grows wider and wider. Rough dirt is replaced by slabs of well-worn stone.");
-		crossroads();
-	}
+import Enemies.Boss;
+import Enemies.Minion;
+import General.Item;
+import General.Room;
 
-	public static void crossroads() {
+public class City extends Area {
+
+	/*
+	 * initialize variables
+	 */
+	private Scanner keyboard;
+	//private Room room;
+	
+	// constructor
+	public City(Boss boss, Minion minion, Item item, boolean pot) {
+		
+		rooms = new Room[3][3];
+		rooms[0][0] = new Room(null, null, null, false);
+		rooms[0][1] = new Room(null, null, null, false);
+		rooms[0][2] = new Room(null, null, null, true);
+		rooms[1][0] = new Room(null, null, null, false);
+		rooms[1][1] = new Room(new Boss(1, 1, "Bossy guy"), null, null, false);
+		rooms[1][2] = new Room(null, new Minion(1, 1, "Troll"), new Item(1, 1, "[Wizard] Robe"), false);
+		rooms[2][0] = new Room(null, null, null, true);
+		rooms[2][1] = new Room(null, new Minion(1, 1, "Troll"), new Item(1, 1, "[Thief] Cape"), false);
+		rooms[2][2] = new Room(null, null, null, true);
+		
+		keyboard = new Scanner(System.in);
+		
+	}
+	
+	public void crossroads() {
+		
 		// Necessary variables/objects added
 		String direction;
 		int roomNum = 0;
-		Scanner keyboard = new Scanner(System.in);
+		keyboard = new Scanner(System.in);
+		
 		System.out
 				.println("\nLooking FORWARD, the city’s wide main street stretches out before you, bathed in shadow from the looming buildings on either side.");
 		System.out
@@ -25,6 +51,7 @@ public class City {
 		System.out
 				.println("\nWhich way will you go? Type f for forward, l for left, or r for right.");
 		direction = keyboard.nextLine();
+		
 		while (roomNum == 0) {
 			if (direction.equals("f"))
 				roomNum = 2;
@@ -41,8 +68,9 @@ public class City {
 		choosePath(roomNum);
 	}
 
-	public static void room2() {
-		Scanner keyboard = new Scanner(System.in);
+	public void room2() {
+		
+		keyboard = new Scanner(System.in);
 		String direction = "*";
 		System.out
 				.println("You proceed straight ahead. The buildings seem taller from this angle, but also a lot more… run down?");
@@ -53,14 +81,17 @@ public class City {
 		// User is forced to battle a monster. If they die, they must return to
 		// the crossroads.
 		monsterBattle("trash creature");
+		
 		System.out
 				.println("You sit down on a bit of rubble to recover. Wait... what's that over there?");
 		System.out.println("Investigate? Type y or n.");
 		direction = keyboard.nextLine();
+		
 		while (!direction.equals("y") && !direction.equals("n")) {
 			System.out.println("Command not recognized. Type y or n.");
 			direction = keyboard.nextLine();
 		}
+		
 		if (direction.equals("y")) {
 			System.out.println("Another creature leaps out from the shadows.");
 			// User battles a monster. If they die, they must return to the
@@ -84,9 +115,11 @@ public class City {
 		}
 	}
 
-	public static void room3() {
-		Scanner keyboard = new Scanner(System.in);
+	public void room3() {
+		
+		keyboard = new Scanner(System.in);
 		String direction = "*";
+		
 		System.out
 				.println("This path is darker and narrower…\nAs you approach the cluster of ramshackle houses, the smell of woodsmoke and something cooking grows stronger. ");
 		System.out
@@ -96,10 +129,12 @@ public class City {
 		System.out
 				.println("Will you retreat? Or will you move forward? Type r or f.");
 		direction = keyboard.nextLine();
+		
 		while (!direction.equals("r") && !direction.equals("f")) {
 			System.out.println("Command not recognized. Type r or f.");
 			direction = keyboard.nextLine();
 		}
+		
 		if (direction.equals("r")) {
 			System.out
 					.println("You RETREAT to the shadows and wait until whoever it is goes back inside.");
@@ -124,6 +159,7 @@ public class City {
 				choosePath(0);
 			}
 		}
+		
 		if (direction.equals("f")) {
 			System.out
 					.println("An elderly-looking woman calls out to you. \"You look tired dear, come in for a moment and rest.\" ");
@@ -136,14 +172,17 @@ public class City {
 			System.out
 					.println("Will you face the monster? Or will you return to the CROSSROADS? Type f or c.");
 			direction = keyboard.nextLine();
+			
 			while (!direction.equals("f") && !direction.equals("c")) {
 				System.out.println("Command not recognized. Type f or c.");
 				direction = keyboard.nextLine();
 			}
+			
 			if (direction.equals("f")) {
 				// User is sent to the boss room
 				choosePath(4);
 			}
+			
 			if (direction.equals("c")) {
 				// User is sent back to the crossroads
 				choosePath(0);
@@ -152,7 +191,8 @@ public class City {
 
 	}
 
-	public static void bossRoom() {
+	public void bossRoom() {
+		
 		System.out.println("BOSS BATTLE");
 		// Check whether boss has already been defeated. If not,
 		monsterBattle("final boss");
@@ -163,7 +203,8 @@ public class City {
 		crossroads();
 	}
 
-	public static void room5() {
+	public void room5() 
+	{
 		boolean solved = false;
 		System.out
 				.println("In one mighty and very heroic leap, you hop the fence and land majestically in the sad-looking field. ");
@@ -179,15 +220,18 @@ public class City {
 		System.out
 				.println("Finally, you manage to escape back to the crossroads.");
 		crossroads();
+		
 	}
 
-	public static void monsterBattle(String name) {
+	public void monsterBattle(String name) {
+		
 		boolean userLives = true;
 		int diceRoll;
 		System.out.println();
 		System.out.println(name + " attacks.");
 		// Just filler until we work out how we're actually doing battles.
 		diceRoll = (int) (Math.random() * 3 + 1);
+		
 		if (diceRoll == 1 || diceRoll == 2)
 			System.out.println("You defeat the " + name + ".\n");
 		else {
@@ -199,19 +243,22 @@ public class City {
 		// crossroads.
 	}
 
-	public static boolean fencePuzzle() {
-		Scanner keyboard = new Scanner(System.in);
+	public boolean fencePuzzle() {
+		
+		keyboard = new Scanner(System.in);
 		String direction, choice = "*";
 		boolean solved = false;
 		System.out
 				.println("Your search yields three items: a worn leather SATCHEL, a cracked wooden BUCKET, and a dashing feathered HAT.");
 		System.out.println("You decide to try one. Type s,b,or h.");
 		direction = keyboard.nextLine();
+		
 		while (!direction.equals("s") && !direction.equals("b")
 				&& !direction.equals("h")) {
 			System.out.println("Command not recognized. Type s, b, or h.");
 			direction = keyboard.nextLine();
 		}
+		
 		// Satchel
 		if (direction.equals("s")) {
 			System.out
@@ -259,7 +306,7 @@ public class City {
 		return solved;
 	}
 
-	public static void choosePath(int r) {
+	public void choosePath(int r) {
 		// crossroads
 		if (r == 0)
 			crossroads();

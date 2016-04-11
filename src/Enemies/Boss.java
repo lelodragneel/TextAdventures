@@ -1,6 +1,6 @@
 package Enemies;
 
-public class Boss extends Enemy{
+public class Boss extends Enemy {
 
 	/*
 	 * initialize variables

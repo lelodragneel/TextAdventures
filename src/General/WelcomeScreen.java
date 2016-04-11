@@ -16,7 +16,6 @@ public class WelcomeScreen extends JFrame implements ActionListener {
 	/*
 	 * initialize variables
 	 */
-	
 	private JButton btnWarriorClass;
 	private JButton btnWizardClass;
 	private JButton btnThiefClass;

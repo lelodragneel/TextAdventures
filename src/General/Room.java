@@ -12,6 +12,7 @@ public class Room {
 	private Minion minion;
 	private Item item;
 	private boolean potion;
+	private boolean discovered;
 	
 	/*
 	 * constructor

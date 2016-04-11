@@ -5,14 +5,14 @@ import Enemies.Boss;
 import Enemies.Minion;
 import General.Item;
 
-public class Cave extends Area {
+public class Cave {
 	
 	//instance variables
 	private String areaName = "Cave";
 	private Room[][] rooms;
 	
-	public Cave()
-	{
+
+	public Cave(General.Character player) {
 		
 		rooms = new Room[3][3];
 		rooms[0][0] = new Room(null, null, null, false);
@@ -24,6 +24,22 @@ public class Cave extends Area {
 		rooms[2][0] = new Room(null, null, null, true);
 		rooms[2][1] = new Room(null, new Minion(1, 1, "Troll"), new Item(1, 1, "[Thief] Cape"), false);
 		rooms[2][2] = new Room(null, null, null, true);
+		
+	}
+	
+	/*
+	 * return the number of rooms that the player has discovered
+	 * n = columns. m = rows
+	 */
+	public int getRoomsDiscovered() {
+		int totalDiscovered = 0;
+		for (int m = 0; m < 4; m++) {
+			for (int n = 0; n < 4; n++) {
+				if (rooms[m][n].isDiscovered())
+					totalDiscovered++;
+			}
+		}
+		return totalDiscovered;
 	}
 	
 	//The rooms
@@ -33,6 +49,9 @@ public class Cave extends Area {
 		"directly across from where you entered and one off to the right. Somehwere further into the cave " +
 		"you hear a menacing voice \"YOU DARE ENTER MY LAIR? TURN BACK NOW OR FACE CERTAIN DEATH!\"");
 	}
+<<<<<<< HEAD
+
+=======
 	public void room2()
 	{
 		System.out.println("You run into another empty room. There are another 2 doorways to choose from. There is a doorway straight ahead " +
@@ -90,4 +109,5 @@ public class Cave extends Area {
 		return room[r][c];
 	}
 	
+>>>>>>> origin/master
 }
