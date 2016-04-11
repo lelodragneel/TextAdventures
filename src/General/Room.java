@@ -43,13 +43,20 @@ public class Room {
 	public void setItem(Item item) {
 		this.item = item;
 	}
-
-	public boolean isDiscovered() {
-		return discovered;
+	public Minion getMinion()
+	{
+		return minion;
 	}
-
-	public void setDiscovered(boolean discovered) {
-		this.discovered = discovered;
+	public void setMinion(Minion min)
+	{
+		minion = min;
 	}
-	
+	public boolean getPotion()
+	{
+		return potion;
+	}
+	public void setPotion(boolean p)
+	{
+		potion = p;
+	}
 }

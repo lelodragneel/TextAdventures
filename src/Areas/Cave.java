@@ -1,21 +1,30 @@
 package Areas;
 
+<<<<<<< HEAD
 import Enemies.Boss;
 import Enemies.Minion;
 import General.Item;
 import General.Room;
+=======
+import java.util.Scanner;
+
+import General.Room;
+import Enemies.Boss;
+import Enemies.Minion;
+import General.Item;
+import General.Core;
 
 public class Cave extends Area {
 	
 	//instance variables
 	private String areaName = "Cave";
 	private Room[][] rooms;
+	private Core core;
+	private Scanner keyboard;
 
-	
 
-	public Cave(General.Character player) {
-		
-		rooms = new Room[3][3];
+	public Cave(General.Character player, Core core) {
+		this.core = core;
 		rooms[0][0] = new Room(null, null, null, false);
 		rooms[0][1] = new Room(null, null, null, false);
 		rooms[0][2] = new Room(null, null, null, true);
@@ -25,22 +34,7 @@ public class Cave extends Area {
 		rooms[2][0] = new Room(null, null, null, true);
 		rooms[2][1] = new Room(null, new Minion(1, 1, "Troll"), new Item(1, 1, "[Thief] Cape"), false);
 		rooms[2][2] = new Room(null, null, null, true);
-		
-	}
-	
-	/*
-	 * return the number of rooms that the player has discovered
-	 * n = columns. m = rows
-	 */
-	public int getRoomsDiscovered() {
-		int totalDiscovered = 0;
-		for (int m = 0; m < 4; m++) {
-			for (int n = 0; n < 4; n++) {
-				if (rooms[m][n].isDiscovered())
-					totalDiscovered++;
-			}
-		}
-		return totalDiscovered;
+		keyboard = new Scanner(System.in);
 	}
 	
 	//The rooms
@@ -49,6 +43,9 @@ public class Cave extends Area {
 		System.out.println("You enter the Cave and find an empty room. The room has two doorways, one " +
 		"directly across from where you entered and one off to the right. Somehwere further into the cave " +
 		"you hear a menacing voice \"YOU DARE ENTER MY LAIR? TURN BACK NOW OR FACE CERTAIN DEATH!\"");
+		String move = keyboard.next();
+		if(move == "r")
+			room5();
 	}
 
 	public void room2()
@@ -64,8 +61,11 @@ public class Cave extends Area {
 	}
 	public void room4()
 	{
-		System.out.println("You walk into the room and a troll appears out of the darkness. He challenges you and carnage ensues!");
-		
+		if(rooms[1][2].getMinion().isAlive())
+		{
+			System.out.println("You walk into the room and a troll appears out of the darkness. He challenges you and carnage ensues!");
+			core.fightEnemy(rooms[1][2].getMinion());
+		}
 		System.out.println("There is a doorway on the right from which you hear a voice \"Come adventurer, don't be scared.\"");
 		
 	}
@@ -82,13 +82,17 @@ public class Cave extends Area {
 	}
 	public void room7()
 	{
+		if(rooms[2][1].getMinion().isAlive())
+		{
 		System.out.println("A troll wakes up from its slumber as you walk through the doorway. It prepares itself to charge!");
-		
+		core.fightEnemy(rooms[1][2].getMinion());
+		}
 		System.out.println("From the left you hear a voice scream as you defeat the troll \"HOW DARE YOU KILL MY BRETHEREN. COME HERE SO I MAY TAKE REVENGE!\"" +
 		"There is also a hole straight ahead that appears to lead to another open area.");
 	}
 	public void room8()
 	{
+		
 		System.out.println("You see a skeleton of a body sitting in the far corner. It holds a note and beside it lays a potion." +
 		" The note reads \"There is no way out. Here is where I stay for fear that the troll kill will eat me alive...\"");
 		System.out.println("The only way to go is back.");
@@ -96,16 +100,20 @@ public class Cave extends Area {
 	public void room9()
 	{
 		System.out.println("As you enter the room a massive troll appears waiting for you to arrive.");
-		
 		System.out.println("\" At last you have come! Now come here so I can make soup out of you! Just as I did with that weak little village!\"");
-		
+		core.fightEnemy(rooms[1][1].getBoss());
+		rooms[1][1].getBoss().setAlive(false);
 		System.out.println("After killing the troll you feel somehow stronger. You leave the cave in search of the other horrible monsters.");
 	}
 	
 	//Get room to allow game engine to access minions and potions
 	public Room getRoom(int r, int c)
 	{
-		return room[r][c];
+		return rooms[r][c];
 	}
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> origin/master
 }
