@@ -55,6 +55,7 @@ public class WelcomeScreen extends JFrame implements ActionListener {
 		btnWarriorClass = new JButton("Warrior");
 		btnWarriorClass.setBounds(209, 129, 89, 23);
 		btnWarriorClass.addActionListener(this);
+		btnWarriorClass.setFocusable(false);
 		getContentPane().add(btnWarriorClass);
 		
 		
@@ -62,6 +63,7 @@ public class WelcomeScreen extends JFrame implements ActionListener {
 		btnThiefClass = new JButton("Thief");
 		btnThiefClass.setBounds(110, 129, 89, 23);
 		btnThiefClass.addActionListener(this);
+		btnThiefClass.setFocusable(false);
 		getContentPane().add(btnThiefClass);
 		
 		
@@ -69,6 +71,7 @@ public class WelcomeScreen extends JFrame implements ActionListener {
 		btnWizardClass = new JButton("Wizard");
 		btnWizardClass.setBounds(308, 129, 89, 23);
 		btnWizardClass.addActionListener(this);
+		btnWizardClass.setFocusable(false);
 		getContentPane().add(btnWizardClass);
 		
 		enterName = new JLabel("Enter Player Name:");
@@ -91,14 +94,17 @@ public class WelcomeScreen extends JFrame implements ActionListener {
 		if(evt.getSource().equals(btnWarriorClass)) {
 			player = new Character("Warrior", nameInput.getText(), 15, 15, 1);
 			startGame(player);
+			dispose();
 		}
 		else if(evt.getSource().equals(btnThiefClass)) {
 			player = new Character("Thief" , nameInput.getText(), 10, 20, 1);
 			startGame(player);
+			dispose();
 		}
 		else if(evt.getSource().equals(btnWizardClass)) {
 			player = new Character("Wizard",nameInput.getText(), 20, 10, 1);
 			startGame(player);
+			dispose();
 		}
 	}
 	

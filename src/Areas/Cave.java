@@ -20,9 +20,11 @@ public class Cave extends Area {
    private General.Character player;
    */
    private Core core;
+   private Character player;
 
 	public Cave(General.Character p, Core core) {
-		super(p);
+
+		player = p;
       this.core = core;
 		rooms[0][0] = new Room(null, null, null, false);
 		rooms[0][1] = new Room(null, null, null, false);

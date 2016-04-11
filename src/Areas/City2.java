@@ -13,7 +13,7 @@ public class City2 {
 	
 	//instance variables
 	private String areaName = "City";
-	private Room[][] rooms;
+	private Room[][] rooms;                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
 	private Core core;
 	
 

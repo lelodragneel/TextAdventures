@@ -13,12 +13,6 @@ public class Core {
 	/*
 	 * initialize variables
 	 */
-	public static final String ANSI_RESET = "\u001B[0m";
-	public static final String ANSI_RED = "\u001B[31m";
-	public static final String ANSI_GREEN = "\u001B[32m";
-	public static final String ANSI_BLUE = "\u001B[34m";
-	public static final String ANSI_PURPLE = "\u001B[35m";
-	public static final String ANSI_CYAN = "\u001B[36m";
 	private Scanner keyboard;
 	private Woods woods;
 	private City2 city;
@@ -38,10 +32,10 @@ public class Core {
 		 */
 			
 		 // create area #1 (cave)
-		 cave = new Cave(player, this);
+		 //cave = new Cave(player, this);
 		
 		 // create area #2 (city)
-		 city = new City2(player, this);
+		 //city = new City2(player, this);
 		 
 		 // create area #3 (wood)
 		 woods = new Woods();
@@ -58,8 +52,6 @@ public class Core {
 
 		// initialize & instantiate variables
 		keyboard = new Scanner(System.in);
-		
-		displayInfo();
 		
 		// introduce game objective
 		System.out.println("Welcome " + player.getName() + " to the world of Alera. You are an adventure who has returned to their home village.");
@@ -95,13 +87,13 @@ public class Core {
 		} else if (chosen == 3) {
 			
 			// check if player can enter the woods
-			if(!cave.getRoom(1, 1).getBoss().isAlive() && !city.getRoom(1, 1).getBoss().isAlive()) {
+			//if(!cave.getRoom(1, 1).getBoss().isAlive() && !city.getRoom(1, 1).getBoss().isAlive()) {
 				System.out.println("Alright, both other bosses are defeated. You may enter the woods! \nThe woods is a confusing maze of different paths you can take. Best of luck finding the final boss.");
 				// start the city adventures
 				woods.startWoods();
 				
-			} else 
-				System.out.println("In order to enter the woods and have a chance to kill the final boss, you must kill the two bosses found in Cave and City.");
+			//} else 
+			//	System.out.println("In order to enter the woods and have a chance to kill the final boss, you must kill the two bosses found in Cave and City.");
 
 		} 
 					
@@ -113,13 +105,13 @@ public class Core {
 		System.out.println("------------------------------------------------");
 		System.out.println("|                  All the Info!               |");
 		System.out.println("------------------------------------------------");
-		System.out.println(ANSI_CYAN + "Player Stats:");
-		System.out.println("Health:");
-		System.out.println("Attack:");
-		System.out.println(ANSI_CYAN + "Progression:");
-		System.out.println("Current Area:");
-		System.out.println("Rooms Discovered:");
-		System.out.println("Boss Status:");
+		System.out.println("Player Stats:");
+		System.out.println("	Health:");
+		System.out.println("	Attack:");
+		System.out.println("Progression:");
+		System.out.println("	Current Area:");
+		System.out.println("	Rooms Discovered:");
+		System.out.println("	Boss Status:");
 		System.out.println("------------------------------------------------");
 		
 	}
