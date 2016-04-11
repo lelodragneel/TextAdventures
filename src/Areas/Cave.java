@@ -21,8 +21,7 @@ public class Cave extends Area {
    */
    private Core core;
 
-	public Cave(General.Character p, Core core) {
-		super(p);
+	public Cave(Core core) {
       this.core = core;
 		rooms[0][0] = new Room(null, null, null, false);
 		rooms[0][1] = new Room(null, null, null, false);
@@ -85,7 +84,7 @@ public class Cave extends Area {
       if(rooms[0][2].getPotion())
       {
          System.out.println("You spot a potion in the corner and pick it up.");
-		   player.findPotion();
+		   core.getPlayer().findPotion();
          rooms[0][2].setPotion(false);
       }
       
@@ -157,7 +156,7 @@ public class Cave extends Area {
       if(rooms[2][0].getPotion())
       {
          System.out.println("You find a potion wedged into a crack in the wall.");
-		   player.findPotion();
+		   core.getPlayer().findPotion();
          rooms[2][0].setPotion(false);
       }
        
@@ -209,7 +208,7 @@ public class Cave extends Area {
       {
          System.out.println("You see a skeleton of a body sitting in the far corner. It holds a note and beside it lays a potion." +
 		   " The note reads \"There is no way out. Here is where I stay for fear that the troll kill will eat me alive...\"");
-		   player.findPotion();
+		   core.getPlayer().findPotion();
          rooms[2][2].setPotion(false);
       }
       
