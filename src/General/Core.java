@@ -3,7 +3,7 @@ package General;
 import java.util.Scanner;
 
 import Areas.Cave;
-import Areas.City2;
+import Areas.City;
 import Areas.Woods;
 import Enemies.Boss;
 import Enemies.Minion;
@@ -15,7 +15,7 @@ public class Core {
 	 */
 	private Scanner keyboard;
 	private Woods woods;
-	private City2 city;
+	private City city;
 	private Cave cave;
 	private Character player;
 
