@@ -44,20 +44,34 @@ public class Cave extends Area {
 		"directly across from where you entered and one off to the right. Somehwere further into the cave " +
 		"you hear a menacing voice \"YOU DARE ENTER MY LAIR? TURN BACK NOW OR FACE CERTAIN DEATH!\"");
 		String move = keyboard.next();
-		if(move == "r")
+		if(move.equals("r"))
 			room5();
+		else if(move.equals("f"))
+			room2();
 	}
 
 	public void room2()
 	{
 		System.out.println("You run into another empty room. There are another 2 doorways to choose from. There is a doorway straight ahead " +
 		" and another off to the right. A loud voice comes from the doorway on the right, \"Come this way traveller. FACE ME IF YOUR DARE!\"");
+		String move = keyboard.next();
+		if(move.equals("r"))
+			room9();
+		else if(move.equals("f"))
+			room3();
+		else if(move.equals("b"))
+			room1();
 	}
 	public void room3()
 	{
 		System.out.println("You spot a potion in the corner and pick it up.");
 		
 		System.out.println("There is a doorway on the right giving off a foul stench.");
+		String move = keyboard.next();
+		if(move.equals("r"))
+			room4();
+		else if(move.equals("b"))
+			room2();
 	}
 	public void room4()
 	{
