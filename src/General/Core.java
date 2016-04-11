@@ -32,7 +32,7 @@ public class Core {
 		 */
 			
 		 // create area #1 (cave)
-		 cave = new Cave(player);
+		 cave = new Cave(player, this);
 		
 		 // create area #2 (city)
 		 city = new City(player);
@@ -98,10 +98,9 @@ public class Core {
 	}
 	
 	// method that handles the fighting between player and boss
-	public static void fightEnemy(Boss boss, Character player) {
+	public void fightEnemy(Boss boss, Character player) {
 
 		String command;
-      Scanner keyboard = new Scanner(System.in);
       
 		System.out.println("Boss battle starting...");
 
@@ -143,10 +142,9 @@ public class Core {
 	}
 	
 	// method that handles the fighting between player and minions
-	public static void fightEnemy(Minion minion, Character player) {
+	public void fightEnemy(Minion minion, Character player) {
 
 		String command;
-      Scanner keyboard = new Scanner(System.in);
 
 		System.out.println("Minion battle starting...");
 

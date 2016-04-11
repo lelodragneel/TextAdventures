@@ -15,15 +15,15 @@ public class Cave extends Area {
    /*
 	private String areaName = "Cave";
 	private Room[][] rooms;
-	private Core core; (Removed)
+	private Core core;
 	private Scanner keyboard;
    private General.Character player;
    */
+   private Core core;
 
-
-	public Cave(General.Character p/*, Core core*/) {
-		//this.core = core;
-      super(p);
+	public Cave(General.Character p, Core core) {
+		super(p);
+      this.core = core;
 		rooms[0][0] = new Room(null, null, null, false);
 		rooms[0][1] = new Room(null, null, null, false);
 		rooms[0][2] = new Room(null, null, null, true);
@@ -81,8 +81,13 @@ public class Cave extends Area {
    //room 3 with potion
 	public void room3()
 	{
-		System.out.println("You spot a potion in the corner and pick it up.");
-		
+		if(rooms[0][2].getPotion())
+      {
+         System.out.println("You spot a potion in the corner and pick it up.");
+		   player.findPotion();
+         rooms[0][2].setPotion(false);
+      }
+      
 		System.out.println("There is a doorway on the right giving off a foul stench.");
 		
       boolean awaitingDecision = true;
@@ -105,7 +110,7 @@ public class Cave extends Area {
       if(rooms[1][2].getMinion().isAlive())
 		{
 			System.out.println("You walk into the room and a troll appears out of the darkness. He challenges you and carnage ensues!");
-			Core.fightEnemy(rooms[1][2].getMinion(), player);
+			core.fightEnemy(rooms[1][2].getMinion(), player);
 		}
 		
       System.out.println("There is a doorway on the right from which you hear a voice \"Come adventurer, don't be scared.\"");
@@ -151,7 +156,7 @@ public class Cave extends Area {
 		   player.findPotion();
          rooms[2][0].setPotion(false);
       }
-      
+       
 		System.out.println("There is a doorway to the left. Other than left, back is the only option.");
 	}
 	public void room7()
@@ -159,7 +164,7 @@ public class Cave extends Area {
 		if(rooms[2][1].getMinion().isAlive())
 		{
 		System.out.println("A troll wakes up from its slumber as you walk through the doorway. It prepares itself to charge!");
-		Core.fightEnemy(rooms[1][2].getMinion(), player);
+		core.fightEnemy(rooms[1][2].getMinion(), player);
 		}
 		System.out.println("From the left you hear a voice scream as you defeat the troll \"HOW DARE YOU KILL MY BRETHEREN. COME HERE SO I MAY TAKE REVENGE!\"" +
 		"There is also a hole straight ahead that appears to lead to another open area.");
@@ -175,7 +180,7 @@ public class Cave extends Area {
 	{
 		System.out.println("As you enter the room a massive troll appears waiting for you to arrive.");
 		System.out.println("\" At last you have come! Now come here so I can make soup out of you! Just as I did with that weak little village!\"");
-		Core.fightEnemy(rooms[1][1].getBoss(), player);
+		core.fightEnemy(rooms[1][1].getBoss(), player);
 		rooms[1][1].getBoss().setAlive(false);
 		System.out.println("After killing the troll you feel somehow stronger. You leave the cave in search of the other horrible monsters.");
 	}
