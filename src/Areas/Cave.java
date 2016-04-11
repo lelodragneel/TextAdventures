@@ -1,6 +1,7 @@
 package Areas;
 
 import java.util.Scanner;
+import java.util.ArrayList;
 
 import General.Room;
 import Enemies.Boss;
@@ -103,7 +104,7 @@ public class Cave extends Area {
          System.out.println("Incorrect input, try again");
       }
 	}
-   //room4 with minion fight
+   //room4 with minion fight and item drop
 	public void room4()
 	{
 		//fight
@@ -111,6 +112,7 @@ public class Cave extends Area {
 		{
 			System.out.println("You walk into the room and a troll appears out of the darkness. He challenges you and carnage ensues!");
 			core.fightEnemy(rooms[1][2].getMinion());
+         core.getPlayer().getInventory().add(rooms[1][2].getItem());
 		}
 		
       System.out.println("There is a doorway on the right from which you hear a voice \"Come adventurer, don't be scared.\"");
@@ -182,6 +184,7 @@ public class Cave extends Area {
 		{
 		   System.out.println("A troll wakes up from its slumber as you walk through the doorway. It prepares itself to charge!");
 		   core.fightEnemy(rooms[1][2].getMinion());
+         core.getPlayer().getInventory().add(rooms[2][1].getItem());
 		}
 		
       System.out.println("From the left you hear a voice scream as you defeat the troll \"HOW DARE YOU KILL MY BRETHEREN. COME HERE SO I MAY TAKE REVENGE!\"" +
