@@ -13,11 +13,12 @@ public class City {
 	
 	//instance variables
 	private String areaName = "City";
-	private Room[][] rooms;                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+	private Room[][] rooms;
 	private Core core;
 	
 
-	public City(Core core) {
+	public City2(Core core) {
+		//use getPlayer method to get the player
 		this.core = core;
 		rooms = new Room[3][3];
 		rooms[0][0] = new Room(null, null, null, false);
@@ -35,22 +36,61 @@ public class City {
 	//The rooms
 	public void room1()
 	{
+		Scanner keyboard= new Scanner(System.in);
+		String direction;
+		Boolean directionFound=false;
 		System.out.println("\nLooking FORWARD, the city’s wide main street stretches out before you, bathed in shadow from the looming buildings on either side."
-				+ "To your RIGHT, a narrower street winds off through a collection of smaller buildings. Lights can be seen in the distance.");
+				+ "\nTo your RIGHT, a narrower street winds off through a collection of smaller buildings. Lights can be seen in the distance."
+				+ "\n Choose your path. Enter r to go right or f to go forward.");
+		direction=keyboard.nextLine();
+		while(!directionFound){
+			if(direction.equals("f")){
+				directionFound=true;
+				room2();
+			}
+			else if(direction.equals("r")){
+				directionFound=true;
+				room5();
+			}
+			else{
+				System.out.println("Command not recognized. Type f for forward, or r for right.");
+				direction=keyboard.nextLine();
+			}
+		}
 	}
 
 	public void room2()
 	{
+		Scanner keyboard = new Scanner(System.in);
+		String direction;
+		Boolean directionFound;
 		System.out.println("You proceed straight ahead. The buildings seem taller from this angle, but also a lot more… run down?");
 		System.out.println("Something seems to have driven the city’s inhabitants away…");
 		
 		if(rooms[0][1].getMinion().isAlive())
 		{
 			System.out.println("As you stare thoughtfully upward, something grabs you from behind…");
-			core.fightEnemy(rooms[0][1].getMinion());
+			core.fightEnemy(rooms[0][1].getMinion(), core.getPlayer());
 		}
 		System.out.println("You sit down on a bit of rubble to recover. Wait... what's that straight ahead?"
-				+ "To your right, a loud voice rings out: Come this way traveller. FACE ME IF YOUR DARE!");
+				+ "To your right, a loud voice rings out: Come this way traveller. FACE ME IF YOU DARE!"
+				+ "\nWill you investigate what lies ahead, or accept the challenge?"
+				+ "\nType f to move forward and r to move to your right.");
+		direction=keyboard.nextLine();
+		while(!directionFound){
+			if(direction.equals("f")){
+				directionFound=true;
+				room3();
+			}
+			else if(direction.equals("r")){
+				directionFound=true;
+				room9();
+			}
+			else{
+				System.out.println("Command not recognized. Type f for forward, or r for right.");
+				direction=keyboard.nextLine();
+			}
+		}
 	}
 	public void room3()
 	{
@@ -58,43 +98,85 @@ public class City {
 		if(rooms[0][2].getMinion().isAlive())
 		{
 			System.out.println("Before you can even investigate what you've found, another creature leaps out from the shadows.");
-			core.fightEnemy(rooms[0][2].getMinion());
+			core.fightEnemy(rooms[0][2].getMinion(),core.getPlayer());
 		}
 		
 		System.out.println("The path veers off to the right.");
+		room4();
 	}
 	public void room4()
 	{
 		System.out.println("Concrete buildings block your path in every direction but one."
-				+ "To the right, the voice speaks again. \"Come adventurer, don't be scared.\"");
+				+ "The voice speaks again. \"Come adventurer, don't be scared.\""
+				+ "\nSteeling yourself, you move to the right.");
+		room9();
 		
 	}
 	public void room5()
 	{
+		Scanner keyboard= new keyboard(System.in);
+		String direction;
+		Boolean directionFound=false;
 		System.out.println("This path is darker and narrower…\nAs you approach the cluster of ramshackle houses, the smell of woodsmoke and something cooking grows stronger. ");
 		System.out.println("A few of the houses’ windows are lit, and you feel many eyes upon you."); 
 		System.out.println("You back into the shadows to assess your situation.");
 		if(rooms[1][0].getMinion().isAlive())
 		{
 			System.out.println("Unfortunately, you are not alone.");
-			core.fightEnemy(rooms[1][0].getMinion());
+			core.fightEnemy(rooms[1][0].getMinion(),core.getPlayer());
 		}
-		System.out.println("Your path extends in two directions.From the left, a voice taunts: \"Come here! Allow me to introduce myself!\""
-				+ "you may also proceed forward, if you choose.");
+		System.out.println("The road extends in two directions. From the left, a voice taunts: \"Come here! Allow me to introduce myself!\""
+				+ "\nyou may also proceed forward, if you choose."
+				+ "\nMake your choice. Type l to go to the left and f to move forward.");
+		direction=keyboard.nextLine();
+		while(!directionFound){
+			if(direction.equals("f")){
+				directionFound=true;
+				room6();
+			}
+			else if(direction.equals("l")){
+				directionFound=true;
+				room9();
+			}
+			else{
+				System.out.println("Command not recognized. Type f for forward, or l for left.");
+				direction=keyboard.nextLine();
+			}
+		}
 	}
 	public void room6()
 	{
 		System.out.println("You hear a creak, and see a door to the left starting to open.");
 		System.out.println("An elderly-looking woman calls out to you. \"You look tired dear, come in for a moment and rest.\" ");
 		System.out.println("Despite what your mother told you about stranger danger, you accept.");
+		room7();
 	}
 	public void room7()
 	{
+		String direction;
+		Scanner keyboard= new Scanner(System.in);
+		Boolean directionFound=false;
 		System.out.println("Her house is small, but comfortable. \nOnce you are settled with a bowl of stew and a blanket, she tells you about the \"Creature\" that has terrorizing the city's citizens."
 				+ "\nShe also hands you a homemade POTION. How thoughtful.");
 		System.out.println("Sounds like the monster you've been looking for. You thank the woman and walk back out into the night.");
 		System.out.println("The old woman has directed you to the path on the left." +
-		"There is, however, also a fence straight ahead that you could probably jump over, if you wanted to.");
+		"There is, however, also a fence straight ahead that you could probably jump over, if you wanted to."
+		+ "\nWhat will you do? Type l to go left or f to go forward.");
+		direction=keyboard.nextLine();
+		while(!directionFound){
+			if(direction.equals("f")){
+				directionFound=true;
+				room8();
+			}
+			else if(direction.equals("l")){
+				directionFound=true;
+				room9();
+			}
+			else{
+				System.out.println("Command not recognized. Type f for forward, or l for left.");
+				direction=keyboard.nextLine();
+			}
+		}
 	}
 	public void room8()
 	{
@@ -110,10 +192,17 @@ public class City {
 	}
 	public void room9()
 	{
-		System.out.println("As you enter the room a massive troll appears waiting for you to arrive.");
-		System.out.println("\" At last you have come! Now come here so I can make soup out of you! Just as I did with that weak little village!\"");
-		core.fightEnemy(rooms[1][1].getBoss());
-		System.out.println("After killing the boss you feel stronger somehow. You leave the city in search of the other horrible monsters.");
+		if(rooms[1][1].getBoss().isAlive()){
+			System.out.println("As you enter the plaza, what initially appeared to be a huge pile of debris starts to quake.");
+			System.out.println("It appears to be an enormous trash creature. \"Ah, welcome pesky traveller!\" it roars."
+					+ "\n\"You have proven yourself to be most irksome in coming here. Once I defeat you, I will truly make this city great again!\""
+					+ "\n\nYou prepare yourself for battle.");
+			core.fightEnemy(rooms[1][1].getBoss(),core.getPlayer());
+			rooms[1][1].getBoss().setAlive(false);
+			System.out.println("After killing the creature you feel somehow stronger. You leave the city in search of the other horrible monsters.");
+		}
+		else
+			System.out.println("You enter the plaza to find the creature already dead. Nice.");
 	}
 	public static boolean fencePuzzle(){
 		Scanner keyboard= new Scanner(System.in);
