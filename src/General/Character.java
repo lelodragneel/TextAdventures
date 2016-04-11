@@ -66,12 +66,15 @@ public class Character {
 	public void findPotion(){
 		potions++;
 	}
-
-	public ArrayList<Item> getInventory() {
-		return inventory;
-	}
-
-	public void setInventory(ArrayList<Item> inventory) {
-		this.inventory = inventory;
+	
+	public void addToInventory(Item item) {
+		inventory.add(item);
+		health += item.getHealthIncrease();
+		attack += item.getDamageIncrease();
+		System.out.println("You picked up " + item.getItemName() + "!");
+		if (item.getHealthIncrease() > 0)
+			System.out.println("Your health has increased to " + health);
+		if (item.getDamageIncrease() > 0)
+			System.out.println("Your attack damage has increased to " + attack);
 	}
 }

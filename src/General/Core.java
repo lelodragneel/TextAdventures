@@ -26,19 +26,18 @@ public class Core {
 		 */
 		this.player = player;
 
-
 		/*
 		 * create 3 different areas. Each contains 9 rooms
 		 */
 			
 		 // create area #1 (cave)
-		 //cave = new Cave(player, this);
+		 cave = new Cave(this);
 		
 		 // create area #2 (city)
-		 //city = new City2(player, this);
+		 city = new City(this);
 		 
 		 // create area #3 (wood)
-		 woods = new Woods();
+		 //woods = new Woods();
 		
 		// start game engine
 		gameEngine();
@@ -70,6 +69,25 @@ public class Core {
 				+ "You may perhaps encounter a minion in one room, or maybe find a potion in another. "
 				+ "Rooms can also be empty. ");
 		
+		// let the player chose an asrea to enter
+		chooseArea();
+					
+	}
+	
+	// player picks an area to enter
+	public void chooseArea() {
+		
+		// inform the player which bosses are defeated
+		System.out.println("Here are the Cave and City's boss conditions:");
+		if(cave.getRoom(1, 1).getBoss().isAlive())
+			System.out.println("	Cave Boss: Alive");
+		else
+			System.out.println("	Cave Boss: Dead");
+		if(city.getRoom(1, 1).getBoss().isAlive())
+			System.out.println("	City Boss: Alive");
+		else
+			System.out.println("	City Boss: Dead");
+		
 		// player chooses area	
 		System.out.println("There are two areas you can enter: \n(1) Cave \n(2) City \n(3) Woods");
 		System.out.println("Which area would you like to enter?");
@@ -82,21 +100,20 @@ public class Core {
 
 		} else if (chosen == 2) {
 			// start the city adventure
-			city.room1();
+			//city.room1();
 
 		} else if (chosen == 3) {
 			
 			// check if player can enter the woods
-			//if(!cave.getRoom(1, 1).getBoss().isAlive() && !city.getRoom(1, 1).getBoss().isAlive()) {
+			if(!cave.getRoom(1, 1).getBoss().isAlive() && !city.getRoom(1, 1).getBoss().isAlive()) {
 				System.out.println("Alright, both other bosses are defeated. You may enter the woods! \nThe woods is a confusing maze of different paths you can take. Best of luck finding the final boss.");
 				// start the city adventures
 				woods.startWoods();
 				
-			//} else 
-			//	System.out.println("In order to enter the woods and have a chance to kill the final boss, you must kill the two bosses found in Cave and City.");
+			} else 
+				System.out.println("In order to enter the woods and have a chance to kill the final boss, you must kill the two bosses found in Cave and City.");
 
 		} 
-					
 	}
 	
 	// print player stats/information/progress 
@@ -173,19 +190,19 @@ public class Core {
 
 				// player deals damage to boss
 				minion.setHealth(minion.getHealth() - player.getAttack());
-				System.out.println("You dealt " + player.getAttack() + " damage to the boss. The boss's health is now "
+				System.out.println("You dealt " + player.getAttack() + " damage to the minion. The minion's health is now "
 						+ minion.getHealth() + ".");
 
 				// check if boss is dead after dealing damage to him
 				if (minion.getHealth() <= 0) {
-					System.out.println("You defeated the boss!");
+					System.out.println("You defeated the minion!");
 					minion.setAlive(false);
 					return;
 				}
 
 				// enemy deals damage to you
 				player.setHealth(player.getHealth() - minion.getAttack());
-				System.out.println("Boss hit you for " + minion.getAttack() + " damage. Your health is now "
+				System.out.println("Minion hit you for " + minion.getAttack() + " damage. Your health is now "
 						+ player.getHealth() + ".");
 
 				// check if player is dead
