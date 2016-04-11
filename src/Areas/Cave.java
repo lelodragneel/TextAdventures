@@ -1,5 +1,7 @@
 package Areas;
 
+import java.util.Scanner;
+
 import General.Room;
 import Enemies.Boss;
 import Enemies.Minion;
@@ -12,11 +14,10 @@ public class Cave {
 	private String areaName = "Cave";
 	private Room[][] rooms;
 	private Core core;
-	
+	private Scanner keyboard;
 
 	public Cave(General.Character player, Core core) {
 		this.core = core;
-		rooms = new Room[3][3];
 		rooms[0][0] = new Room(null, null, null, false);
 		rooms[0][1] = new Room(null, null, null, false);
 		rooms[0][2] = new Room(null, null, null, true);
@@ -26,7 +27,7 @@ public class Cave {
 		rooms[2][0] = new Room(null, null, null, true);
 		rooms[2][1] = new Room(null, new Minion(1, 1, "Troll"), new Item(1, 1, "[Thief] Cape"), false);
 		rooms[2][2] = new Room(null, null, null, true);
-		
+		keyboard = new Scanner(System.in);
 	}
 	
 	//The rooms
@@ -35,6 +36,9 @@ public class Cave {
 		System.out.println("You enter the Cave and find an empty room. The room has two doorways, one " +
 		"directly across from where you entered and one off to the right. Somehwere further into the cave " +
 		"you hear a menacing voice \"YOU DARE ENTER MY LAIR? TURN BACK NOW OR FACE CERTAIN DEATH!\"");
+		String move = keyboard.next();
+		if(move == "r")
+			room5();
 	}
 
 	public void room2()
