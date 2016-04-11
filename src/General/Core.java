@@ -3,7 +3,7 @@ package General;
 import java.util.Scanner;
 
 import Areas.Cave;
-import Areas.City;
+import Areas.City2;
 import Areas.Woods;
 import Enemies.Boss;
 import Enemies.Minion;
@@ -15,7 +15,7 @@ public class Core {
 	 */
 	private Scanner keyboard;
 	private Woods woods;
-	private City city;
+	private City2 city;
 	private Cave cave;
 	private Character player;
 
@@ -35,7 +35,7 @@ public class Core {
 		 cave = new Cave(player, this);
 		
 		 // create area #2 (city)
-		 city = new City(player);
+		 city = new City2(player, this);
 		 
 		 // create area #3 (wood)
 		 woods = new Woods();
@@ -82,7 +82,7 @@ public class Core {
 
 		} else if (chosen == 2) {
 			// start the city adventure
-			city.crossroads();
+			city.room1();
 
 		} else if (chosen == 3) {
 			if(!cave.getRoom(1, 1).getBoss().isAlive() && !city.getRoom(1, 1).getBoss().isAlive()) {
@@ -182,6 +182,11 @@ public class Core {
 			}
 		}
 
+	}
+	
+	// return the player object
+	public Character getPlayer() {
+		return player;
 	}
 	
 }
