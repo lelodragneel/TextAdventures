@@ -1,11 +1,5 @@
 package Areas;
 
-<<<<<<< HEAD
-import Enemies.Boss;
-import Enemies.Minion;
-import General.Item;
-import General.Room;
-=======
 import java.util.Scanner;
 
 import General.Room;
@@ -125,9 +119,4 @@ public class Cave extends Area {
 	{
 		return rooms[r][c];
 	}
-<<<<<<< HEAD
-
-=======
-	
->>>>>>> origin/master
 }
