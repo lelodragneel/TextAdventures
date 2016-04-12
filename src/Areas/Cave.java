@@ -19,21 +19,15 @@ public class Cave extends Area {
 
 		this.core = core;
 		rooms = new Room[3][3];
-		rooms[0][0] = new Room(null, new Minion(1, 1, "filler"), new Item(0, 10, "[Ring] +10 Health"), false);
+		rooms[0][0] = new Room(null, new Minion(1, 1, "Troll"), new Item(0, 10, "[Ring] +10 Health"), false);
 		rooms[0][1] = new Room(null, null, null, false);
 		rooms[0][2] = new Room(null, null, null, true);
 		rooms[1][0] = new Room(null, null, null, false);
-<<<<<<< Updated upstream
-		rooms[1][1] = new Room(new Boss(1, 1, "Bossy guy"), null, null, false);
+
+		rooms[1][1] = new Room(new Boss(1, 1, "Troll King"), null, null, false);
 		rooms[1][2] = new Room(null, new Minion(1, 1, "Troll"), new Item(5, 0, "[Gloves] +5 Attack"), false);
 		rooms[2][0] = new Room(null, null, null, true);
 		rooms[2][1] = new Room(null, new Minion(1, 1, "Troll"), new Item(0, 20, "[Shoulder Pads] +20 Health"), false);
-=======
-		rooms[1][1] = new Room(new Boss(1, 1, "Troll King"), null, null, false);
-		rooms[1][2] = new Room(null, new Minion(1, 1, "Troll"), new Item(1, 1, "Robe"), false);
-		rooms[2][0] = new Room(null, null, null, true);
-		rooms[2][1] = new Room(null, new Minion(1, 1, "Troll"), new Item(1, 1, "Cape"), false);
->>>>>>> Stashed changes
 		rooms[2][2] = new Room(null, null, null, true);
 		keyboard = new Scanner(System.in);
 	}
@@ -194,9 +188,8 @@ public class Cave extends Area {
 			core.fightEnemy(rooms[1][2].getMinion());
 			core.getPlayer().addToInventory(rooms[2][1].getItem());
 		}
-<<<<<<< Updated upstream
 
-		System.out.println("From the left you hear a voice scream as you defeat the troll \"HOW DARE YOU KILL MY BRETHEREN. COME HERE SO I MAY TAKE REVENGE!\"" +
+		System.out.println("From the left you hear a voice scream as you defeat the troll \"HOW DARE YOU KILL MY BRETHREN. COME HERE SO I MAY TAKE REVENGE!\"" +
 				"There is also a hole straight ahead that appears to lead to another open area.");
 		boolean awaitingDecision = true;
 		while(awaitingDecision)
@@ -213,27 +206,12 @@ public class Cave extends Area {
 				System.out.println("Incorrect input, try again");
 		}
 	}
-	public void room8()
-	{
-		//potion
-		if(rooms[2][2].getPotion())
-		{
-			System.out.println("You see a skeleton of a body sitting in the far corner. It holds a note and beside it lays a potion." +
-					" The note reads \"There is no way out. Here is where I stay for fear that the troll kill will eat me alive...\"");
-			core.getPlayer().findPotion();
-			rooms[2][2].setPotion(false);
-		}
-
-=======
-		System.out.println("From the left you hear a voice scream as you defeat the troll \"HOW DARE YOU KILL MY BRETHREN. COME HERE SO I MAY TAKE REVENGE!\"" +
-		"There is also a hole straight ahead that appears to lead to another open area.");
-	}
+	
 	public void room8()
 	{
 		
 		System.out.println("You see a skeleton of a body sitting in the far corner. It holds a note and beside it lays a potion." +
 		" The note reads \"There is no way out. Here is where I stay for fear that the troll will eat me alive...\"");
->>>>>>> Stashed changes
 		System.out.println("The only way to go is back.");
 		boolean awaitingDecision = true;
 		while(awaitingDecision)
@@ -249,10 +227,10 @@ public class Cave extends Area {
 	public void room9()
 	{
 		if (rooms[1][1].getBoss().isAlive()) {
-			System.out.println("As you enter the room a massive troll appears waiting for you to arrive.");
+			System.out.println("As you enter the room the Troll King appears waiting for you to arrive.");
 			System.out.println("\"At last you have come! Now come here so I can make soup out of you! Just as I did with that weak little village!\"");
 			core.fightEnemy(rooms[1][1].getBoss());
-			System.out.println("After killing the troll you feel somehow stronger. You leave the cave in search of the other horrible monsters.");
+			System.out.println("After killing the Troll King you feel somehow stronger. You leave the cave in search of the other horrible monsters.");
 			core.chooseArea();
 		} else {
 			System.out.println("You entered the boss room and find the boss lying dead on the ground, since you already defeated him.");

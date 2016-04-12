@@ -23,7 +23,7 @@ public class City extends Area {
 		rooms[0][1] = new Room(null, new Minion(1, 1, "Trash Creature"), null, false);
 		rooms[0][2] = new Room(null, new Minion(1, 1, "Sneaky Trash Creature"), new Item(0, 30, "[Shield] +30 Health"), false);
 		rooms[1][0] = new Room(null, new Minion(1, 1, "Trash Creature"), new Item(10, 0, "[Ring] +10 Attack"), false);
-		rooms[1][1] = new Room(new Boss(1, 1, "BOSS"), null, null, false);
+		rooms[1][1] = new Room(new Boss(1, 1, "Sewage Beast"), null, null, false);
 		rooms[1][2] = new Room(null, null, null, false);
 		rooms[2][0] = new Room(null, null, null, false);
 		rooms[2][1] = new Room(null, null, null, true);
@@ -264,11 +264,11 @@ public class City extends Area {
 	{
 		if(rooms[1][1].getBoss().isAlive()){
 			System.out.println("\nAs you enter the plaza, what initially appeared to be a huge pile of debris starts to quake.");
-			System.out.println("It's an enormous trash creature. \"AH, WELCOME PESKY TRAVELLER!\" it roars."
+			System.out.println("It's a giant Sewage Beast. \"AH, WELCOME PESKY TRAVELLER!\" it roars."
 					+ "\n\"You have proven yourself to be most irksome in coming here. Once I defeat you, I will truly make this city great again!\""
 					+ "\n\nYou prepare yourself for battle.");
 			core.fightEnemy(rooms[1][1].getBoss());
-			System.out.println("After killing the creature you feel somehow stronger. You leave the city in search of the other horrible monsters.");
+			System.out.println("After killing the Sewage Beast you feel somehow stronger. You leave the city in search of the other horrible monsters.");
 			core.chooseArea();
 		}
 		else

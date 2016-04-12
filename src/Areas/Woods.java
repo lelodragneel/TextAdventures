@@ -21,7 +21,7 @@ public class Woods {
 	public boolean monsterFight() {
 		
 		Scanner sc = new Scanner(System.in);
-		String[] monster = { "monster1", "monster2", "monster3" };
+		String[] monster = { "Ghoul", "Ghoul", "Ghoul" };
 		int[] hpMon = { 5, 15, 10 };
 		String[] options = { "head", "torso", "right arm", "left arm" };
 		int rand = (int) (Math.random() * 2);
