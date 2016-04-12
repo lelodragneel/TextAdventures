@@ -62,8 +62,8 @@ public class City extends Area {
 		
 		String direction;
 		boolean directionFound = false;
-		System.out.println("You proceed straight ahead. The buildings seem taller from this angle, but also a lot more… run down?");
-		System.out.println("Something seems to have driven the city's inhabitants away…");
+		System.out.println("You proceed straight ahead. The buildings seem taller from this angle, but also a lot more! run down?");
+		System.out.println("Something seems to have driven the city's inhabitants away!");
 		
 		if(rooms[0][1].getMinion().isAlive())
 		{
@@ -157,7 +157,7 @@ public class City extends Area {
 		
 		String direction;
 		boolean directionFound=false;
-		System.out.println("This path is darker and narrower…\nAs you approach the cluster of ramshackle houses, the smell of woodsmoke and something cooking grows stronger. ");
+		System.out.println("This path is darker and narrower!\nAs you approach the cluster of ramshackle houses, the smell of woodsmoke and something cooking grows stronger. ");
 		System.out.println("A few of the houses' windows are lit, and you feel many eyes upon you."); 
 		System.out.println("You back into the shadows to assess your situation.");
 		if(rooms[1][0].getMinion().isAlive())
@@ -248,8 +248,8 @@ public class City extends Area {
 	{
 		boolean solved = false;
 		System.out.println("In one mighty and very heroic leap, you hop the fence and land majestically in the sad-looking field. ");
-		System.out.println("You keep walking forward, and… oh. It's a cliff. There's nothing here.");
-		System.out.println("You turn to go back and notice that the fence seems a lot higher somehow. Jumping doesn't look like it will do the trick…");
+		System.out.println("You keep walking forward, and! oh. It's a cliff. There's nothing here.");
+		System.out.println("You turn to go back and notice that the fence seems a lot higher somehow. Jumping doesn't look like it will do the trick!");
 		System.out.println("You look around for something that might help you escape. You find a POTION in the grass, but admittedly, there isn't much.");
 		core.getPlayer().findPotion();
 		rooms[2][2].setPotion(false);

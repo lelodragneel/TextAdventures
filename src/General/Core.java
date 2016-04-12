@@ -25,11 +25,10 @@ public class Core {
 		 * instantiate necessary variables
 		 */
 		this.player = player;
-
+		
 		/*
 		 * create 3 different areas. Each contains 9 rooms
-		 */
-			
+		 */			
 		 // create area #1 (cave)
 		 cave = new Cave(this);
 		
@@ -48,12 +47,12 @@ public class Core {
 	 * also does any calculations necessary
 	 */
 	public void gameEngine() {
-
+		
 		// initialize & instantiate variables
 		keyboard = new Scanner(System.in);
 		
 		// introduce game objective
-		System.out.println("Welcome " + player.getName() + " to the world of Alera. You are an adventure who has returned to their home village.");
+		System.out.println("Welcome " + player.getName() + " to the world of Alera. You are an adventurer who has returned to their home village.");
 		System.out.println("This morning you went to the woods to gather fire wood for your home. \nHowever, when you returned to the village you found the houses on fire.");
 		System.out.println("Going through the village you see all the villagers have been killed and their homes destroyed. \nArriving to the center of town you see the mayor bleeding on the ground.");
 		System.out.println("Rushing to him you see he is still alive.Helping him sit up he begins to speak.");
@@ -62,16 +61,16 @@ public class Core {
 		
 		System.out.println(
 				"The game contains 3 areas: Cave, City, and Woods. The Cave and City have 9 Rooms. Every one of those rooms "
-				+ "contain a Boss which you can attempt to kill. If you succeed in killing the Cave and City's boss, "
+				+ "contain a Boss which you can attempt to kill. \nIf you succeed in killing the Cave and City's boss, "
 				+ "you will have the chance to face the game's final boss located somewhere in the woods. Once defeated, "
 				+ "you win the game.");
 		System.out.println("Furthermore, each room of each area contains different things. "
 				+ "You may perhaps encounter a minion in one room, or maybe find a potion in another. "
 				+ "Rooms can also be empty. ");
 		
-		// let the player chose an asrea to enter
+		// let the player chose an area to enter
 		chooseArea();
-					
+
 	}
 	
 	// player picks an area to enter
@@ -110,9 +109,10 @@ public class Core {
 				// start the city adventures
 				woods.startWoods();
 				
-			} else 
+			} else {
 				System.out.println("In order to enter the woods and have a chance to kill the final boss, you must kill the two bosses found in Cave and City.");
-
+				chooseArea();
+			}
 		} 
 	}
 	
