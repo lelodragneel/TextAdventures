@@ -23,10 +23,17 @@ public class Cave extends Area {
 		rooms[0][1] = new Room(null, null, null, false);
 		rooms[0][2] = new Room(null, null, null, true);
 		rooms[1][0] = new Room(null, null, null, false);
+<<<<<<< Updated upstream
 		rooms[1][1] = new Room(new Boss(1, 1, "Bossy guy"), null, null, false);
 		rooms[1][2] = new Room(null, new Minion(1, 1, "Troll"), new Item(5, 0, "[Gloves] +5 Attack"), false);
 		rooms[2][0] = new Room(null, null, null, true);
 		rooms[2][1] = new Room(null, new Minion(1, 1, "Troll"), new Item(0, 20, "[Shoulder Pads] +20 Health"), false);
+=======
+		rooms[1][1] = new Room(new Boss(1, 1, "Troll King"), null, null, false);
+		rooms[1][2] = new Room(null, new Minion(1, 1, "Troll"), new Item(1, 1, "Robe"), false);
+		rooms[2][0] = new Room(null, null, null, true);
+		rooms[2][1] = new Room(null, new Minion(1, 1, "Troll"), new Item(1, 1, "Cape"), false);
+>>>>>>> Stashed changes
 		rooms[2][2] = new Room(null, null, null, true);
 		keyboard = new Scanner(System.in);
 	}
@@ -187,6 +194,7 @@ public class Cave extends Area {
 			core.fightEnemy(rooms[1][2].getMinion());
 			core.getPlayer().addToInventory(rooms[2][1].getItem());
 		}
+<<<<<<< Updated upstream
 
 		System.out.println("From the left you hear a voice scream as you defeat the troll \"HOW DARE YOU KILL MY BRETHEREN. COME HERE SO I MAY TAKE REVENGE!\"" +
 				"There is also a hole straight ahead that appears to lead to another open area.");
@@ -216,6 +224,16 @@ public class Cave extends Area {
 			rooms[2][2].setPotion(false);
 		}
 
+=======
+		System.out.println("From the left you hear a voice scream as you defeat the troll \"HOW DARE YOU KILL MY BRETHREN. COME HERE SO I MAY TAKE REVENGE!\"" +
+		"There is also a hole straight ahead that appears to lead to another open area.");
+	}
+	public void room8()
+	{
+		
+		System.out.println("You see a skeleton of a body sitting in the far corner. It holds a note and beside it lays a potion." +
+		" The note reads \"There is no way out. Here is where I stay for fear that the troll will eat me alive...\"");
+>>>>>>> Stashed changes
 		System.out.println("The only way to go is back.");
 		boolean awaitingDecision = true;
 		while(awaitingDecision)
