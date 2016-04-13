@@ -68,6 +68,7 @@ public class City extends Area {
 		if(rooms[0][1].getMinion().isAlive()) {
 			System.out.println("As you stare thoughtfully upward, something grabs you from behind!");
 			core.fightEnemy(rooms[0][1].getMinion());
+				
 		}
 		System.out.println("Wait... what's that straight ahead?"
 				+ "\nTo your right, a loud voice rings out: \"HOW DARE YOU ENTER MY CITY? FACE ME, SO THAT I MAY DEFEAT YOU ONCE AND FOR ALL.\""
@@ -75,7 +76,9 @@ public class City extends Area {
 				+ "\nType f to move forward and r to move to your right. To go back to the crossroads, type b.");
 		
 		direction = keyboard.nextLine();
+		
 		while(!directionFound){
+			
 			if(direction.equals("f")){
 				directionFound=true;
 				room3();
@@ -93,6 +96,7 @@ public class City extends Area {
 				direction=keyboard.nextLine();
 			}
 		}
+		
 	}
 	public void room3()
 	{
@@ -100,15 +104,15 @@ public class City extends Area {
 		String direction;
 		boolean directionFound=false;
 		System.out.println("The street ahead of you is littered with debris. ");
-		if(rooms[0][2].getItem()!=null){
-			System.out.println("The shiny thing that caught your eye seems to be buried in the mess. Gingerly, you reach into one of the piles.");
-			core.getPlayer().addToInventory(rooms[0][2].getItem());
-			rooms[0][2].setItem(null);
-		}
 		if(rooms[0][2].getMinion().isAlive())
 		{
 			System.out.println("Before you can even investigate what you've found, another creature leaps out from the shadows.");
-			core.fightEnemy(rooms[0][2].getMinion());
+			// true if you kill enemy, false if you flee
+			if (core.fightEnemy(rooms[0][2].getMinion())) {
+				System.out
+						.println("The shiny thing that caught your eye seems to be buried in the mess. Gingerly, you reach into one of the piles.");
+				core.getPlayer().addToInventory(rooms[0][2].getItem());
+			}			
 		}
 		
 		System.out.println("\nThe path veers off to the right. The only other way to go is backward. "
@@ -166,19 +170,16 @@ public class City extends Area {
 		if(rooms[1][0].getMinion().isAlive())
 		{
 			System.out.println("Unfortunately, you are not alone.\n");
-			core.fightEnemy(rooms[1][0].getMinion());
-			core.getPlayer().addToInventory(rooms[1][0].getItem());
-		}
-		//If it is the user's first time in the room, an item is found.
-		if(rooms[1][0].getItem()!=null){
-			core.getPlayer().addToInventory(rooms[1][0].getItem());
-			rooms[1][0].setItem(null);
+			// true if you kill enemy, false if you flee
+			if (core.fightEnemy(rooms[1][0].getMinion()))
+				core.getPlayer().addToInventory(rooms[1][0].getItem());
+			
 		}
 		System.out.println("\nThe road extends in two directions. From the left, a voice taunts: \"Come here! Allow me to introduce myself!\""
 				+ "\nYou may also go forward or turn back to the crossroads, if you choose."
 				+ "\nMake your choice. Type l to go to the left, f to move forward, and b to go back to the previous room.");
 		direction=keyboard.next();
-		while(!directionFound){
+		while(!directionFound) {
 			if(direction.equals("f")){
 				directionFound=true;
 				//to room with opening door
