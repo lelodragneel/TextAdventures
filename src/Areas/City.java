@@ -52,7 +52,7 @@ public class City extends Area {
 				room5();
 			}
 			else if(direction.equals("info")){
-				//display info
+				core.displayInfo();
 				direction=keyboard.next();
 			}
 			else{
@@ -97,7 +97,7 @@ public class City extends Area {
 				room1();
 			}
 			else if(direction.equals("info")){
-				//display info
+				core.displayInfo();
 				direction=keyboard.next();
 			}
 			else{
@@ -138,7 +138,7 @@ public class City extends Area {
 				room2();
 			}
 			else if(direction.equals("info")){
-				//display info
+				core.displayInfo();
 				direction=keyboard.next();
 			}
 			else {
@@ -169,7 +169,7 @@ public class City extends Area {
 				room3();
 			}
 			else if(direction.equals("info")){
-				//display info
+				core.displayInfo();
 				direction=keyboard.next();
 			}
 			else{
@@ -222,7 +222,7 @@ public class City extends Area {
 				room1();
 			}
 			else if(direction.equals("info")){
-				//display info
+				core.displayInfo();
 				direction=keyboard.next();
 			}
 			else{
@@ -289,7 +289,7 @@ public class City extends Area {
 				room9();
 			}
 			else if(direction.equals("info")){
-				//display info
+				core.displayInfo();
 				direction=keyboard.next();
 			}
 			else{
