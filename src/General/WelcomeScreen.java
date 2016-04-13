@@ -26,17 +26,17 @@ public class WelcomeScreen extends JFrame implements ActionListener {
 	private JLabel enterName;
 
 	public WelcomeScreen() {
-		setTitle("TextAdventures");
 		
 		/*
 		 * build the welcome frame with all components
 		 */
+		setTitle("TextAdventures");
 		setAlwaysOnTop(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setLocationRelativeTo(null);
 		setResizable(false);
 		setBounds(0, 0, 514, 256);
 		getContentPane().setLayout(null);
+		setLocationRelativeTo(null);
 
 		// label positioned on the left, displaying an image
 		JLabel label_leftPicture = new JLabel("");

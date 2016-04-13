@@ -142,82 +142,99 @@ public class Core {
 		
 		// inform user enemy type
 		if (enemy instanceof Minion) {
-			System.out.println("You encountered a [Minion]");
+			System.out.println("You encountered a [Minion] " + enemy.getName() + "!");
 		}
 		if (enemy instanceof Boss) {
-			System.out.println("You encountered a [Boss]");
+			System.out.println("You encountered a [Boss] " + enemy.getName() + "!");
 		}
 		
-		// possibility of missing your opponent
-		int missedTarget=(int) (Math.random()*4)+1;
-
 		String command;
-
-		System.out.println("Battle with " + enemy.getName() + " is starting...");
-
-		while (true) {
+		System.out.println("Would you like to: "
+				+ "\n    (1) run, or "
+				+ "\n    (2) face the enemy?");
+		
+		int choice = keyboard.nextInt();
+		
+		if (choice == 1) {
 			
-			if(player.getHealth()>0){
-			System.out.println("Type 'attack': ");
-			command = keyboard.next();
-
-				if (command.equalsIgnoreCase("attack")) {
-	
-					// player deals damage to boss
-					//If randomly generated number is not 2, the player successfully damages the boss.
-					if(missedTarget!=2){
-						enemy.setHealth(enemy.getHealth() - player.getAttack());
-						System.out.println("You dealt " + player.getAttack() + " damage to " + enemy.getName() + "." + enemy.getName() + "'s health is now "
-								+ enemy.getHealth() + ".");
-					}
-					//Otherwise, the player misses and does no damage for that turn.
-					else{
-						System.out.println(enemy.getName() + " dodged your attack! His health remains at " + enemy.getHealth() + ".");
-					}
-	
-					// check if boss is dead after dealing damage to him
-					if (enemy.getHealth() <= 0) {
-						System.out.println("You defeated " + enemy.getName() + "!");
-						enemy.setAlive(false);
-						return;
-					}
+			System.out.println("You successfully flee the fight, but the enemy remains alive.");
+			return;
+			
+		} else if (choice == 2) {
+			
+			// possibility of missing your opponent
+			int missedTarget=(int) (Math.random()*4)+1;
+			
+			System.out.println("Battle with " + enemy.getName() + " is starting...");
+			
+			while (true) {
+				
+				if(player.getHealth()>0){
+					System.out.println("Type 'attack': ");
+					command = keyboard.next();
 					
-					//A new random number is assigned to missedTarget
-					missedTarget=(int) (Math.random()*4)+1;
-	
-					// enemy deals damage to you
-					//If randomly generated number is 1 or 2, the minion successfully damages the player.
-					if(missedTarget<3){
-						player.setHealth(player.getHealth() - enemy.getAttack());
-						System.out.println(enemy.getName() + " hit you for " + enemy.getAttack() + " damage. Your health is now "
-								+ player.getHealth() + "/" + player.getMaxHealth() + ".");
+					if (command.equalsIgnoreCase("attack")) {
+						
+						// player deals damage to boss
+						//If randomly generated number is not 2, the player successfully damages the boss.
+						if(missedTarget!=2){
+							enemy.setHealth(enemy.getHealth() - player.getAttack());
+							System.out.println("You dealt " + player.getAttack() + " damage to " + enemy.getName() + "." + enemy.getName() + "'s health is now "
+									+ enemy.getHealth() + ".");
+						}
+						//Otherwise, the player misses and does no damage for that turn.
+						else{
+							System.out.println(enemy.getName() + " dodged your attack! His health remains at " + enemy.getHealth() + ".");
+						}
+						
+						// check if boss is dead after dealing damage to him
+						if (enemy.getHealth() <= 0) {
+							System.out.println("You defeated " + enemy.getName() + "!");
+							enemy.setAlive(false);
+							return;
+						}
+						
+						//A new random number is assigned to missedTarget
+						missedTarget=(int) (Math.random()*4)+1;
+						
+						// enemy deals damage to you
+						//If randomly generated number is 1 or 2, the minion successfully damages the player.
+						if(missedTarget<3){
+							player.setHealth(player.getHealth() - enemy.getAttack());
+							System.out.println(enemy.getName() + " hit you for " + enemy.getAttack() + " damage. Your health is now "
+									+ player.getHealth() + "/" + player.getMaxHealth() + ".");
+						}
+						//Otherwise, the minion misses and does no damage for that turn.
+						else{
+							System.out.println("You dodge " + enemy.getName() + "'s attack! Your health remains at " + player.getHealth() + "/" + player.getMaxHealth() + ".");
+						}
+						
+						//A new random number is assigned to missedTarget
+						missedTarget=(int) (Math.random()*4)+1;
+						
 					}
-					//Otherwise, the minion misses and does no damage for that turn.
-					else{
-						System.out.println("You dodge " + enemy.getName() + "'s attack! Your health remains at " + player.getHealth() + "/" + player.getMaxHealth() + ".");
-					}
-					
-					//A new random number is assigned to missedTarget
-					missedTarget=(int) (Math.random()*4)+1;
- 
 				}
+				// check if player is dead
+				else {
+					if (player.getPotions() > 0) {
+						player.setPotions(player.getPotions() - 1);
+						player.setHealth(player.getMaxHealth());
+						System.out.println(
+								"You consumed a health potion right before your death, and you recovered your full health back to " + player.getHealth() + "/" + player.getMaxHealth() + ". \nYou now have "
+										+ player.getPotions() + " health potions left.");
+						
+					}
+					else { 
+						System.out.println("You died. The game is over. And you thought Dark Souls II was bad, haha\n");
+						System.exit(0);
+					}
+				}		
 			}
-			// check if player is dead
-			else {
-				if (player.getPotions() > 0) {
-					player.setPotions(player.getPotions() - 1);
-					player.setHealth(player.getMaxHealth());
-					System.out.println(
-							"You consumed a health potion right before your death, and you recovered your full health back to " + player.getHealth() + "/" + player.getMaxHealth() + ". \nYou now have "
-									+ player.getPotions() + " health potions left.");
-
-				}
-				else{ 
-					System.out.println("You died. The game is over. And you thought Dark Souls II was bad, haha\n");
-					chooseArea();
-				}
-			}		
+		} else {
+			System.out.println("Enter a valid command!");
+			fightEnemy(enemy);
 		}
+		
 	}
 
 

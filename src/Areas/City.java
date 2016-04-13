@@ -65,13 +65,12 @@ public class City extends Area {
 		System.out.println("You proceed straight ahead. The buildings seem taller from this angle, but also a lot more... run down?");
 		System.out.println("Something seems to have driven the city's inhabitants away.");
 		
-		if(rooms[0][1].getMinion().isAlive())
-		{
+		if(rooms[0][1].getMinion().isAlive()) {
 			System.out.println("As you stare thoughtfully upward, something grabs you from behind!");
 			core.fightEnemy(rooms[0][1].getMinion());
 		}
-		System.out.println("\nYou sit down on a bit of rubble to recover. Wait... what's that straight ahead?"
-				+ "\nTo your right, a loud voice rings out: \"HOW DARE YOU HARM MY MINION? FACE ME, SO THAT I MAY DEFEAT YOU ONCE AND FOR ALL.\""
+		System.out.println("Wait... what's that straight ahead?"
+				+ "\nTo your right, a loud voice rings out: \"HOW DARE YOU ENTER MY CITY? FACE ME, SO THAT I MAY DEFEAT YOU ONCE AND FOR ALL.\""
 				+ "\n\nWill you investigate what lies ahead, or accept the challenge?"
 				+ "\nType f to move forward and r to move to your right. To go back to the crossroads, type b.");
 		
@@ -121,7 +120,7 @@ public class City extends Area {
 				directionFound=true;
 				room2();
 			}
-			else{
+			else {
 				System.out.println("Command not recognized. Type r to go right, or b to turn back.");
 				direction=keyboard.nextLine();
 			}
@@ -268,13 +267,16 @@ public class City extends Area {
 					+ "\n\"You have proven yourself to be most irksome in coming here. Once I defeat you, I will truly make this city great again!\""
 					+ "\n\nYou prepare yourself for battle.");
 			core.fightEnemy(rooms[1][1].getBoss());
-			System.out.println("After killing the Sewage Beast you feel somehow stronger. You leave the city in search of the other horrible monsters.\n");
-			core.chooseArea();
-		}
-		else
+			if (!rooms[1][1].getBoss().isAlive()) {
+				System.out.println("After killing the Sewage Beast you feel somehow stronger. You leave the city in search of the other horrible monsters.\n");
+				core.chooseArea();			
+			}
+		} else {
 			System.out.println("You enter the plaza to find the creature already dead. Nice.");
 			core.chooseArea();
+		}
 	}
+	
 	public boolean fencePuzzle(){
 		
 		String direction,choice="*";
@@ -320,6 +322,7 @@ public class City extends Area {
 			System.out.println("You put the HAT on your head. Nothing happens.\nYou do look awfully nice though.\n");
 		return solved;
 	}
+	
 	//Get room to allow game engine to access minions and potions
 	public Room getRoom(int r, int c)
 	{
