@@ -140,13 +140,13 @@ public class Core {
 	// method that handles the fighting between player and minions/bosses
 	public void fightEnemy(Enemy enemy) {
 		
-// 		testing
-//		if (enemy instanceof Minion) {
-//			System.out.println("it's a minion");
-//		}
-//		if (enemy instanceof Boss) {
-//			System.out.println("it's a boss");
-//		}
+		// inform user enemy type
+		if (enemy instanceof Minion) {
+			System.out.println("You encountered a [Minion]");
+		}
+		if (enemy instanceof Boss) {
+			System.out.println("You encountered a [Boss]");
+		}
 		
 		// possibility of missing your opponent
 		int missedTarget=(int) (Math.random()*4)+1;
@@ -156,6 +156,7 @@ public class Core {
 		System.out.println("Battle with " + enemy.getName() + " is starting...");
 
 		while (true) {
+			
 			if(player.getHealth()>0){
 			System.out.println("Type 'attack': ");
 			command = keyboard.next();
@@ -171,7 +172,7 @@ public class Core {
 					}
 					//Otherwise, the player misses and does no damage for that turn.
 					else{
-						System.out.println(enemy.getName() + " dodged your attack! His health is still " + enemy.getHealth() + ".");
+						System.out.println(enemy.getName() + " dodged your attack! His health remains at " + enemy.getHealth() + ".");
 					}
 	
 					// check if boss is dead after dealing damage to him
@@ -189,11 +190,11 @@ public class Core {
 					if(missedTarget<3){
 						player.setHealth(player.getHealth() - enemy.getAttack());
 						System.out.println(enemy.getName() + " hit you for " + enemy.getAttack() + " damage. Your health is now "
-								+ player.getHealth() + ".");
+								+ player.getHealth() + "/" + player.getMaxHealth() + ".");
 					}
 					//Otherwise, the minion misses and does no damage for that turn.
 					else{
-						System.out.println("You dodge " + enemy.getName() + "'s attack! Your health is still " + player.getHealth()+".");
+						System.out.println("You dodge " + enemy.getName() + "'s attack! Your health remains at " + player.getHealth() + "/" + player.getMaxHealth() + ".");
 					}
 					
 					//A new random number is assigned to missedTarget
@@ -205,9 +206,9 @@ public class Core {
 			else {
 				if (player.getPotions() > 0) {
 					player.setPotions(player.getPotions() - 1);
-					player.setHealth(100);
+					player.setHealth(player.getMaxHealth());
 					System.out.println(
-							"You consumed a health potion right before death, and recovered your health back to " + player.getHealth() + ". \nYou now have "
+							"You consumed a health potion right before your death, and you recovered your full health back to " + player.getHealth() + "/" + player.getMaxHealth() + ". \nYou now have "
 									+ player.getPotions() + " health potions left.");
 
 				}

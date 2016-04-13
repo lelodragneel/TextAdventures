@@ -6,15 +6,17 @@ public class Character {
 
 	private String name;
 	private int health;
+	private int maxHealth;
 	private int attack;
 	private int potions;
 	private String type;
 	private ArrayList<Item> inventory;
 
-	public Character(String type, String name, int health, int attack, int potions) {
+	public Character(String type, String name, int maxHealth, int attack, int potions) {
 		this.type = type;
 		this.name = name;
-		this.health = health;
+		this.maxHealth = maxHealth;
+		this.health = maxHealth;
 		this.attack = attack;
 		this.potions = potions;
 		inventory = new ArrayList<Item>();
@@ -69,12 +71,20 @@ public class Character {
 	
 	public void addToInventory(Item item) {
 		inventory.add(item);
-		health += item.getHealthIncrease();
+		maxHealth += item.getHealthIncrease();
 		attack += item.getDamageIncrease();
 		System.out.println("You picked up " + item.getItemName() + "!");
 		if (item.getHealthIncrease() > 0)
-			System.out.println("Your health has increased to " + health);
+			System.out.println("Your maximum health has increased from " + (maxHealth - item.getHealthIncrease()) + " to " + maxHealth + ".");
 		if (item.getDamageIncrease() > 0)
-			System.out.println("Your attack damage has increased to " + attack);
+			System.out.println("Your attack damage has increased from  " + (attack - item.getDamageIncrease()) + attack + ".");
+	}
+
+	public int getMaxHealth() {
+		return maxHealth;
+	}
+
+	public void setMaxHealth(int maxHealth) {
+		this.maxHealth = maxHealth;
 	}
 }
