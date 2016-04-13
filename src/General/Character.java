@@ -1,6 +1,5 @@
 package General;
 
-import java.util.ArrayList;
 
 public class Character {
 
@@ -10,7 +9,6 @@ public class Character {
 	private int attack;
 	private int potions;
 	private String type;
-	private ArrayList<Item> inventory;
 
 	public Character(String type, String name, int maxHealth, int attack, int potions) {
 		this.type = type;
@@ -19,7 +17,6 @@ public class Character {
 		this.health = maxHealth;
 		this.attack = attack;
 		this.potions = potions;
-		inventory = new ArrayList<Item>();
 	}
 
 	// get methods
@@ -71,8 +68,7 @@ public class Character {
 	
 	// add loot to the player's inventory and increase stats based on the item bonus
 	public void addToInventory(Item item) {
-		
-		inventory.add(item);
+	
 		System.out.println("You picked up " + item.getItemName() + "!");
 		
 		// check if the looted item increases health

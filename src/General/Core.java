@@ -193,7 +193,7 @@ public class Core {
 						//If randomly generated number is not 2, the player successfully damages the boss.
 						if(missedTarget!=2){
 							enemy.setHealth(enemy.getHealth() - player.getAttack());
-							System.out.println("You dealt " + player.getAttack() + " damage to " + enemy.getName() + "." + enemy.getName() + "'s health is now "
+							System.out.println("You dealt " + player.getAttack() + " damage to " + enemy.getName() + ". " + enemy.getName() + "'s health is now "
 									+ enemy.getHealth() + ".");
 						}
 						//Otherwise, the player misses and does no damage for that turn.
