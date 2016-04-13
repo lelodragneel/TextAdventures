@@ -9,6 +9,8 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
+import javax.swing.ImageIcon;
+import java.awt.Font;
 
 @SuppressWarnings("serial")
 public class WelcomeScreen extends JFrame implements ActionListener {
@@ -24,6 +26,7 @@ public class WelcomeScreen extends JFrame implements ActionListener {
 	private JLabel enterName;
 
 	public WelcomeScreen() {
+		setTitle("TextAdventures");
 		
 		/*
 		 * build the welcome frame with all components
@@ -37,23 +40,26 @@ public class WelcomeScreen extends JFrame implements ActionListener {
 
 		// label positioned on the left, displaying an image
 		JLabel label_leftPicture = new JLabel("");
-		label_leftPicture.setBounds(10, 11, 100, 100);
+		label_leftPicture.setIcon(new ImageIcon(WelcomeScreen.class.getResource("/General/images/mouth-watering.png")));
+		label_leftPicture.setBounds(10, 11, 64, 100);
 		getContentPane().add(label_leftPicture);
 
 		// label positioned on the right, displaying an image
 		JLabel label_rightPicture = new JLabel("");
-		label_rightPicture.setBounds(388, 11, 100, 100);
+		label_rightPicture.setIcon(new ImageIcon(WelcomeScreen.class.getResource("/General/images/attached-shield.png")));
+		label_rightPicture.setBounds(434, 11, 64, 100);
 		getContentPane().add(label_rightPicture);
 
 		// welcome label
-		JLabel label_welcome = new JLabel("<html>Welcome to <br/>TextAdventures</html>");
-		label_welcome.setHorizontalAlignment(SwingConstants.CENTER);
-		label_welcome.setBounds(159, 11, 190, 32);
-		getContentPane().add(label_welcome);
+		JLabel lblwelcomeToTextadventures = new JLabel("Welcome to TextAdventures");
+		lblwelcomeToTextadventures.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
+		lblwelcomeToTextadventures.setHorizontalAlignment(SwingConstants.CENTER);
+		lblwelcomeToTextadventures.setBounds(159, 11, 190, 32);
+		getContentPane().add(lblwelcomeToTextadventures);
 		
 		// create the warrior button
 		btnWarriorClass = new JButton("Warrior");
-		btnWarriorClass.setBounds(209, 129, 89, 23);
+		btnWarriorClass.setBounds(209, 193, 89, 23);
 		btnWarriorClass.addActionListener(this);
 		btnWarriorClass.setFocusable(false);
 		getContentPane().add(btnWarriorClass);
@@ -61,7 +67,7 @@ public class WelcomeScreen extends JFrame implements ActionListener {
 		
 		// create the thief button
 		btnThiefClass = new JButton("Thief");
-		btnThiefClass.setBounds(110, 129, 89, 23);
+		btnThiefClass.setBounds(110, 193, 89, 23);
 		btnThiefClass.addActionListener(this);
 		btnThiefClass.setFocusable(false);
 		getContentPane().add(btnThiefClass);
@@ -69,17 +75,18 @@ public class WelcomeScreen extends JFrame implements ActionListener {
 		
 		// create the wizard button
 		btnWizardClass = new JButton("Wizard");
-		btnWizardClass.setBounds(308, 129, 89, 23);
+		btnWizardClass.setBounds(308, 193, 89, 23);
 		btnWizardClass.addActionListener(this);
 		btnWizardClass.setFocusable(false);
 		getContentPane().add(btnWizardClass);
 		
 		enterName = new JLabel("Enter Player Name:");
-		enterName.setBounds(50, 60, 150, 50);
+		enterName.setFont(new Font("Comic Sans MS", Font.PLAIN, 12));
+		enterName.setBounds(159, 113, 190, 14);
 		getContentPane().add(enterName);
 		
 		nameInput = new JTextField();
-		nameInput.setBounds(212,70,125,25);
+		nameInput.setBounds(159,138,190,25);
 		getContentPane().add(nameInput);
 		// set frame visible
 		setVisible(true);
