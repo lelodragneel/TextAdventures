@@ -126,15 +126,14 @@ public class City extends Area {
 		String direction;
 		boolean directionFound=false;
 		System.out.println("The street ahead of you is littered with debris. ");
-		if(rooms[0][2].getItem()!=null){
-			System.out.println("The shiny thing that caught your eye seems to be buried in the mess. Gingerly, you reach into one of the piles.");
-			core.getPlayer().addToInventory(rooms[0][2].getItem());
-			rooms[0][2].setItem(null);
-		}
-		if(rooms[0][2].getMinion().isAlive())
-		{
+
+		if (rooms[0][2].getMinion().isAlive()) {
 			System.out.println("Before you can even investigate what you've found, another creature leaps out from the shadows.");
-			core.fightEnemy(rooms[0][2].getMinion());
+			// true if you kill enemy, false if you flee
+			if (core.fightEnemy(rooms[0][2].getMinion())) {
+				System.out.println("The shiny thing that caught your eye seems to be buried in the mess. Gingerly, you reach into one of the piles.");
+				core.getPlayer().addToInventory(rooms[0][2].getItem());
+			}
 		}
 		
 		System.out.println("\nThe path veers off to the right. The only other way to go is backward. "
@@ -214,15 +213,12 @@ public class City extends Area {
 		//Check to see whether the user will have to face a minion
 		if(rooms[1][0].getMinion().isAlive())
 		{
-			System.out.println("Unfortunately, you are not alone.\n");
-			core.fightEnemy(rooms[1][0].getMinion());
-			core.getPlayer().addToInventory(rooms[1][0].getItem());
+			System.out.println("Unfortunately, you are not alone.\n");		
+			// true if you kill enemy, false if you flee
+			if(core.fightEnemy(rooms[1][0].getMinion()))
+				core.getPlayer().addToInventory(rooms[1][0].getItem());
 		}
-		//If it is the user's first time in the room, an item is found.
-		if(rooms[1][0].getItem()!=null){
-			core.getPlayer().addToInventory(rooms[1][0].getItem());
-			rooms[1][0].setItem(null);
-		}
+
 		System.out.println("\nThe road extends in two directions. From the left, a voice taunts: \"Come here! Allow me to introduce myself!\""
 				+ "\nYou may also go forward or turn back to the crossroads, if you choose."
 				+ "\nMake your choice. \nType \"info\" to display game information."
@@ -370,8 +366,8 @@ public class City extends Area {
 			System.out.println("It's a giant Sewage Beast. \"AH, WELCOME PESKY TRAVELLER!\" it roars."
 					+ "\n\"You have proven yourself to be most irksome in coming here. Once I defeat you, I will truly make this city great again!\""
 					+ "\n\nYou prepare yourself for battle.");
-			core.fightEnemy(rooms[1][1].getBoss());
-			if (!rooms[1][1].getBoss().isAlive()) {
+			// true if you kill enemy, false if you flee
+			if(core.fightEnemy(rooms[1][1].getBoss())){
 				System.out.println("After killing the Sewage Beast you feel somehow stronger. You leave the city in search of the other horrible monsters.\n");
 				core.chooseArea();			
 			}

@@ -46,9 +46,9 @@ public class Cave extends Area {
 			}
 		System.out.println("The room has two doorways, one directly across from where you entered and one off to the right. \nSomehwere further into the cave " +
 		"you hear a menacing voice. \"YOU DARE ENTER MY LAIR? TURN BACK NOW OR FACE CERTAIN DEATH!\"");
+		
 		//Loop to wait for correct decision to be made by user
-		boolean awaitingDecision = true;
-		while(awaitingDecision)
+		while(true)
 		{
 			System.out.println("\nWhich doorway will you choose? "
 					+ "\n    Forward = \"f\""
@@ -75,8 +75,7 @@ public class Cave extends Area {
 		System.out.println("You run into another empty room. There are another 2 doorways to choose from. \nThere is a doorway straight ahead " +
 				" and another off to the right. \nA loud voice comes from the doorway on the right, \"Come this way traveller. FACE ME IF YOU DARE!\"");
 
-		boolean awaitingDecision = true;
-		while(awaitingDecision)
+		while(true)
 		{
 			System.out.println("\nWhich doorway will you choose? "
 					+ "\n    Forward = \"f\""
@@ -113,8 +112,7 @@ public class Cave extends Area {
 
 		System.out.println("There is a doorway on the right giving off a foul stench.");
 
-		boolean awaitingDecision = true;
-		while(awaitingDecision)
+		while(true)
 		{
 			System.out.println("\nWhich doorway will you choose? "
 					+ "\n    Right = \"r\""
@@ -150,8 +148,7 @@ public class Cave extends Area {
 
 		System.out.println("\nThere is a doorway on the right from which you hear a voice. \"Come adventurer, don't be scared.\"");
 
-		boolean awaitingDecision = true;
-		while(awaitingDecision)
+		while(true)
 		{
 			System.out.println("\nWhich doorway will you choose? "
 					+ "\n    Right = \"r\""
@@ -178,8 +175,7 @@ public class Cave extends Area {
 		System.out.println("The doorway leads to another empty room with a doorway to the left and straight ahead. \nFrom the left a voice taunts " +
 				"\"Don't be rude, AHAHA! Come, allow me to introduce myself!\"");
 
-		boolean awaitingDecision = true;
-		while(awaitingDecision)
+		while(true)
 		{
 			System.out.println("\nWhich doorway will you choose?"
 					+ "\n    Forward = \"f\""
@@ -213,8 +209,8 @@ public class Cave extends Area {
 		}
 
 		System.out.println("There is a doorway to the left. Other than left, back is the only option.");
-		boolean awaitingDecision = true;
-		while(awaitingDecision)
+
+		while(true)
 		{
 			System.out.println("\nWhich doorway will you choose? "
 					+ "\n    Left = \"l\""
@@ -250,8 +246,8 @@ public class Cave extends Area {
 
 		System.out.println("\nFrom the left you hear a voice scream as you defeat the troll: \"HOW DARE YOU KILL MY BRETHREN. COME HERE SO I MAY TAKE REVENGE!\"" +
 				"\nThere is also a hole straight ahead that appears to lead to another open area.");
-		boolean awaitingDecision = true;
-		while(awaitingDecision)
+
+		while(true)
 		{
 			System.out.println("\nWhich doorway will you choose?"
 					+ "\n    Forward = \"f\""
@@ -282,8 +278,8 @@ public class Cave extends Area {
 		System.out.println("You see a skeleton of a body sitting in the far corner. It holds a note and beside it lays a potion." +
 		"\nThe note reads \"There is no way out. Here is where I stay for fear that the troll will eat me alive...\"");
 		System.out.println("The only way to go is back.");
-		boolean awaitingDecision = true;
-		while(awaitingDecision)
+
+		while(true)
 		{
 			System.out.println("\nWhich doorway will you choose? "
 					+ "\n    Back = \"b\""
