@@ -63,13 +63,13 @@ public class Core {
 		System.out.println("\nWith this last message the mayor stops breathing.\nInstead of leaving as the mayor said you follow the trail of destruction heading away from the village.");
 		
 		System.out.println(
-				"\nThe game contains 3 areas: Cave, City, and Woods. The Cave and City have 9 Rooms. Every one of those areas "
+				"\nThe game contains 3 areas: Cave, City, and Woods. The Cave and City have 9 Rooms. \nEvery one of those areas "
 				+ "contain a Boss which you can attempt to kill. \nIf you succeed in killing the Cave and City's boss, "
-				+ "you will have the chance to face the game's final boss located somewhere in the woods. Once defeated, "
+				+ "you will have the chance to face the game's final boss located somewhere in the woods. \n\nOnce the final boss is defeated, "
 				+ "you win the game.");
 		System.out.println("\nFurthermore, each room of each area contains different things. "
 				+ "You may perhaps encounter a minion in one room, or maybe find a potion in another. "
-				+ "Rooms can also be empty. ");
+				+ "\nRooms can also be empty. ");
 		
 		// let the player chose an area to enter
 		chooseArea();
