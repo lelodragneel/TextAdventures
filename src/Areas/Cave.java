@@ -23,7 +23,6 @@ public class Cave extends Area {
 		rooms[0][1] = new Room(null, null, null, false);
 		rooms[0][2] = new Room(null, null, null, true);
 		rooms[1][0] = new Room(null, null, null, false);
-
 		rooms[1][1] = new Room(new Boss(200, 5, "Troll King"), null, null, false);
 		rooms[1][2] = new Room(null, new Minion(100, 2, "Troll"), new Item(5, 0, "[Gloves] +5 Attack"), false);
 		rooms[2][0] = new Room(null, null, null, true);
@@ -242,5 +241,17 @@ public class Cave extends Area {
 	public Room getRoom(int r, int c)
 	{
 		return rooms[r][c];
+	}
+	
+	// return the (number of minion kills / total minions)
+	public String getMinionKills() {
+		int kills = 0;
+		if (!rooms[0][0].getMinion().isAlive())
+			kills++;
+		if (!rooms[1][2].getMinion().isAlive())
+			kills++;
+		if (!rooms[2][1].getMinion().isAlive())
+			kills++;
+		return kills + "/3";
 	}
 }

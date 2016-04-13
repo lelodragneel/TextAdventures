@@ -329,4 +329,16 @@ public class City extends Area {
 		return rooms[r][c];
 	}
 	
+	// return the (number of minion kills / total minions)
+	public String getMinionKills() {
+		int kills = 0;
+		if (!rooms[0][1].getMinion().isAlive())
+			kills++;
+		if (!rooms[0][2].getMinion().isAlive())
+			kills++;
+		if (!rooms[1][0].getMinion().isAlive())
+			kills++;
+		return kills + "/3";
+	}
+	
 }

@@ -31,4 +31,6 @@ public abstract class Area {
 
 	//Areas must have getRoom(int, int) method so Core can access Rooms
 	public abstract Room getRoom(int r, int c);
+	
+	public abstract String getMinionKills();
 }

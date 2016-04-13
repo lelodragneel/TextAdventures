@@ -80,15 +80,7 @@ public class Core {
 	public void chooseArea() {
 		
 		// inform the player which bosses are defeated
-		System.out.println("Here are the Cave and City's boss conditions:");
-		if(cave.getRoom(1, 1).getBoss().isAlive())
-			System.out.println("	Cave Boss: Alive");
-		else
-			System.out.println("	Cave Boss: Dead");
-		if(city.getRoom(1, 1).getBoss().isAlive())
-			System.out.println("	City Boss: Alive");
-		else
-			System.out.println("	City Boss: Dead");
+		displayInfo();
 		
 		// player chooses area	
 		System.out.println("There are two areas you can enter: \n(1) Cave \n(2) City \n(3) Woods");
@@ -108,7 +100,7 @@ public class Core {
 			
 			// check if player can enter the woods
 			if(!cave.getRoom(1, 1).getBoss().isAlive() && !city.getRoom(1, 1).getBoss().isAlive()) {
-				System.out.println("Alright, both other bosses are defeated. You may enter the woods! \nThe woods is a confusing maze of different paths you can take. Best of luck finding the final boss.");
+				System.out.println("Both other bosses are defeated. You may enter the woods! \nThe woods is a confusing maze of different paths you can take. Best of luck finding the final boss.");
 				// start the city adventures
 				woods.startWoods();
 				
@@ -122,17 +114,33 @@ public class Core {
 	// print player stats/information/progress 
 	public void displayInfo() {
 		
-		System.out.println("------------------------------------------------");
-		System.out.println("|                  All the Info!               |");
-		System.out.println("------------------------------------------------");
+		String bossStatus;
+		
+		System.out.println("------------------------------------------------------------------------");
+		System.out.println("|                             All the Info!                            |");
+		System.out.println("------------------------------------------------------------------------");
 		System.out.println("Player Stats:");
-		System.out.println("	Health:");
-		System.out.println("	Attack:");
-		System.out.println("Progression:");
-		System.out.println("	Current Area:");
-		System.out.println("	Rooms Discovered:");
-		System.out.println("	Boss Status:");
-		System.out.println("------------------------------------------------");
+		System.out.println("	Health: " + player.getHealth() + "/" + player.getMaxHealth());
+		System.out.println("	Attack: " + player.getAttack());
+		System.out.println("\nProgression:");
+		System.out.println("	Cave:");
+		System.out.println("		Minion Kills: " + cave.getMinionKills());
+		if(cave.getRoom(1, 1).getBoss().isAlive())
+			bossStatus = "alive";
+		else
+			bossStatus = "dead";
+		System.out.println("		Boss Status: " + bossStatus);
+		System.out.println("	City:");
+		System.out.println("		Minion Kills: " + city.getMinionKills());
+		if(city.getRoom(1, 1).getBoss().isAlive())
+			bossStatus = "alive";
+		else
+			bossStatus = "dead";
+		System.out.println("		Boss Status: " + bossStatus);
+		System.out.println("	Woods:");
+		System.out.println("		Final Boss Status: filler"); // TODO implement final boss status
+		System.out.println("		Accessable: " + (!cave.getRoom(1, 1).getBoss().isAlive() && !city.getRoom(1, 1).getBoss().isAlive()));
+		System.out.println("------------------------------------------------------------------------");
 		
 	}
 	
@@ -149,6 +157,8 @@ public class Core {
 		}
 		
 		String command;
+		System.out.println("Your health is " + player.getHealth() + "/" + player.getMaxHealth() + " with attack value of " + player.getAttack() + ".");
+		System.out.println(enemy.getName() + "'s health is " + enemy.getHealth() + " with an attack value of " + enemy.getAttack() + ".");
 		System.out.println("Would you like to: "
 				+ "\n    (1) run, or "
 				+ "\n    (2) face the enemy?");
