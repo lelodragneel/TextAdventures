@@ -100,10 +100,13 @@ public class City extends Area {
 		String direction;
 		boolean directionFound=false;
 		System.out.println("The street ahead of you is littered with debris. ");
-		if(rooms[0][2].getMinion().isAlive())
-		{
+		if(rooms[0][2].getItem()!=null){
 			System.out.println("The shiny thing that caught your eye seems to be buried in the mess. Gingerly, you reach into one of the piles.");
 			core.getPlayer().addToInventory(rooms[0][2].getItem());
+			rooms[0][2].setItem(null);
+		}
+		if(rooms[0][2].getMinion().isAlive())
+		{
 			System.out.println("Before you can even investigate what you've found, another creature leaps out from the shadows.");
 			core.fightEnemy(rooms[0][2].getMinion());
 		}
@@ -159,11 +162,17 @@ public class City extends Area {
 		System.out.println("This path is darker and narrower!\nAs you approach the cluster of ramshackle houses, the smell of woodsmoke and something cooking grows stronger. ");
 		System.out.println("A few of the houses' windows are lit, and you feel many eyes upon you."); 
 		System.out.println("You back into the shadows to assess your situation.");
+		//Check to see whether the user will have to face a minion
 		if(rooms[1][0].getMinion().isAlive())
 		{
 			System.out.println("Unfortunately, you are not alone.\n");
 			core.fightEnemy(rooms[1][0].getMinion());
 			core.getPlayer().addToInventory(rooms[1][0].getItem());
+		}
+		//If it is the user's first time in the room, an item is found.
+		if(rooms[1][0].getItem()!=null){
+			core.getPlayer().addToInventory(rooms[1][0].getItem());
+			rooms[1][0].setItem(null);
 		}
 		System.out.println("\nThe road extends in two directions. From the left, a voice taunts: \"Come here! Allow me to introduce myself!\""
 				+ "\nYou may also go forward or turn back to the crossroads, if you choose."
@@ -172,14 +181,17 @@ public class City extends Area {
 		while(!directionFound){
 			if(direction.equals("f")){
 				directionFound=true;
+				//to room with opening door
 				room6();
 			}
 			else if(direction.equals("l")){
 				directionFound=true;
+				//to boss room
 				room9();
 			}
 			else if(direction.equals("b")){
 				directionFound=true;
+				//to crossroads
 				room1();
 			}
 			else{
@@ -217,6 +229,7 @@ public class City extends Area {
 		String direction;
 		
 		boolean directionFound=false;
+		//If it is the user's first time in the room, a potion is given
 		if(rooms[2][1].getPotion()){
 			System.out.println("Her house is small, but comfortable. \nOnce you are settled with a bowl of stew and a blanket, she tells you about the \"Creature\" that has been terrorizing the city's citizens."
 					+ "\nShe also hands you a homemade POTION. How thoughtful.");
@@ -224,6 +237,7 @@ public class City extends Area {
 			rooms[2][1].setPotion(false);
 			System.out.println("Sounds like the monster you've been looking for. You thank the woman and walk back out into the night.");
 		}
+		//User is directed to the boss regardless of whether a potion is given
 		System.out.println("The old woman has directed you to the path on the left." +
 		"There is, however, also a fence straight ahead that you could probably jump over, if you wanted to."
 		+ "\nWhat will you do? Type l to go left or f to go forward.");
@@ -231,10 +245,12 @@ public class City extends Area {
 		while(!directionFound){
 			if(direction.equals("f")){
 				directionFound=true;
+				//To dead end puzzle room
 				room8();
 			}
 			else if(direction.equals("l")){
 				directionFound=true;
+				//to boss
 				room9();
 			}
 			else{
@@ -245,13 +261,18 @@ public class City extends Area {
 	}
 	public void room8()
 	{
+		//boolean indicates whether or not the user has solved the escape puzzle
 		boolean solved = false;
 		System.out.println("In one mighty and very heroic leap, you hop the fence and land majestically in the sad-looking field. ");
 		System.out.println("You keep walking forward, and... oh. It's a cliff. There's nothing here.");
 		System.out.println("You turn to go back and notice that the fence seems a lot higher somehow. Jumping doesn't look like it will do the trick!\n");
-		System.out.println("You look around for something that might help you escape. You find a POTION in the grass, but admittedly, there isn't much.");
-		core.getPlayer().findPotion();
-		rooms[2][2].setPotion(false);
+		System.out.println("You look around for something that might help you escape.");
+		//Potion given
+		if(rooms[2][2].getPotion()){
+			System.out.println("You find a POTION in the grass, but admittedly, there isn't much else.");
+			core.getPlayer().findPotion();
+			rooms[2][2].setPotion(false);
+		}
 		while(!solved){
 			solved=fencePuzzle();
 		}
