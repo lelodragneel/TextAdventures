@@ -6,10 +6,12 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 import javax.swing.ImageIcon;
+
 import java.awt.Font;
 
 @SuppressWarnings("serial")
@@ -65,15 +67,13 @@ public class WelcomeScreen extends JFrame implements ActionListener {
 		btnWarriorClass.setToolTipText("<html>Base Health: 16 <br />Base Attack: 16</html>");
 		getContentPane().add(btnWarriorClass);
 		
-		
 		// create the thief button
 		btnThiefClass = new JButton("Thief");
 		btnThiefClass.setBounds(110, 193, 89, 23);
 		btnThiefClass.addActionListener(this);
 		btnThiefClass.setFocusable(false);
 		btnThiefClass.setToolTipText("<html>Base Health: 10 <br />Base Attack: 20</html>");
-		getContentPane().add(btnThiefClass);
-		
+		getContentPane().add(btnThiefClass);		
 		
 		// create the wizard button
 		btnWizardClass = new JButton("Wizard");
@@ -83,7 +83,8 @@ public class WelcomeScreen extends JFrame implements ActionListener {
 		btnWizardClass.setToolTipText("<html>Base Health: 20 <br />Base Attack: 10</html>");
 		getContentPane().add(btnWizardClass);
 		
-		enterName = new JLabel("Enter Player Name:");
+		// ask the player to input his name
+		enterName = new JLabel("Enter your name:");
 		enterName.setFont(new Font("Comic Sans MS", Font.PLAIN, 12));
 		enterName.setBounds(159, 113, 190, 14);
 		getContentPane().add(enterName);
@@ -91,6 +92,7 @@ public class WelcomeScreen extends JFrame implements ActionListener {
 		nameInput = new JTextField();
 		nameInput.setBounds(159,138,190,25);
 		getContentPane().add(nameInput);
+		
 		// set frame visible
 		setVisible(true);
 
@@ -104,17 +106,14 @@ public class WelcomeScreen extends JFrame implements ActionListener {
 		if(evt.getSource().equals(btnWarriorClass)) {
 			player = new Character("Warrior", nameInput.getText(), 16, 16, 1);
 			startGame(player);
-			dispose();
 		}
 		else if(evt.getSource().equals(btnThiefClass)) {
 			player = new Character("Thief" , nameInput.getText(), 10, 20, 1);
 			startGame(player);
-			dispose();
 		}
 		else if(evt.getSource().equals(btnWizardClass)) {
 			player = new Character("Wizard", nameInput.getText(), 20, 10, 1);
 			startGame(player);
-			dispose();
 		}
 	}
 	
@@ -124,13 +123,21 @@ public class WelcomeScreen extends JFrame implements ActionListener {
 	 */
 	public void startGame(Character player) {
 
-		// safely start the game
-		SwingUtilities.invokeLater(new Runnable() {
-			public void run() {
-				new Core(player);
-			}
-		});
-		
+		// if textfield is empty, prompt
+		if (nameInput.getText().equals("")) {
+			JOptionPane.showMessageDialog(this, "You must enter your name!");
+		} else {
+
+			// close this welcome frame
+			dispose();
+
+			// safely start the game
+			SwingUtilities.invokeLater(new Runnable() {
+				public void run() {
+					new Core(player);
+				}
+			});
+		}
 	}
 	
 	/*
