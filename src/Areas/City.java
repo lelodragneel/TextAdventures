@@ -11,10 +11,11 @@ import General.Core;
 
 public class City extends Area {
 	
-	//instance variables
-	private Core core;
-
+	/*
+	 * constructor
+	 */
 	public City(Core core) {
+		
 		//use getPlayer method to get the player
 		keyboard = new Scanner(System.in);
 		this.core = core;
@@ -31,7 +32,10 @@ public class City extends Area {
 		
 	}
 	
-	//The rooms
+	/*
+	 * Room #1
+	 * Empty
+	 */
 	public void room1()
 	{
 
@@ -63,6 +67,10 @@ public class City extends Area {
 		
 	}
 
+	/*
+	 * Room #2
+	 * Contains minion
+	 */
 	public void room2()
 	{
 		
@@ -106,6 +114,12 @@ public class City extends Area {
 			}
 		}
 	}
+	
+	/*
+	 * Room #3
+	 * Contains minion
+	 * Drops [Shield] +30 Health
+	 */
 	public void room3()
 	{
 		
@@ -147,6 +161,11 @@ public class City extends Area {
 			}
 		}
 	}
+	
+	/*
+	 * Room #4
+	 * Empty
+	 */
 	public void room4()
 	{
 		
@@ -178,6 +197,12 @@ public class City extends Area {
 			}
 		}
 	}
+	
+	/*
+	 * Room #5
+	 * Contains minion
+	 * Drops [Ring] +10 Attack
+	 */
 	public void room5()
 	{
 		
@@ -231,6 +256,11 @@ public class City extends Area {
 			}
 		}
 	}
+	
+	/*
+	 * Room #6
+	 * Empty
+	 */
 	public void room6()
 	{
 		String direction;
@@ -257,6 +287,11 @@ public class City extends Area {
 			}
 		}
 	}
+	
+	/*
+	 * Room #7
+	 * Contains health potion
+	 */
 	public void room7()
 	{
 		String direction;
@@ -298,6 +333,11 @@ public class City extends Area {
 			}
 		}
 	}
+	
+	/*
+	 * Room #8
+	 * Contains health potion
+	 */
 	public void room8()
 	{
 		//boolean indicates whether or not the user has solved the escape puzzle
@@ -319,6 +359,10 @@ public class City extends Area {
 		room7();
 	}
 	
+	/*
+	 * Room #9
+	 * Contains boss
+	 */
 	public void room9()
 	{
 		if(rooms[1][1].getBoss().isAlive()){
@@ -337,6 +381,9 @@ public class City extends Area {
 		}
 	}
 	
+	/*
+	 * puzzle for room 8
+	 */
 	public boolean fencePuzzle(){
 		
 		String direction,choice="*";
