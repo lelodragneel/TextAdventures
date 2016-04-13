@@ -49,12 +49,17 @@ public class Cave extends Area {
 		boolean awaitingDecision = true;
 		while(awaitingDecision)
 		{
-			System.out.println("\nWhich doorway will you choose? Forward = \"f\", Right = \"r\"");
+			System.out.println("\nWhich doorway will you choose? "
+					+ "\n    Forward = \"f\""
+					+ "\n    Right = \"r\""
+					+ "\n    or type \"info\" to display overall progress.");
 			String move = keyboard.next();
 			if(move.equals("r"))
 				room5();
 			else if(move.equals("f"))
 				room2();
+			else if (move.equals("info"))
+				core.displayInfo();			
 			else
 				System.out.println("Incorrect input, try again");
 		}
@@ -68,7 +73,11 @@ public class Cave extends Area {
 		boolean awaitingDecision = true;
 		while(awaitingDecision)
 		{
-			System.out.println("\nWhich doorway will you choose? Forward = \"f\", Right = \"r\", Back = \"b\"");
+			System.out.println("\nWhich doorway will you choose? "
+					+ "\n    Forward = \"f\""
+					+ "\n    Right = \"r\""
+					+ "\n    Back = \"b\""
+					+ "\n    or type \"info\" to display overall progress.");
 			String move = keyboard.next();
 			if(move.equals("r"))
 				room9();
@@ -76,6 +85,8 @@ public class Cave extends Area {
 				room3();
 			else if(move.equals("b"))
 				room1();
+			else if (move.equals("info"))
+				core.displayInfo();
 			else
 				System.out.println("Incorrect input, try again");
 		}
@@ -96,12 +107,17 @@ public class Cave extends Area {
 		boolean awaitingDecision = true;
 		while(awaitingDecision)
 		{
-			System.out.println("\nWhich doorway will you choose? Right = \"r\", Back = \"b\"");
+			System.out.println("\nWhich doorway will you choose? "
+					+ "\n    Right = \"r\""
+					+ "\n    Back = \"b\""
+					+ "\n    or type \"info\" to display overall progress.");
 			String move = keyboard.next();
 			if(move.equals("r"))
 				room4();
 			else if(move.equals("b"))
 				room2();
+			else if (move.equals("info"))
+				core.displayInfo();
 			else
 				System.out.println("Incorrect input, try again");
 		}
@@ -123,12 +139,17 @@ public class Cave extends Area {
 		boolean awaitingDecision = true;
 		while(awaitingDecision)
 		{
-			System.out.println("\nWhich doorway will you choose? Right = \"r\", Back = \"b\"");
+			System.out.println("\nWhich doorway will you choose? "
+					+ "\n    Right = \"r\""
+					+ "\n    Back = \"b\""
+					+ "\n    or type \"info\" to display overall progress.");
 			String move = keyboard.next();
 			if(move.equals("r"))
 				room9();
 			else if(move.equals("b"))
 				room3();
+			else if (move.equals("info"))
+				core.displayInfo();
 			else
 				System.out.println("Incorrect input, try again");
 		}
@@ -142,7 +163,11 @@ public class Cave extends Area {
 		boolean awaitingDecision = true;
 		while(awaitingDecision)
 		{
-			System.out.println("\nWhich doorway will you choose? Forward = \"f\", Left = \"l\", Back = \"b\"");
+			System.out.println("\nWhich doorway will you choose?"
+					+ "\n    Forward = \"f\""
+					+ "\n    Left = \"l\""
+					+ "\n    Back = \"b\""
+					+ "\n    or type \"info\" to display overall progress.");
 			String move = keyboard.next();
 			if(move.equals("l"))
 				room9();
@@ -169,12 +194,17 @@ public class Cave extends Area {
 		boolean awaitingDecision = true;
 		while(awaitingDecision)
 		{
-			System.out.println("\nWhich doorway will you choose? Left = \"l\", Back = \"b\"");
+			System.out.println("\nWhich doorway will you choose? "
+					+ "\n    Left = \"l\""
+					+ "\n    Back = \"b\""
+					+ "\n    or type \"info\" to display overall progress.");
 			String move = keyboard.next();
 			if(move.equals("l"))
 				room7();
 			else if(move.equals("b"))
 				room5();
+			else if (move.equals("info"))
+				core.displayInfo();
 			else
 				System.out.println("Incorrect input, try again");
 		}
@@ -196,7 +226,11 @@ public class Cave extends Area {
 		boolean awaitingDecision = true;
 		while(awaitingDecision)
 		{
-			System.out.println("\nWhich doorway will you choose? Forward = \"f\", Left = \"l\", Back = \"b\"");
+			System.out.println("\nWhich doorway will you choose?"
+					+ "\n    Forward = \"f\""
+					+ "\n    Left = \"l\""
+					+ "\n    Back = \"b\""
+					+ "\n    or type \"info\" to display overall progress.");
 			String move = keyboard.next();
 			if(move.equals("l"))
 				room9();
@@ -204,6 +238,8 @@ public class Cave extends Area {
 				room8();
 			else if(move.equals("b"))
 				room6();
+			else if (move.equals("info"))
+				core.displayInfo();
 			else
 				System.out.println("Incorrect input, try again");
 		}
@@ -218,10 +254,14 @@ public class Cave extends Area {
 		boolean awaitingDecision = true;
 		while(awaitingDecision)
 		{
-			System.out.println("\nWhich doorway will you choose? Back = \"b\"");
+			System.out.println("\nWhich doorway will you choose? "
+					+ "\n    Back = \"b\""
+					+ "\n    or type \"info\" to display overall progress.");
 			String move = keyboard.next();
 			if(move.equals("b"))
 				room7();
+			else if (move.equals("info"))
+				core.displayInfo();
 			else
 				System.out.println("Incorrect input, try again");
 		}
