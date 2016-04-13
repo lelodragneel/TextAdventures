@@ -39,8 +39,9 @@ public class Cave extends Area {
 		if(rooms[0][0].getMinion().isAlive())
 			{
 				System.out.println("You walk into the room and a troll appears out of the darkness. He challenges you and carnage ensues!");
-				core.fightEnemy(rooms[0][0].getMinion());
-				core.getPlayer().addToInventory(rooms[0][0].getItem());
+				// true if you kill enemy, false if you flee
+				if (core.fightEnemy(rooms[0][0].getMinion()))
+					core.getPlayer().addToInventory(rooms[0][0].getItem());
 			}
 		System.out.println("The room has two doorways, one directly across from where you entered and one off to the right. \nSomehwere further into the cave " +
 		"you hear a menacing voice. \"YOU DARE ENTER MY LAIR? TURN BACK NOW OR FACE CERTAIN DEATH!\"");
@@ -112,8 +113,9 @@ public class Cave extends Area {
 		if(rooms[1][2].getMinion().isAlive())
 		{
 			System.out.println("You walk into the room and a troll appears out of the darkness. He challenges you and carnage ensues!");
-			core.fightEnemy(rooms[1][2].getMinion());
-			core.getPlayer().addToInventory(rooms[1][2].getItem());
+			// true if you kill enemy, false if you flee
+			if (core.fightEnemy(rooms[1][2].getMinion()))
+				core.getPlayer().addToInventory(rooms[1][2].getItem());
 		}
 
 		System.out.println("\nThere is a doorway on the right from which you hear a voice. \"Come adventurer, don't be scared.\"");
@@ -184,8 +186,9 @@ public class Cave extends Area {
 		if(rooms[2][1].getMinion().isAlive())
 		{
 			System.out.println("A troll wakes up from its slumber as you walk through the doorway. It prepares itself to charge!");
-			core.fightEnemy(rooms[1][2].getMinion());
-			core.getPlayer().addToInventory(rooms[2][1].getItem());
+			// true if you kill enemy, false if you flee
+			if (core.fightEnemy(rooms[1][2].getMinion()))
+				core.getPlayer().addToInventory(rooms[2][1].getItem());
 		}
 
 		System.out.println("\nFrom the left you hear a voice scream as you defeat the troll: \"HOW DARE YOU KILL MY BRETHREN. COME HERE SO I MAY TAKE REVENGE!\"" +
@@ -228,9 +231,11 @@ public class Cave extends Area {
 		if (rooms[1][1].getBoss().isAlive()) {
 			System.out.println("As you enter the room the Troll King appears waiting for you to arrive.");
 			System.out.println("\"At last you have come! Now come here so I can make soup out of you! Just as I did with that weak little village!\"");
-			core.fightEnemy(rooms[1][1].getBoss());
-			System.out.println("\nAfter killing the Troll King you feel somehow stronger. You leave the cave in search of the other horrible monsters.");
-			core.chooseArea();
+			// true if you kill enemy, false if you flee
+			if (core.fightEnemy(rooms[1][1].getBoss())) {
+				System.out.println("\nAfter killing the Troll King you feel somehow stronger. You leave the cave in search of the other horrible monsters.");
+				core.chooseArea();		
+			}
 		} else {
 			System.out.println("You entered the boss room and find the boss lying dead on the ground, since you already defeated him.");
 			core.chooseArea();

@@ -145,8 +145,12 @@ public class Core {
 	}
 	
 
-	// method that handles the fighting between player and minions/bosses
-	public void fightEnemy(Enemy enemy) {
+	/*
+	 * Handle the fighting between player and minions/bosses
+	 * return true if enemy is defeated
+	 * return false if you flee
+	 */
+	public boolean fightEnemy(Enemy enemy) {
 		
 		// inform user enemy type
 		if (enemy instanceof Minion) {
@@ -168,7 +172,7 @@ public class Core {
 		if (choice == 1) {
 			
 			System.out.println("You successfully flee the fight, but the enemy remains alive.");
-			return;
+			return false;
 			
 		} else if (choice == 2) {
 			
@@ -201,7 +205,7 @@ public class Core {
 						if (enemy.getHealth() <= 0) {
 							System.out.println("You defeated " + enemy.getName() + "!");
 							enemy.setAlive(false);
-							return;
+							return true;
 						}
 						
 						//A new random number is assigned to missedTarget
@@ -244,6 +248,9 @@ public class Core {
 			System.out.println("Enter a valid command!");
 			fightEnemy(enemy);
 		}
+		
+		// default
+		return false;
 		
 	}
 
