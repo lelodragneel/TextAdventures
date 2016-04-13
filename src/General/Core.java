@@ -176,55 +176,79 @@ public class Core {
 
 	}
 
-	// method that handles the fighting between player and minions
+// method that handles the fighting between player and minions
 	public void fightEnemy(Minion minion) {
+		//I've added the possibility of missing your opponent as just hitting them over and over again was getting dull. Feel free to remove this though.
+		int missedTarget=(int) (Math.random()*4)+1;
 
 		String command;
 
 		System.out.println("Minion battle starting...");
 
 		while (true) {
-
+			if(player.getHealth()>0){
 			System.out.println("Type 'attack': ");
 			command = keyboard.next();
 
-			if (command.equalsIgnoreCase("attack")) {
-
-				// player deals damage to boss
-				minion.setHealth(minion.getHealth() - player.getAttack());
-				System.out.println("You dealt " + player.getAttack() + " damage to the minion. The minion's health is now "
-						+ minion.getHealth() + ".");
-
-				// check if boss is dead after dealing damage to him
-				if (minion.getHealth() <= 0) {
-					System.out.println("You defeated the minion!");
-					minion.setAlive(false);
-					return;
-				}
-
-				// enemy deals damage to you
-				player.setHealth(player.getHealth() - minion.getAttack());
-				System.out.println("Minion hit you for " + minion.getAttack() + " damage. Your health is now "
-						+ player.getHealth() + ".");
-
-				// check if player is dead
-				if (player.getHealth() <= 0) {
-					if (player.getPotions() > 0) {
-						player.setPotions(player.getPotions() - 1);
-						player.setHealth(100);
-						System.out.println(
-								"You consumed a health potion right before you were going to die. \nYou now have "
-										+ player.getPotions() + " health potions left.");
-
+				if (command.equalsIgnoreCase("attack")) {
+	
+					// player deals damage to boss
+					//If randomly generated number is not 2, the player successfully damages the boss.
+					if(missedTarget!=2){
+						minion.setHealth(minion.getHealth() - player.getAttack());
+						System.out.println("You dealt " + player.getAttack() + " damage to the minion. The minion's health is now "
+								+ minion.getHealth() + ".");
 					}
-				} else 
-					System.out.println("You died. The game is over. And you thought Dark Souls II was bad, haha");
-				return;
-				
+					//Otherwise, the player misses and does no damage for that turn.
+					else{
+						System.out.println("The minion dodges your attack! Its health is still "+minion.getHealth()+".");
+					}
+	
+					// check if boss is dead after dealing damage to him
+					if (minion.getHealth() <= 0) {
+						System.out.println("You defeated the minion!");
+						minion.setAlive(false);
+						return;
+					}
+					
+					//A new random number is assigned to missedTarget
+					missedTarget=(int) (Math.random()*4)+1;
+	
+					// enemy deals damage to you
+					//If randomly generated number is 1 or 2, the minion successfully damages the player.
+					if(missedTarget<3){
+						player.setHealth(player.getHealth() - minion.getAttack());
+						System.out.println("Minion hit you for " + minion.getAttack() + " damage. Your health is now "
+								+ player.getHealth() + ".");
+					}
+					//Otherwise, the minion misses and does no damage for that turn.
+					else{
+						System.out.println("You dodge the minion's attack! Your health is still "+player.getHealth()+".");
+					}
+					
+					//A new random number is assigned to missedTarget
+					missedTarget=(int) (Math.random()*4)+1;
+ 
+				}
 			}
-		}
+			// check if player is dead
+			else {
+				if (player.getPotions() > 0) {
+					player.setPotions(player.getPotions() - 1);
+					player.setHealth(100);
+					System.out.println(
+							"You consumed a health potion right before you were going to die. \nYou now have "
+									+ player.getPotions() + " health potions left.");
 
+				}
+				else{ 
+					System.out.println("You died. The game is over. And you thought Dark Souls II was bad, haha\n");
+					chooseArea();
+				}
+			}		
+		}
 	}
+
 
 	// return the player object
 	public Character getPlayer() {
