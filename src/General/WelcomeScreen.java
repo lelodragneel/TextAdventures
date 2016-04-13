@@ -102,7 +102,7 @@ public class WelcomeScreen extends JFrame implements ActionListener {
 			dispose();
 		}
 		else if(evt.getSource().equals(btnWizardClass)) {
-			player = new Character("Wizard",nameInput.getText(), 20, 10, 1);
+			player = new Character("Wizard", nameInput.getText(), 20, 10, 1);
 			startGame(player);
 			dispose();
 		}
@@ -118,9 +118,9 @@ public class WelcomeScreen extends JFrame implements ActionListener {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				new Core(player);
-				dispose();
 			}
 		});
+		
 	}
 	
 	/*

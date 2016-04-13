@@ -20,14 +20,16 @@ public class Core {
 	private Character player;
 
 	public Core(General.Character player) {
-
+		
 		/*
 		 * instantiate necessary variables
 		 */
 		this.player = player;
 		
 		/*
-		 * create 3 different areas. Each contains 9 rooms
+		 * create 3 different areas
+		 * Cave & City have 9 rooms
+		 * Woods is a maze
 		 */			
 		 // create area #1 (cave)
 		 cave = new Cave(this);
@@ -50,7 +52,7 @@ public class Core {
 		
 		// initialize & instantiate variables
 		keyboard = new Scanner(System.in);
-		
+
 		// introduce game objective
 		System.out.println("Welcome " + player.getName() + " to the world of Alera. You are an adventurer who has returned to their home village.");
 		System.out.println("This morning you went to the woods to gather fire wood for your home. \nHowever, when you returned to the village you found the houses on fire.");
