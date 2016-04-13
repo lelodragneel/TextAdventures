@@ -2,6 +2,7 @@ package Areas;
 
 import java.util.Scanner;
 
+import General.Core;
 import General.Room;
 
 //Area class acts as a template for Cave and City areas
@@ -13,6 +14,7 @@ public abstract class Area {
 	protected String areaName;
 	protected Room[][] rooms;
 	protected Scanner keyboard;
+	protected Core core;
 
 	public Area() {
 

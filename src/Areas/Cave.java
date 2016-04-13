@@ -11,10 +11,8 @@ import General.Core;
 public class Cave extends Area {
 
 	/*
-	 * initialize variables
+	 * constructor
 	 */
-	private Core core;
-
 	public Cave(Core core) {
 
 		this.core = core;
@@ -31,8 +29,11 @@ public class Cave extends Area {
 		keyboard = new Scanner(System.in);
 	}
 
-	//The rooms ******************************************************
-	//room1 to begin, its an empty room
+
+	/*
+	 * Room #1
+	 * Empty
+	 */
 	public void room1()
 	{
 		//fight
@@ -64,7 +65,11 @@ public class Cave extends Area {
 				System.out.println("Incorrect input, try again");
 		}
 	}
-	//room2 is empty
+	
+	/*
+	 * Room #2
+	 * Empty
+	 */
 	public void room2()
 	{
 		System.out.println("You run into another empty room. There are another 2 doorways to choose from. \nThere is a doorway straight ahead " +
@@ -91,7 +96,11 @@ public class Cave extends Area {
 				System.out.println("Incorrect input, try again");
 		}
 	}
-	//room 3 with potion
+	
+	/*
+	 * Room #3
+	 * Contains health potion
+	 */
 	public void room3()
 	{
 		//potion
@@ -122,7 +131,12 @@ public class Cave extends Area {
 				System.out.println("Incorrect input, try again");
 		}
 	}
-	//room4 with minion fight
+	
+	/*
+	 * Room #4
+	 * Contains minion
+	 * Drops [Gloves] +5 Attack
+	 */
 	public void room4()
 	{
 		//fight
@@ -154,7 +168,11 @@ public class Cave extends Area {
 				System.out.println("Incorrect input, try again");
 		}
 	}
-	//room5 is empty
+	
+	/*
+	 * Room #5
+	 * Empty
+	 */
 	public void room5()
 	{
 		System.out.println("The doorway leads to another empty room with a doorway to the left and straight ahead. \nFrom the left a voice taunts " +
@@ -179,7 +197,11 @@ public class Cave extends Area {
 				System.out.println("Incorrect input, try again");
 		}
 	}
-	//room6 has potion, otherwise empty
+	
+	/*
+	 * Room #6
+	 * Contains health potion
+	 */
 	public void room6()
 	{
 		//potion
@@ -209,7 +231,12 @@ public class Cave extends Area {
 				System.out.println("Incorrect input, try again");
 		}
 	}
-	//A minion is here holding an item
+	
+	/*
+	 * Room #7
+	 * Contains minion
+	 * Drops [Shoulder Pads] +20 Health
+	 */
 	public void room7()
 	{
 		//fight
@@ -245,6 +272,10 @@ public class Cave extends Area {
 		}
 	}
 	
+	/*
+	 * Room #8
+	 * Empty
+	 */
 	public void room8()
 	{
 		
@@ -266,6 +297,11 @@ public class Cave extends Area {
 				System.out.println("Incorrect input, try again");
 		}
 	}
+	
+	/*
+	 * Room #9
+	 * Contains boss
+	 */
 	public void room9()
 	{
 		if (rooms[1][1].getBoss().isAlive()) {
