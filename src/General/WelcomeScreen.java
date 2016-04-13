@@ -62,6 +62,7 @@ public class WelcomeScreen extends JFrame implements ActionListener {
 		btnWarriorClass.setBounds(209, 193, 89, 23);
 		btnWarriorClass.addActionListener(this);
 		btnWarriorClass.setFocusable(false);
+		btnWarriorClass.setToolTipText("<html>Base Health: 16 <br />Base Attack: 16</html>");
 		getContentPane().add(btnWarriorClass);
 		
 		
@@ -70,6 +71,7 @@ public class WelcomeScreen extends JFrame implements ActionListener {
 		btnThiefClass.setBounds(110, 193, 89, 23);
 		btnThiefClass.addActionListener(this);
 		btnThiefClass.setFocusable(false);
+		btnThiefClass.setToolTipText("<html>Base Health: 10 <br />Base Attack: 20</html>");
 		getContentPane().add(btnThiefClass);
 		
 		
@@ -78,6 +80,7 @@ public class WelcomeScreen extends JFrame implements ActionListener {
 		btnWizardClass.setBounds(308, 193, 89, 23);
 		btnWizardClass.addActionListener(this);
 		btnWizardClass.setFocusable(false);
+		btnWizardClass.setToolTipText("<html>Base Health: 20 <br />Base Attack: 10</html>");
 		getContentPane().add(btnWizardClass);
 		
 		enterName = new JLabel("Enter Player Name:");
@@ -99,7 +102,7 @@ public class WelcomeScreen extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent evt) {
 		
 		if(evt.getSource().equals(btnWarriorClass)) {
-			player = new Character("Warrior", nameInput.getText(), 15, 15, 1);
+			player = new Character("Warrior", nameInput.getText(), 16, 16, 1);
 			startGame(player);
 			dispose();
 		}
