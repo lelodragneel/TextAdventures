@@ -24,10 +24,10 @@ public class Cave extends Area {
 		rooms[0][2] = new Room(null, null, null, true);
 		rooms[1][0] = new Room(null, null, null, false);
 
-		rooms[1][1] = new Room(new Boss(1, 1, "Troll King"), null, null, false);
-		rooms[1][2] = new Room(null, new Minion(1, 1, "Troll"), new Item(5, 0, "[Gloves] +5 Attack"), false);
+		rooms[1][1] = new Room(new Boss(200, 5, "Troll King"), null, null, false);
+		rooms[1][2] = new Room(null, new Minion(100, 2, "Troll"), new Item(5, 0, "[Gloves] +5 Attack"), false);
 		rooms[2][0] = new Room(null, null, null, true);
-		rooms[2][1] = new Room(null, new Minion(1, 1, "Troll"), new Item(0, 20, "[Shoulder Pads] +20 Health"), false);
+		rooms[2][1] = new Room(null, new Minion(96, 4, "Troll"), new Item(0, 20, "[Shoulder Pads] +20 Health"), false);
 		rooms[2][2] = new Room(null, null, null, true);
 		keyboard = new Scanner(System.in);
 	}
@@ -43,13 +43,13 @@ public class Cave extends Area {
 				core.fightEnemy(rooms[0][0].getMinion());
 				core.getPlayer().addToInventory(rooms[0][0].getItem());
 			}
-		System.out.println("The room has two doorways, one directly across from where you entered and one off to the right. Somehwere further into the cave " +
-		"you hear a menacing voice \"YOU DARE ENTER MY LAIR? TURN BACK NOW OR FACE CERTAIN DEATH!\"");
+		System.out.println("The room has two doorways, one directly across from where you entered and one off to the right. \nSomehwere further into the cave " +
+		"you hear a menacing voice. \"YOU DARE ENTER MY LAIR? TURN BACK NOW OR FACE CERTAIN DEATH!\"");
 		//Loop to wait for correct decision to be made by user
 		boolean awaitingDecision = true;
 		while(awaitingDecision)
 		{
-			System.out.println("Which doorway will you choose? Forward = \"f\", Right = \"r\"");
+			System.out.println("\nWhich doorway will you choose? Forward = \"f\", Right = \"r\"");
 			String move = keyboard.next();
 			if(move.equals("r"))
 				room5();
@@ -62,13 +62,13 @@ public class Cave extends Area {
 	//room2 is empty
 	public void room2()
 	{
-		System.out.println("You run into another empty room. There are another 2 doorways to choose from. There is a doorway straight ahead " +
-				" and another off to the right. A loud voice comes from the doorway on the right, \"Come this way traveller. FACE ME IF YOUR DARE!\"");
+		System.out.println("You run into another empty room. There are another 2 doorways to choose from. \nThere is a doorway straight ahead " +
+				" and another off to the right. \nA loud voice comes from the doorway on the right, \"Come this way traveller. FACE ME IF YOU DARE!\"");
 
 		boolean awaitingDecision = true;
 		while(awaitingDecision)
 		{
-			System.out.println("Which doorway will you choose? Forward = \"f\", Right = \"r\", Back = \"b\"");
+			System.out.println("\nWhich doorway will you choose? Forward = \"f\", Right = \"r\", Back = \"b\"");
 			String move = keyboard.next();
 			if(move.equals("r"))
 				room9();
@@ -96,7 +96,7 @@ public class Cave extends Area {
 		boolean awaitingDecision = true;
 		while(awaitingDecision)
 		{
-			System.out.println("Which doorway will you choose? Right = \"r\", Back = \"b\"");
+			System.out.println("\nWhich doorway will you choose? Right = \"r\", Back = \"b\"");
 			String move = keyboard.next();
 			if(move.equals("r"))
 				room4();
@@ -117,12 +117,12 @@ public class Cave extends Area {
 			core.getPlayer().addToInventory(rooms[1][2].getItem());
 		}
 
-		System.out.println("There is a doorway on the right from which you hear a voice \"Come adventurer, don't be scared.\"");
+		System.out.println("\nThere is a doorway on the right from which you hear a voice. \"Come adventurer, don't be scared.\"");
 
 		boolean awaitingDecision = true;
 		while(awaitingDecision)
 		{
-			System.out.println("Which doorway will you choose? Right = \"r\", Back = \"b\"");
+			System.out.println("\nWhich doorway will you choose? Right = \"r\", Back = \"b\"");
 			String move = keyboard.next();
 			if(move.equals("r"))
 				room9();
@@ -135,13 +135,13 @@ public class Cave extends Area {
 	//room5 is empty
 	public void room5()
 	{
-		System.out.println("The doorway leads to another empty room with a doorway to the left and straight ahead. From the left a voice taunts " +
+		System.out.println("The doorway leads to another empty room with a doorway to the left and straight ahead. \nFrom the left a voice taunts " +
 				"\"Don't be rude, AHAHA! Come, allow me to introduce myself!\"");
 
 		boolean awaitingDecision = true;
 		while(awaitingDecision)
 		{
-			System.out.println("Which doorway will you choose? Forward = \"f\", Left = \"l\", Back = \"b\"");
+			System.out.println("\nWhich doorway will you choose? Forward = \"f\", Left = \"l\", Back = \"b\"");
 			String move = keyboard.next();
 			if(move.equals("l"))
 				room9();
@@ -168,7 +168,7 @@ public class Cave extends Area {
 		boolean awaitingDecision = true;
 		while(awaitingDecision)
 		{
-			System.out.println("Which doorway will you choose? Left = \"l\", Back = \"b\"");
+			System.out.println("\nWhich doorway will you choose? Left = \"l\", Back = \"b\"");
 			String move = keyboard.next();
 			if(move.equals("l"))
 				room7();
@@ -189,12 +189,12 @@ public class Cave extends Area {
 			core.getPlayer().addToInventory(rooms[2][1].getItem());
 		}
 
-		System.out.println("From the left you hear a voice scream as you defeat the troll \"HOW DARE YOU KILL MY BRETHREN. COME HERE SO I MAY TAKE REVENGE!\"" +
-				"There is also a hole straight ahead that appears to lead to another open area.");
+		System.out.println("\nFrom the left you hear a voice scream as you defeat the troll: \"HOW DARE YOU KILL MY BRETHREN. COME HERE SO I MAY TAKE REVENGE!\"" +
+				"\nThere is also a hole straight ahead that appears to lead to another open area.");
 		boolean awaitingDecision = true;
 		while(awaitingDecision)
 		{
-			System.out.println("Which doorway will you choose? Forward = \"f\", Left = \"l\", Back = \"b\"");
+			System.out.println("\nWhich doorway will you choose? Forward = \"f\", Left = \"l\", Back = \"b\"");
 			String move = keyboard.next();
 			if(move.equals("l"))
 				room9();
@@ -211,12 +211,12 @@ public class Cave extends Area {
 	{
 		
 		System.out.println("You see a skeleton of a body sitting in the far corner. It holds a note and beside it lays a potion." +
-		" The note reads \"There is no way out. Here is where I stay for fear that the troll will eat me alive...\"");
+		"\nThe note reads \"There is no way out. Here is where I stay for fear that the troll will eat me alive...\"");
 		System.out.println("The only way to go is back.");
 		boolean awaitingDecision = true;
 		while(awaitingDecision)
 		{
-			System.out.println("Which doorway will you choose? Back = \"b\"");
+			System.out.println("\nWhich doorway will you choose? Back = \"b\"");
 			String move = keyboard.next();
 			if(move.equals("b"))
 				room7();
@@ -230,7 +230,7 @@ public class Cave extends Area {
 			System.out.println("As you enter the room the Troll King appears waiting for you to arrive.");
 			System.out.println("\"At last you have come! Now come here so I can make soup out of you! Just as I did with that weak little village!\"");
 			core.fightEnemy(rooms[1][1].getBoss());
-			System.out.println("After killing the Troll King you feel somehow stronger. You leave the cave in search of the other horrible monsters.");
+			System.out.println("\nAfter killing the Troll King you feel somehow stronger. You leave the cave in search of the other horrible monsters.");
 			core.chooseArea();
 		} else {
 			System.out.println("You entered the boss room and find the boss lying dead on the ground, since you already defeated him.");
