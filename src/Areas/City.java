@@ -20,9 +20,9 @@ public class City extends Area {
 		this.core = core;
 		rooms = new Room[3][3];
 		rooms[0][0] = new Room(null, null, null, false);
-		rooms[0][1] = new Room(null, new Minion(1, 1, "Trash Creature"), null, false);
-		rooms[0][2] = new Room(null, new Minion(1, 1, "Sneaky Trash Creature"), new Item(0, 30, "[Shield] +30 Health"), false);
-		rooms[1][0] = new Room(null, new Minion(1, 1, "Trash Creature"), new Item(10, 0, "[Ring] +10 Attack"), false);
+		rooms[0][1] = new Room(null, new Minion(100, 2, "Trash Creature"), null, false);
+		rooms[0][2] = new Room(null, new Minion(135, 3, "Sneaky Trash Creature"), new Item(0, 30, "[Shield] +30 Health"), false);
+		rooms[1][0] = new Room(null, new Minion(90, 5, "Trash Creature"), new Item(10, 0, "[Ring] +10 Attack"), false);
 		rooms[1][1] = new Room(new Boss(1, 1, "Sewage Beast"), null, null, false);
 		rooms[1][2] = new Room(null, null, null, false);
 		rooms[2][0] = new Room(null, null, null, false);
@@ -62,8 +62,8 @@ public class City extends Area {
 		
 		String direction;
 		boolean directionFound = false;
-		System.out.println("You proceed straight ahead. The buildings seem taller from this angle, but also a lot more! run down?");
-		System.out.println("Something seems to have driven the city's inhabitants away!");
+		System.out.println("You proceed straight ahead. The buildings seem taller from this angle, but also a lot more... run down?");
+		System.out.println("Something seems to have driven the city's inhabitants away.");
 		
 		if(rooms[0][1].getMinion().isAlive())
 		{
@@ -119,7 +119,7 @@ public class City extends Area {
 			}
 			else if(direction.equals("b")){
 				directionFound=true;
-				room1();
+				room2();
 			}
 			else{
 				System.out.println("Command not recognized. Type r to go right, or b to turn back.");
@@ -219,7 +219,7 @@ public class City extends Area {
 		
 		boolean directionFound=false;
 		if(rooms[2][1].getPotion()){
-			System.out.println("Her house is small, but comfortable. \nOnce you are settled with a bowl of stew and a blanket, she tells you about the \"Creature\" that has terrorizing the city's citizens."
+			System.out.println("Her house is small, but comfortable. \nOnce you are settled with a bowl of stew and a blanket, she tells you about the \"Creature\" that has been terrorizing the city's citizens."
 					+ "\nShe also hands you a homemade POTION. How thoughtful.");
 			core.getPlayer().findPotion();
 			rooms[2][1].setPotion(false);
@@ -248,8 +248,8 @@ public class City extends Area {
 	{
 		boolean solved = false;
 		System.out.println("In one mighty and very heroic leap, you hop the fence and land majestically in the sad-looking field. ");
-		System.out.println("You keep walking forward, and! oh. It's a cliff. There's nothing here.");
-		System.out.println("You turn to go back and notice that the fence seems a lot higher somehow. Jumping doesn't look like it will do the trick!");
+		System.out.println("You keep walking forward, and... oh. It's a cliff. There's nothing here.");
+		System.out.println("You turn to go back and notice that the fence seems a lot higher somehow. Jumping doesn't look like it will do the trick!\n");
 		System.out.println("You look around for something that might help you escape. You find a POTION in the grass, but admittedly, there isn't much.");
 		core.getPlayer().findPotion();
 		rooms[2][2].setPotion(false);
@@ -268,11 +268,12 @@ public class City extends Area {
 					+ "\n\"You have proven yourself to be most irksome in coming here. Once I defeat you, I will truly make this city great again!\""
 					+ "\n\nYou prepare yourself for battle.");
 			core.fightEnemy(rooms[1][1].getBoss());
-			System.out.println("After killing the Sewage Beast you feel somehow stronger. You leave the city in search of the other horrible monsters.");
+			System.out.println("After killing the Sewage Beast you feel somehow stronger. You leave the city in search of the other horrible monsters.\n");
 			core.chooseArea();
 		}
 		else
 			System.out.println("You enter the plaza to find the creature already dead. Nice.");
+			core.chooseArea();
 	}
 	public boolean fencePuzzle(){
 		
