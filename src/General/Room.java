@@ -12,7 +12,6 @@ public class Room {
 	private Minion minion;
 	private Item item;
 	private boolean potion;
-	private boolean discovered;
 	
 	/*
 	 * constructor
@@ -21,11 +20,11 @@ public class Room {
 	 * 		boss = the room has the final boss which drops the key
 	 * 		minion = the room has a minion you can fight for potential loot
 	 */
-	public Room(Boss boss, Minion minion, Item item, boolean pot) {
-		this.setBoss(boss);
-		this.setItem(item);
+	public Room(Boss boss, Minion minion, Item item, boolean potion) {
+		this.boss = boss;
+		this.item = item;
 		this.minion = minion;
-		potion = pot;
+		this.potion = potion;
 	}
 
 	public Boss getBoss() {

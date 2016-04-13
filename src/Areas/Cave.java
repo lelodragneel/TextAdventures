@@ -51,8 +51,8 @@ public class Cave extends Area {
 		while(true)
 		{
 			System.out.println("\nWhich doorway will you choose? "
-					+ "\n    Forward = \"f\""
-					+ "\n    Right = \"r\""
+					+ "\n    (f) forward"
+					+ "\n    (r) right"
 					+ "\n    or type \"info\" to display overall progress.");
 			String move = keyboard.next();
 			if(move.equals("r"))
@@ -78,9 +78,9 @@ public class Cave extends Area {
 		while(true)
 		{
 			System.out.println("\nWhich doorway will you choose? "
-					+ "\n    Forward = \"f\""
-					+ "\n    Right = \"r\""
-					+ "\n    Back = \"b\""
+					+ "\n    (f) forward"
+					+ "\n    (r) right"
+					+ "\n    (b) back"
 					+ "\n    or type \"info\" to display overall progress.");
 			String move = keyboard.next();
 			if(move.equals("r"))
@@ -115,8 +115,8 @@ public class Cave extends Area {
 		while(true)
 		{
 			System.out.println("\nWhich doorway will you choose? "
-					+ "\n    Right = \"r\""
-					+ "\n    Back = \"b\""
+					+ "\n    (r) right"
+					+ "\n    (b) back"
 					+ "\n    or type \"info\" to display overall progress.");
 			String move = keyboard.next();
 			if(move.equals("r"))
@@ -151,8 +151,8 @@ public class Cave extends Area {
 		while(true)
 		{
 			System.out.println("\nWhich doorway will you choose? "
-					+ "\n    Right = \"r\""
-					+ "\n    Back = \"b\""
+					+ "\n    (r) right"
+					+ "\n    (b) back"
 					+ "\n    or type \"info\" to display overall progress.");
 			String move = keyboard.next();
 			if(move.equals("r"))
@@ -178,9 +178,9 @@ public class Cave extends Area {
 		while(true)
 		{
 			System.out.println("\nWhich doorway will you choose?"
-					+ "\n    Forward = \"f\""
-					+ "\n    Left = \"l\""
-					+ "\n    Back = \"b\""
+					+ "\n    (f) forward"
+					+ "\n    (l) left"
+					+ "\n    (b) back"
 					+ "\n    or type \"info\" to display overall progress.");
 			String move = keyboard.next();
 			if(move.equals("l"))
@@ -213,8 +213,8 @@ public class Cave extends Area {
 		while(true)
 		{
 			System.out.println("\nWhich doorway will you choose? "
-					+ "\n    Left = \"l\""
-					+ "\n    Back = \"b\""
+					+ "\n    (l) left"
+					+ "\n    (b) back"
 					+ "\n    or type \"info\" to display overall progress.");
 			String move = keyboard.next();
 			if(move.equals("l"))
@@ -250,9 +250,9 @@ public class Cave extends Area {
 		while(true)
 		{
 			System.out.println("\nWhich doorway will you choose?"
-					+ "\n    Forward = \"f\""
-					+ "\n    Left = \"l\""
-					+ "\n    Back = \"b\""
+					+ "\n    (f) forward"
+					+ "\n    (l) left"
+					+ "\n    (b) back"
 					+ "\n    or type \"info\" to display overall progress.");
 			String move = keyboard.next();
 			if(move.equals("l"))
@@ -282,7 +282,7 @@ public class Cave extends Area {
 		while(true)
 		{
 			System.out.println("\nWhich doorway will you choose? "
-					+ "\n    Back = \"b\""
+					+ "\n    (b) back"
 					+ "\n    or type \"info\" to display overall progress.");
 			String move = keyboard.next();
 			if(move.equals("b"))

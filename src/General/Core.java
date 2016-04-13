@@ -41,20 +41,19 @@ public class Core {
 		 // create area #3 (wood)
 		 //woods = new Woods();
 		
-		// start game engine
-		gameEngine();
+		// start game
+		 startGame();
 	}
 
 	/*
-	 * the method which keeps the game running while maintaining functionalities
-	 * also does any calculations necessary
+	 * start game
 	 */
-	public void gameEngine() {
+	public void startGame() {
 		
 		// initialize & instantiate variables
 		keyboard = new Scanner(System.in);
 
-		// introduce game objective
+		// introduce game story
 		System.out.println("Welcome " + player.getName() + " to the world of Alera. You are an adventurer who has returned to their home village.");
 		System.out.println("\nThis morning you went to the woods to gather firewood for your home. \nHowever, when you returned to the village you found the houses on fire.");
 		System.out.println("\nGoing through the village you see all the villagers have been killed and their homes destroyed. \nArriving to the center of town you see the mayor bleeding on the ground.");
@@ -62,6 +61,7 @@ public class Core {
 		System.out.println("\n*Cough* *Cough* " + player.getName() + ", it was horrible! These four monsters attacked the village.\nThey kept asking where you were! No one told them so they destroyed the village!\nYou must flee this place! Get as far away as possible!");
 		System.out.println("\nWith this last message the mayor stops breathing.\nInstead of leaving as the mayor said you follow the trail of destruction heading away from the village.");
 		
+		// introduce game objective
 		System.out.println(
 				"\nThe game contains 3 areas: Cave, City, and Woods. The Cave and City have 9 Rooms. \nEvery one of those areas "
 				+ "contain a Boss which you can attempt to kill. \nIf you succeed in killing the Cave and City's boss, "
@@ -79,12 +79,12 @@ public class Core {
 	// player picks an area to enter
 	public void chooseArea() {
 		
-		// inform the player which bosses are defeated
-		displayInfo();
-		
 		// player chooses area	
-		System.out.println("There are two areas you can enter: \n(1) Cave \n(2) City \n(3) Woods");
-		System.out.println("Which area would you like to enter?");
+		System.out.println("Here are the areas you can enter: "
+				+ "\n    (1) Cave "
+				+ "\n    (2) City "
+				+ "\n    (3) Woods"
+				+ "\n    (4) to display overall progress");
 		
 		int chosen = keyboard.nextInt();
 
@@ -108,7 +108,10 @@ public class Core {
 				System.out.println("In order to enter the woods and have a chance to kill the final boss, you must kill the two bosses found in Cave and City.");
 				chooseArea();
 			}
-		} 
+		} else if (chosen == 4) {
+			displayInfo();
+			chooseArea();
+		}
 	}
 	
 	// print player stats/information/progress 
