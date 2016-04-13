@@ -69,15 +69,29 @@ public class Character {
 		potions++;
 	}
 	
+	// add loot to the player's inventory and increase stats based on the item bonus
 	public void addToInventory(Item item) {
+		
 		inventory.add(item);
-		maxHealth += item.getHealthIncrease();
-		attack += item.getDamageIncrease();
 		System.out.println("You picked up " + item.getItemName() + "!");
-		if (item.getHealthIncrease() > 0)
+		
+		// check if the looted item increases health
+		if (item.getHealthIncrease() > 0) {
+			maxHealth += item.getHealthIncrease();
 			System.out.println("Your maximum health has increased from " + (maxHealth - item.getHealthIncrease()) + " to " + maxHealth + ".");
-		if (item.getDamageIncrease() > 0)
-			System.out.println("Your attack damage has increased from  " + (attack - item.getDamageIncrease()) + attack + ".");
+			// increase player's current health by half the increased health
+			health += item.getHealthIncrease()/2;
+			// make sure the player's health doesn't go over the limit
+			if (health > maxHealth) 
+				health = maxHealth;	
+			System.out.println("Your health is now " + health + "/" + maxHealth + ".");
+		}
+		
+		// check if the looted item increases attack
+		if (item.getDamageIncrease() > 0) {
+			attack += item.getDamageIncrease();
+			System.out.println("Your attack damage has increased from  " + (attack - item.getDamageIncrease()) + " to " + attack + ".");
+		}
 	}
 
 	public int getMaxHealth() {
