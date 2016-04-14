@@ -199,6 +199,7 @@ public class Woods {
 									+ "You defeated the last boss of the game!"
 									+ "You beat the game! Congratulations!"
 									+ "----------------------------------------------------------");
+							System.exit(0);
 						} else {
 							System.out.println("You decided to flee. As attempting to flee, the boss knocked you unconscious. "
 									+ "\nWhen you woke up, you found yourself back at the beginning.");
