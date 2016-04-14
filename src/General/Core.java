@@ -39,7 +39,7 @@ public class Core {
 		 city = new City(this);
 		 
 		 // create area #3 (wood)
-		 //woods = new Woods();
+		 woods = new Woods(this);
 		
 		// start game
 		 startGame();

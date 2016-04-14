@@ -2,6 +2,9 @@ package Areas;
 
 import java.util.Scanner;
 
+import Enemies.Boss;
+import General.Core;
+
 //Woods mini=game for choose your own adventure.
 public class Woods {
 	
@@ -10,76 +13,14 @@ public class Woods {
 	 */
 	private int hp = 100;
 	private Scanner keyboard;
+	private Core core;
 
 	// constructor
-	public Woods() {
+	public Woods(Core core) {
 		
+		this.core = core;
 		keyboard = new Scanner(System.in);
 		
-	}
-	
-	public boolean monsterFight() {
-		
-		Scanner sc = new Scanner(System.in);
-		String[] monster = { "Ghoul", "Ghoul", "Ghoul" };
-		int[] hpMon = { 5, 15, 10 };
-		String[] options = { "head", "torso", "right arm", "left arm" };
-		int rand = (int) (Math.random() * 2);
-		int currMon = hpMon[rand];
-		System.out.println("You have ran into a " + monster[rand]
-				+ "! It looks like it is going to attack you! It has "
-				+ currMon + " hp! Get ready to attack it back!");
-		
-		while (hp != 0 && currMon != 0) {
-			String compAttack, compDefend;
-			String attack = "";
-			String defend = "";
-			boolean exists = false;
-			while (exists == false) {
-				System.out
-						.println("Choose where to attack! (Type head, torso, right arm, or left arm!)");
-				attack = sc.nextLine();
-				for (int i = 0; i < options.length - 1; i++) {
-					if (attack.equals(options[i]))
-						exists = true;
-				}
-				if (exists == false)
-					System.out
-							.println("Please choose a valid position to attack!");
-			}
-			exists = false;
-			while (exists == false) {
-				System.out
-						.println("Choose where to defend! (Type head, torso, right arm, or left arm!)");
-				defend = sc.nextLine();
-				for (int i = 0; i < options.length - 1; i++) {
-					if (defend.equals(options[i]))
-						exists = true;
-				}
-				if (exists == false)
-					System.out
-							.println("Please choose a valid location to defend!");
-			}
-			compAttack = options[(int) (Math.random() * 3)];
-			compDefend = options[(int) (Math.random() * 3)];
-			if (compAttack.equals(defend))
-				System.out.println("The monster missed!");
-			else {
-				hp--;
-				System.out.println("The monster has hit you in the "
-						+ compAttack + "! You have " + hp + " left!");
-			}
-			if (compDefend.equals(attack))
-				System.out.println("You missed!");
-			else {
-				currMon--;
-				System.out.println("You have hit the monster in the " + attack
-						+ "! It has " + currMon + " left!");
-			}
-		}
-		if (currMon == 0)
-			return true;
-		return false;
 	}
 
 	public int pathFinder(String p) {
@@ -253,22 +194,15 @@ public class Woods {
 							}
 						}
 					} else if (pathFinder(path) == 4) {
-						if (monsterFight() == false) {
-							System.out
-									.println("You have lost! You are brought back to the beginning!");
-							path = "";
+						if (core.fightEnemy(new Boss(400, 3, "[Final Boss] Nasus"))) {
+							System.out.println("------------------------ You Win -------------------------"
+									+ "You defeated the last boss of the game!"
+									+ "You beat the game! Congratulations!"
+									+ "----------------------------------------------------------");
 						} else {
-							while (!temp.equals("b")) {
-								System.out
-										.println("You have reached a deadend! Press b to go back!");
-								temp = sc.nextLine();
-								if (temp.equals("b")) {
-									path = goBack(path);
-
-								}
-							}
+							System.out.println("You decided to flee. As attempting to flee, the boss knocked you unconscious. "
+									+ "\nWhen you woke up, you found yourself back at the beginning.");
 						}
-
 					}
 				}
 			}
