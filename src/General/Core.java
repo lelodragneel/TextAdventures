@@ -83,17 +83,20 @@ public class Core {
 				+ "\n    (3) Woods"
 				+ "\n    (4) to display overall progress");
 		
-		int chosen = keyboard.nextInt();
+		String chosen;
+		
+		while(true) {
+		chosen = keyboard.next();
 
-		if (chosen == 1) {
+		if (chosen.equals("1")) {
 			// start the cave adventure
 			cave.room1();
 
-		} else if (chosen == 2) {
+		} else if (chosen.equals("2")) {
 			// start the city adventure
 			city.room1();
 
-		} else if (chosen == 3) {
+		} else if (chosen.equals("3")) {
 			
 			// check if player can enter the woods
 			if(!cave.getRoom(1, 1).getBoss().isAlive() && !city.getRoom(1, 1).getBoss().isAlive()) {
@@ -105,13 +108,14 @@ public class Core {
 				System.out.println("In order to enter the woods and have a chance to kill the final boss, you must kill the two bosses found in Cave and City.");
 				chooseArea();
 			}
-		} else if (chosen == 4) {
+		} else if (chosen.equals("4")) {
 			displayInfo();
 			chooseArea();
 			
 		} else {
 			System.out.println("Enter a valid command!");
 			chooseArea();
+		}
 		}
 	}
 	
@@ -171,14 +175,17 @@ public class Core {
 				+ "\n    (1) run, or "
 				+ "\n    (2) face the enemy?");
 		
-		int choice = keyboard.nextInt();
+		String choice;
 		
-		if (choice == 1) {
+		while(true) {
+		choice = keyboard.next();
+		
+		if (choice.equals("1")) {
 			
 			System.out.println("You successfully flee the fight, but the enemy remains alive.");
 			return false;
 			
-		} else if (choice == 2) {
+		} else if (choice.equals("2")) {
 			
 			// possibility of missing your opponent
 			int missedTarget=(int) (Math.random()*4)+1;
@@ -255,7 +262,7 @@ public class Core {
 		
 		// default
 		return false;
-		
+		}
 	}
 
 
