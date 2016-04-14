@@ -9,6 +9,7 @@ import Enemies.Minion;
 import General.Item;
 import General.Core;
 
+//The city-themed level of our text-based adventure.
 public class City extends Area {
 	
 	/*
@@ -20,6 +21,7 @@ public class City extends Area {
 		keyboard = new Scanner(System.in);
 		this.core = core;
 		rooms = new Room[3][3];
+		//rooms and their contents are outlined
 		rooms[0][0] = new Room(null, null, null, false);
 		rooms[0][1] = new Room(null, new Minion(100, 2, "Trash Creature"), null, false);
 		rooms[0][2] = new Room(null, new Minion(135, 3, "Sneaky Trash Creature"), new Item(0, 30, "[Shield] +30 Health"), false);
@@ -31,7 +33,6 @@ public class City extends Area {
 		rooms[2][2] = new Room(null, null, null, true);
 		
 	}
-	
 	/*
 	 * Room #1
 	 * Empty
@@ -40,23 +41,28 @@ public class City extends Area {
 	{
 
 		String direction;
+		//boolean keeps direction choosing loop going as long as incorrect inputs are entered
 		boolean directionFound=false;
 		System.out.println("\nLooking FORWARD, the city's wide main street stretches out before you, bathed in shadow from the looming buildings on either side."
 				+ "\nTo your RIGHT, a narrower street winds off through a collection of smaller buildings. Lights can be seen in the distance."
 				+ "\nChoose your path, or type \"info\" to display game information. "
 				+ "\n    (r) right"
 				+ "\n    (f) forward");
-		
+		//User enters their choice of direction
 		direction = keyboard.next();
 		while(!directionFound){
 			if(direction.equals("f")){
+				//to shield path
 				room2();
 			}
 			else if(direction.equals("r")){
+				//to old woman path
 				room5();
 			}
+			//If requested, game information is displayed
 			else if(direction.equals("info")){
 				core.displayInfo();
+				//User must input a new choice
 				direction=keyboard.next();
 			}
 			else{
@@ -79,6 +85,7 @@ public class City extends Area {
 		System.out.println("You proceed straight ahead. The buildings seem taller from this angle, but also a lot more... run down?");
 		System.out.println("Something seems to have driven the city's inhabitants away.");
 		
+		//Determine whether the user needs to face a minion
 		if(rooms[0][1].getMinion().isAlive()) {
 			System.out.println("As you stare thoughtfully upward, something grabs you from behind!");
 			core.fightEnemy(rooms[0][1].getMinion());
@@ -93,11 +100,11 @@ public class City extends Area {
 		direction = keyboard.nextLine();
 		while(!directionFound){
 			if(direction.equals("f")){
-				directionFound=true;
+				//to shield 
 				room3();
 			}
 			else if(direction.equals("r")){
-				directionFound=true;
+				//to boss
 				room9();
 			}
 			else if(direction.equals("b")){
@@ -143,11 +150,10 @@ public class City extends Area {
 		direction=keyboard.nextLine();
 		while(!directionFound){
 			if(direction.equals("r")){
-				directionFound=true;
+				//Empty room
 				room4();
 			}
 			else if(direction.equals("b")){
-				directionFound=true;
 				room2();
 			}
 			else if(direction.equals("info")){
@@ -179,11 +185,10 @@ public class City extends Area {
 		direction=keyboard.nextLine();
 		while(!directionFound){
 			if(direction.equals("r")){
-				directionFound=true;
+				//to boss
 				room9();
 			}
 			else if(direction.equals("b")){
-				directionFound=true;
 				room3();
 			}
 			else if(direction.equals("info")){
@@ -269,12 +274,12 @@ public class City extends Area {
 		direction=keyboard.nextLine();
 		while(!directionFound){
 			if(direction.equals("y")){
-				directionFound=true;
 				System.out.println("Despite what your mother told you about stranger danger, you accept.");
+				//to old woman's house
 				room7();
 			}
 			else if(direction.equals("n")){
-				directionFound=true;
+				//back
 				room5();
 			}
 			else{
