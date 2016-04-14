@@ -37,9 +37,6 @@ public class Core {
 		
 		 // create area #2 (city)
 		 city = new City(this);
-		 
-		 // create area #3 (wood)
-		 woods = new Woods(this);
 		
 		// start game
 		 startGame();
@@ -102,7 +99,7 @@ public class Core {
 			if(!cave.getRoom(1, 1).getBoss().isAlive() && !city.getRoom(1, 1).getBoss().isAlive()) {
 				System.out.println("Both other bosses are defeated. You may enter the woods! \nThe woods is a confusing maze of different paths you can take. Best of luck finding the final boss.");
 				// start the city adventures
-				woods.startWoods();
+				woods = new Woods(this);
 				
 			} else {
 				System.out.println("In order to enter the woods and have a chance to kill the final boss, you must kill the two bosses found in Cave and City.");
