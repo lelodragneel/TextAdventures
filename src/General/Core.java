@@ -111,6 +111,10 @@ public class Core {
 		} else if (chosen == 4) {
 			displayInfo();
 			chooseArea();
+			
+		} else {
+			System.out.println("Enter a valid command!");
+			chooseArea();
 		}
 	}
 	
@@ -141,7 +145,7 @@ public class Core {
 			bossStatus = "dead";
 		System.out.println("		Boss Status: " + bossStatus);
 		System.out.println("	Woods:");
-		System.out.println("		Final Boss Status: filler"); // TODO implement final boss status
+		System.out.println("		Final Boss Status: alive");
 		System.out.println("		Accessable: " + (!cave.getRoom(1, 1).getBoss().isAlive() && !city.getRoom(1, 1).getBoss().isAlive()));
 		System.out.println("------------------------------------------------------------------------");
 		
