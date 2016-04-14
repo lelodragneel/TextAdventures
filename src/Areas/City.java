@@ -24,9 +24,9 @@ public class City extends Area {
 		//rooms and their contents are outlined
 		rooms[0][0] = new Room(null, null, null, false);
 		rooms[0][1] = new Room(null, new Minion(100, 2, "Trash Creature"), null, false);
-		rooms[0][2] = new Room(null, new Minion(135, 3, "Sneaky Trash Creature"), new Item(0, 30, "[Shield] +30 Health"), false);
+		rooms[0][2] = new Room(null, new Minion(135, 2, "Sneaky Trash Creature"), new Item(0, 30, "[Shield] +30 Health"), false);
 		rooms[1][0] = new Room(null, new Minion(90, 5, "Trash Creature"), new Item(10, 0, "[Ring] +10 Attack"), false);
-		rooms[1][1] = new Room(new Boss(1, 1, "Sewage Beast"), null, null, false);
+		rooms[1][1] = new Room(new Boss(300, 2, "Sewage Beast"), null, null, false);
 		rooms[1][2] = new Room(null, null, null, false);
 		rooms[2][0] = new Room(null, null, null, false);
 		rooms[2][1] = new Room(null, null, null, true);
