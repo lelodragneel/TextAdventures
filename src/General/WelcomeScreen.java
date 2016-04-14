@@ -32,36 +32,24 @@ public class WelcomeScreen extends JFrame implements ActionListener {
 		/*
 		 * build the welcome frame with all components
 		 */
-		setTitle("TextAdventures");
+		setTitle("Alera Village");
 		setAlwaysOnTop(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setResizable(false);
-		setBounds(0, 0, 514, 256);
+		setBounds(0, 0, 1200, 700);
 		getContentPane().setLayout(null);
 		setLocationRelativeTo(null);
-
-		// label positioned on the left, displaying an image
-		JLabel label_leftPicture = new JLabel("");
-		label_leftPicture.setIcon(new ImageIcon(WelcomeScreen.class.getResource("/General/images/mouth-watering.png")));
-		label_leftPicture.setBounds(10, 11, 64, 100);
-		getContentPane().add(label_leftPicture);
-
-		// label positioned on the right, displaying an image
-		JLabel label_rightPicture = new JLabel("");
-		label_rightPicture.setIcon(new ImageIcon(WelcomeScreen.class.getResource("/General/images/attached-shield.png")));
-		label_rightPicture.setBounds(434, 11, 64, 100);
-		getContentPane().add(label_rightPicture);
-
-		// welcome label
-		JLabel lblwelcomeToTextadventures = new JLabel("Welcome to TextAdventures");
-		lblwelcomeToTextadventures.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
+      
+      		// welcome label
+		JLabel lblwelcomeToTextadventures = new JLabel("Welcome to the ruins of Alera Village!");
+		lblwelcomeToTextadventures.setFont(new Font("Georgia", Font.PLAIN, 24));
 		lblwelcomeToTextadventures.setHorizontalAlignment(SwingConstants.CENTER);
-		lblwelcomeToTextadventures.setBounds(159, 11, 190, 32);
+		lblwelcomeToTextadventures.setBounds(360, 230, 490, 50);
 		getContentPane().add(lblwelcomeToTextadventures);
 		
 		// create the warrior button
 		btnWarriorClass = new JButton("Warrior");
-		btnWarriorClass.setBounds(209, 193, 89, 23);
+		btnWarriorClass.setBounds(659, 343, 89, 23);
 		btnWarriorClass.addActionListener(this);
 		btnWarriorClass.setFocusable(false);
 		btnWarriorClass.setToolTipText("<html>Base Health: 16 <br />Base Attack: 16</html>");
@@ -69,7 +57,7 @@ public class WelcomeScreen extends JFrame implements ActionListener {
 		
 		// create the thief button
 		btnThiefClass = new JButton("Thief");
-		btnThiefClass.setBounds(110, 193, 89, 23);
+		btnThiefClass.setBounds(460, 343, 89, 23);
 		btnThiefClass.addActionListener(this);
 		btnThiefClass.setFocusable(false);
 		btnThiefClass.setToolTipText("<html>Base Health: 10 <br />Base Attack: 20</html>");
@@ -77,22 +65,28 @@ public class WelcomeScreen extends JFrame implements ActionListener {
 		
 		// create the wizard button
 		btnWizardClass = new JButton("Wizard");
-		btnWizardClass.setBounds(308, 193, 89, 23);
+		btnWizardClass.setBounds(558, 343, 89, 23);
 		btnWizardClass.addActionListener(this);
 		btnWizardClass.setFocusable(false);
 		btnWizardClass.setToolTipText("<html>Base Health: 20 <br />Base Attack: 10</html>");
 		getContentPane().add(btnWizardClass);
 		
 		// ask the player to input his name
-		enterName = new JLabel("Enter your name:");
+		enterName = new JLabel("Enter your name then choose a class!");
 		enterName.setFont(new Font("Comic Sans MS", Font.PLAIN, 12));
-		enterName.setBounds(159, 113, 190, 14);
+		enterName.setBounds(509, 283, 290, 14);
 		getContentPane().add(enterName);
 		
 		nameInput = new JTextField();
-		nameInput.setBounds(159,138,190,25);
+		nameInput.setBounds(509,308,190,25);
 		getContentPane().add(nameInput);
 		
+      // label positioned on the right, displaying an image
+		JLabel label_rightPicture = new JLabel("");
+		label_rightPicture.setIcon(new ImageIcon(WelcomeScreen.class.getResource("/General/images/village.png")));
+		label_rightPicture.setBounds(0, 0, 1200, 700);
+		getContentPane().add(label_rightPicture);
+      
 		// set frame visible
 		setVisible(true);
 
@@ -104,15 +98,15 @@ public class WelcomeScreen extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent evt) {
 		
 		if(evt.getSource().equals(btnWarriorClass)) {
-			player = new Character("Warrior", nameInput.getText(), 16, 16, 1);
+			player = new Character("Warrior", nameInput.getText(), 160, 16, 1);
 			startGame(player);
 		}
 		else if(evt.getSource().equals(btnThiefClass)) {
-			player = new Character("Thief" , nameInput.getText(), 10, 20, 1);
+			player = new Character("Thief" , nameInput.getText(), 100, 20, 1);
 			startGame(player);
 		}
 		else if(evt.getSource().equals(btnWizardClass)) {
-			player = new Character("Wizard", nameInput.getText(), 20, 10, 1);
+			player = new Character("Wizard", nameInput.getText(), 200, 10, 1);
 			startGame(player);
 		}
 	}

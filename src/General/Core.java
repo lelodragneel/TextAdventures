@@ -101,7 +101,7 @@ public class Core {
 			// check if player can enter the woods
 			if(!cave.getRoom(1, 1).getBoss().isAlive() && !city.getRoom(1, 1).getBoss().isAlive()) {
 				System.out.println("Both other bosses are defeated. You may enter the woods! \nThe woods is a confusing maze of different paths you can take. Best of luck finding the final boss.");
-				// start the city adventures
+				// start the woods adventures
 				woods = new Woods(this);
 				
 			} else {
