@@ -17,7 +17,7 @@ public class Cave extends Area {
 
 		this.core = core;
 		rooms = new Room[3][3];
-		rooms[0][0] = new Room(null, new Minion(1, 1, "Troll"), new Item(0, 10, "[Ring] +10 Health"), false);
+		rooms[0][0] = new Room(null, new Minion(90, 3, "Troll"), new Item(0, 10, "[Ring] +10 Health"), false);
 		rooms[0][1] = new Room(null, null, null, false);
 		rooms[0][2] = new Room(null, null, null, true);
 		rooms[1][0] = new Room(null, null, null, false);
